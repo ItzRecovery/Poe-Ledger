@@ -1,0 +1,61 @@
+{
+  "Exarch": [
+    "https://poestrat.com/farming/strats/searing-exarch",
+    {
+      "Dawnbreaker": 63,
+      "Dawnstrider": 35,
+      "Dissolution of the Flesh": 2
+    },
+    {
+      "Unidentified Forbidden Flame": 5,
+      "Exceptional Eldritch Ember": 15,
+      "Overheat Support": 2,
+      "Eldritch Orb of Annulment": 5,
+      "Eldritch Chaos Orb": 5,
+      "Eldritch Exalted Orb": 5,
+      "Auspicious Ambitions": 1
+    }
+  ],
+  "Eater": [
+    "https://poestrat.com/farming/strats/eater-of-worlds",
+    {
+      "Inextricable Fate": 55,
+      "The Gluttonous Tide": 43,
+      "Melding of the Flesh": 2
+    },
+    {
+      "Unidentified Forbidden Flesh": 5,
+      "Exceptional Eldritch Ichor": 15,
+      "Gluttony Support": 2,
+      "Eldritch Orb of Annulment": 5,
+      "Eldritch Chaos Orb": 5,
+      "Eldritch Exalted Orb": 5,
+      "Auspicious Ambitions": 1
+    }
+  ],
+  "Zorath, Vile Assembled": [
+    "https://poedb.tw/us/Zorath%2C_Vile_Assembled",
+    {
+      "Subsume the Source": 40,
+      "Spinesnatch": 20,
+      "Baleful Dominion": 10,
+      "Destructive Aspiration": 10,
+      "Extinguishing Grasp": 10,
+      "Festering Vengeance": 10
+    },
+    {
+      "Crystalfall Support": 10
+    }
+  ],
+  "Saresh, of the Weeping Black": [
+    "https://poedb.tw/us/markdown_raw?oldid=10544",
+    {
+      "Unidentified Screams of the Desiccated": 50,
+      "The Sands of Time": 10,
+      "The Broken Elegy": 40
+    },
+    {
+      "Transfusion Support": 10
+    }
+  ]
+}

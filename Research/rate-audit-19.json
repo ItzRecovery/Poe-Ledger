@@ -1,0 +1,298 @@
+{
+  "Maven": [
+    "maven",
+    {
+      "Legacy of Fury": 41,
+      "Graven's Secret": 17,
+      "Arn's Anguish": 17,
+      "Olesya's Delight": 17,
+      "Doppelgänger Guise": 7,
+      "Echoforge": 1
+    },
+    {
+      "Orb of Conflict": 32,
+      "Invert the Rules Support": 10
+    }
+  ],
+  "Uber Maven": [
+    "uber-maven",
+    {
+      "Viridi's Veil": 52,
+      "Unidentified Impossible Escape": 31.5,
+      "Grace of the Goddess": 14,
+      "Progenesis": 2.5
+    },
+    {
+      "Awakened Empower Support": 0.6,
+      "Awakened Enhance Support": 1,
+      "Awakened Enlighten Support": 0.5,
+      "Eclipse Support": 2,
+      "Curio of Potential": 5,
+      "Shiny Reliquary Key": 0.7,
+      "Invert the Rules Support": 10,
+      "Orb of Conflict": 32,
+      "Auspicious Ambitions": 0.05
+    }
+  ],
+  "Sirus": [
+    "sirus",
+    {
+      "Hands of the High Templar": 43,
+      "Crown of the Inward Eye": 32,
+      "The Burden of Truth": 20,
+      "Unidentified Thread of Hope": 5
+    },
+    {
+      "Awakener's Orb": 20,
+      "Orb of Dominance": 5,
+      "A Fate Worse Than Death": 4,
+      "Annihilation Support": 7
+    }
+  ],
+  "Uber Sirus": [
+    "uber-sirus",
+    {
+      "Unidentified Thread of Hope": 44,
+      "The Tempest Rising": 28,
+      "Zana's Ingenuity": 18,
+      "Oriath's End": 9,
+      "The Saviour": 1
+    },
+    {
+      "Awakener's Orb": 20,
+      "Orb of Dominance": 5,
+      "A Fate Worse Than Death": 4,
+      "Annihilation Support": 7,
+      "Oubliette Reliquary Key": 1.5
+    }
+  ],
+  "Uber Exarch": [
+    "uber-exarch",
+    {
+      "The Annihilating Light": 45.5,
+      "Annihilation's Approach": 29,
+      "Crystallised Omniscience": 24,
+      "The Celestial Brace": 1.5
+    },
+    {
+      "Unidentified Forbidden Flame": 5,
+      "Archive Reliquary Key": 1.5,
+      "Curio of Absorption": 5,
+      "Overheat Support": 2,
+      "Exceptional Eldritch Ember": 15,
+      "Eldritch Orb of Annulment": 5,
+      "Eldritch Chaos Orb": 5,
+      "Eldritch Exalted Orb": 5,
+      "Auspicious Ambitions": 1
+    }
+  ],
+  "Uber Eater": [
+    "uber-eater",
+    {
+      "Ravenous Passion": 68,
+      "Ashes of the Stars": 30,
+      "Nimis": 2
+    },
+    {
+      "Gluttony Support": 2,
+      "Unidentified Forbidden Flesh": 5,
+      "Exceptional Eldritch Ichor": 15,
+      "Eldritch Orb of Annulment": 5,
+      "Eldritch Chaos Orb": 5,
+      "Eldritch Exalted Orb": 5,
+      "Auspicious Ambitions": 1,
+      "Visceral Reliquary Key": 1,
+      "Curio of Consumption": 5
+    }
+  ],
+  "Shaper": [
+    "shaper",
+    {
+      "Shaper's Touch": 56,
+      "Voidwalker": 30,
+      "Solstice Vigil": 11,
+      "Dying Sun": 3
+    },
+    {
+      "Shaper's Exalted Orb": 13,
+      "Orb of Dominance": 3,
+      "Voidstorm Support": 10
+    }
+  ],
+  "Uber Shaper": [
+    "uber-shaper",
+    {
+      "Echoes of Creation": 32,
+      "Entropic Devastation": 31,
+      "The Unblinking Eye": 19,
+      "The Tides of Time": 16,
+      "Starforge": 2
+    },
+    {
+      "Unidentified Sublime Vision": 2,
+      "Cosmic Reliquary Key": 1,
+      "Shaper's Exalted Orb": 13,
+      "Orb of Dominance": 3,
+      "Voidstorm Support": 10
+    }
+  ],
+  "Elder": [
+    "elder",
+    {
+      "Cyclopean Coil": 30,
+      "Blasphemer's Grasp": 26,
+      "Nebuloch": 8,
+      "Hopeshredder": 8,
+      "Shimmeron": 8,
+      "Impresence": 20
+    },
+    {
+      "Unidentified Watcher's Eye (2 mods)": 40,
+      "Elder's Exalted Orb": 12,
+      "Orb of Dominance": 2,
+      "Void of the Elements": 0.5,
+      "Eldritch Blasphemy Support": 10
+    }
+  ],
+  "Uber Elder": [
+    "uber-elder",
+    {
+      "Mark of the Shaper": 35,
+      "Mark of the Elder": 35,
+      "Voidfletcher": 20,
+      "Indigon": 8,
+      "Disintegrator": 2
+    },
+    {
+      "Void Shockwave Support": 10,
+      "Cooldown Recovery Support": 2,
+      "Unidentified Watcher's Eye (3 mods)": 35,
+      "Shaper's Exalted Orb": 13,
+      "Elder's Exalted Orb": 13,
+      "Orb of Dominance": 6,
+      "Void of the Elements": 1,
+      "Auspicious Ambitions": 0.5
+    }
+  ],
+  "Uber Uber Elder": [
+    "uber-uber-elder",
+    {
+      "Call of the Void": 46,
+      "The Devourer of Minds": 28.5,
+      "Soul Ascension": 9,
+      "Impresence": 10,
+      "The Eternity Shroud": 5,
+      "Voidforge": 1.5
+    },
+    {
+      "Unidentified Sublime Vision": 1.5,
+      "Decaying Reliquary Key": 1.5,
+      "Curio of Decay": 5,
+      "Void Shockwave Support": 10,
+      "Cooldown Recovery Support": 2,
+      "Unidentified Watcher's Eye (3 mods)": 35,
+      "Shaper's Exalted Orb": 13,
+      "Elder's Exalted Orb": 13,
+      "Orb of Dominance": 6,
+      "Void of the Elements": 1,
+      "Auspicious Ambitions": 0.5
+    }
+  ],
+  "Cortex": [
+    "wiki:Venarius",
+    {
+      "Offering to the Serpent": 43,
+      "Perepiteia": 43,
+      "Garb of the Ephemeral": 9,
+      "Bottled Faith": 5
+    },
+    {
+      "Greater Kinetic Instability Support": 10,
+      "The Hook": 5
+    }
+  ],
+  "Uber Cortex": [
+    "wiki:Venarius",
+    {
+      "Nebulis": 34,
+      "Mask of the Tribunal": 34,
+      "Circle of Ambition": 19,
+      "The Apostate": 8,
+      "Unidentified Rational Doctrine": 5
+    },
+    {
+      "Forgotten Reliquary Key": 1.5,
+      "Greater Kinetic Instability Support": 10,
+      "The Hook": 5
+    }
+  ],
+  "Black Star": [
+    "wiki:The_Black_Star",
+    {},
+    {
+      "Polaric Devastation": 3,
+      "Sudden Dawn": 3,
+      "The Eternal Struggle": 5
+    }
+  ],
+  "Infinite Hunger": [
+    "wiki:The_Infinite_Hunger",
+    {},
+    {
+      "Ceaseless Feast": 3,
+      "Black Zenith": 3,
+      "The Eternal Struggle": 5,
+      "Choking Guilt": 1
+    }
+  ],
+  "Oshabi": [
+    "wiki:Oshabi,_Avatar_of_the_Grove",
+    {
+      "Forbidden Shako": 48,
+      "Law of the Wilds": 22,
+      "Witchhunter's Judgment": 17,
+      "Abhorrent Interrogation": 13
+    },
+    {
+      "Sacred Crystallised Lifeforce": 100,
+      "Pacifism Support": 12,
+      "Greater Unleash Support": 10,
+      "The Aspirant": 10
+    }
+  ],
+  "Uber Atziri": [
+    "uber-atziri",
+    {
+      "Atziri's Splendour": 42,
+      "The Vertex": 40,
+      "Atziri's Acuity": 6,
+      "Triumvirate Authority": 5,
+      "Atziri's Reflection": 4,
+      "Atziri's Disfavour": 2,
+      "Atziri's Rule": 1
+    },
+    {
+      "Vaal Sacrifice Support": 8,
+      "Greater Spell Echo Support": 5,
+      "Triskaidekaphobia": 20,
+      "The Price of Devotion": 0.1,
+      "Sacrificial Garb": 15,
+      "Beauty": 15
+    }
+  ],
+  "Uber Incarnation of Dread": [
+    "uber-dread",
+    {
+      "The Hallowed Monarch": 54,
+      "Whispers of Infinity": 30,
+      "Wellwater Phylactery": 14,
+      "The Golden Charlatan": 2
+    },
+    {
+      "Bound By Destiny": 10,
+      "Congregation Support": 5,
+      "Orb of Unravelling": 33,
+      "Reverent Reliquary Key": 1
+    }
+  ]
+}

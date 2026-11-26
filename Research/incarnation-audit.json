@@ -1,0 +1,169 @@
+{
+  "Uber Incarnation of Fear": {
+    "entry": "Traumatic Fragment",
+    "wiki": "Incarnation_of_Fear",
+    "rows": [
+      [
+        "The Caged Mammoth",
+        60,
+        "unique17"
+      ],
+      [
+        "Coiling Whisper",
+        36,
+        "unique17"
+      ],
+      [
+        "Wing of the Wyvern",
+        2,
+        "unique17"
+      ],
+      [
+        "Woespike",
+        2,
+        "unique17"
+      ],
+      [
+        "Traumatic Reliquary Key",
+        1,
+        ""
+      ],
+      [
+        "Bound By Destiny",
+        10,
+        ""
+      ],
+      [
+        "Greater Devour Support",
+        5,
+        ""
+      ],
+      [
+        "Orb of Intention",
+        50,
+        ""
+      ],
+      [
+        "Grasping Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Runic Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Chaotic Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Fungal Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Nameless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Timeless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Lightless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ]
+    ]
+  },
+  "Uber Incarnation of Neglect": {
+    "entry": "Lonely Fragment",
+    "wiki": "Incarnation_of_Neglect",
+    "rows": [
+      [
+        "Refuge in Isolation",
+        55,
+        "unique17"
+      ],
+      [
+        "Bitter Instinct",
+        30,
+        "unique17"
+      ],
+      [
+        "Haunting Memories",
+        13,
+        "unique17"
+      ],
+      [
+        "Festering Resentment",
+        2,
+        "unique17"
+      ],
+      [
+        "Lonely Reliquary Key",
+        1,
+        ""
+      ],
+      [
+        "Bound By Destiny",
+        10,
+        ""
+      ],
+      [
+        "Frostmage Support",
+        5,
+        ""
+      ],
+      [
+        "Orb of Remembrance",
+        33,
+        ""
+      ],
+      [
+        "Monochrome",
+        3,
+        ""
+      ],
+      [
+        "Grasping Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Runic Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Chaotic Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Fungal Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Nameless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Timeless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ],
+      [
+        "Lightless Astrolabe",
+        14.285714285714286,
+        "astrolabe17"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+Optional full backup: on your own existing Project Poe Ledger page, open the browser developer console and run the following JavaScript. It reads only Ledger storage keys and downloads a local JSON file; no network calls.
+
+(() => {const data=Object.fromEntries(Object.keys(localStorage).filter(k=>k.startsWith('bossledger')).map(k=>[k,localStorage.getItem(k)]));const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='project-poe-ledger-browser-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);})();

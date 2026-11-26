@@ -1,0 +1,101 @@
+{
+  "Sirus": [
+    "Sirus,_Awakener_of_Worlds",
+    "3.27–3.28",
+    {
+      "Crown of the Inward Eye": 35,
+      "Unidentified Thread of Hope": 5
+    }
+  ],
+  "Uber Sirus": [
+    "Sirus,_Awakener_of_Worlds",
+    "3.27–3.28",
+    {
+      "Oriath's End": 7.5,
+      "Unidentified Thread of Hope": 55,
+      "Oubliette Reliquary Key": 1.5
+    }
+  ],
+  "Exarch": [
+    "The_Searing_Exarch",
+    "3.26",
+    {
+      "Dawnbreaker": 63
+    }
+  ],
+  "Uber Exarch": [
+    "The_Searing_Exarch",
+    "3.26",
+    {
+      "Archive Reliquary Key": 1.5
+    }
+  ],
+  "Eater": [
+    "The_Eater_of_Worlds",
+    "3.26–3.27",
+    {
+      "Inextricable Fate": 55,
+      "Unidentified Forbidden Flesh": 5,
+      "Exceptional Eldritch Ichor": 15
+    }
+  ],
+  "Uber Eater": [
+    "The_Eater_of_Worlds",
+    "3.26–3.27",
+    {
+      "Ashes of the Stars": 30,
+      "Nimis": 2
+    }
+  ],
+  "Shaper": [
+    "The_Shaper",
+    "3.26–3.27",
+    {
+      "Dying Sun": 3
+    }
+  ],
+  "Uber Shaper": [
+    "The_Shaper",
+    "3.26–3.27",
+    {
+      "Unidentified Sublime Vision": 2,
+      "Starforge": 2
+    }
+  ],
+  "Elder": [
+    "The_Elder",
+    "3.26–3.27",
+    {
+      "Unidentified Watcher's Eye (2 mods)": 40
+    }
+  ],
+  "Uber Elder": [
+    "The_Elder_(The_Shaper%27s_Realm)",
+    "3.26–3.27",
+    {
+      "Mark of the Elder": 35
+    }
+  ],
+  "Uber Uber Elder": [
+    "The_Elder_(The_Shaper%27s_Realm)",
+    "3.26–3.27",
+    {
+      "Unidentified Sublime Vision": 1
+    }
+  ],
+  "Cortex": [
+    "Venarius",
+    "3.25–3.28",
+    {
+      "Bottled Faith": 5,
+      "Garb of the Ephemeral": 9
+    }
+  ],
+  "Uber Cortex": [
+    "Venarius",
+    "3.25–3.28",
+    {
+      "Unidentified Rational Doctrine": 5
+    }
+  ]
+}

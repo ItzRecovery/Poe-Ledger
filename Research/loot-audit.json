@@ -1,0 +1,221 @@
+{
+  "added": {
+    "Shaper": [
+      [
+        "Voidwalker",
+        26,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-shaper-farm"
+      ],
+      [
+        "Solstice Vigil",
+        15,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-shaper-farm"
+      ]
+    ],
+    "Elder": [
+      [
+        "Impresence",
+        20,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Hopeshredder",
+        8,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Nebuloch",
+        8,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Shimmeron",
+        8,
+        "unique16",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Elder's Exalted Orb",
+        12,
+        "",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Orb of Dominance",
+        2,
+        "",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ],
+      [
+        "Void of the Elements",
+        null,
+        "",
+        "https://farmofexile.com/poe1/article/the-elder-farm"
+      ]
+    ],
+    "Uber Elder": [
+      [
+        "Voidfletcher",
+        15,
+        "unique16",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Disintegrator",
+        3,
+        "unique16",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Shaper's Exalted Orb",
+        15,
+        "",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Elder's Exalted Orb",
+        10,
+        "",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Orb of Dominance",
+        5,
+        "",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Void of the Elements",
+        null,
+        "",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ],
+      [
+        "Auspicious Ambitions",
+        null,
+        "",
+        "https://farmofexile.com/poe1/article/uber-elder-farm"
+      ]
+    ],
+    "Uber Shaper": [
+      [
+        "Echoes of Creation",
+        null,
+        "",
+        "https://www.poewiki.net/wiki/Echoes_of_Creation"
+      ],
+      [
+        "Cosmic Reliquary Key",
+        null,
+        "",
+        "https://www.poewiki.net/wiki/Cosmic_Reliquary_Key"
+      ]
+    ],
+    "Uber Uber Elder": [
+      [
+        "The Eternity Shroud",
+        null,
+        "",
+        "https://www.poewiki.net/wiki/The_Eternity_Shroud"
+      ],
+      [
+        "Decaying Reliquary Key",
+        null,
+        "",
+        "https://www.poewiki.net/wiki/Foil_item"
+      ]
+    ],
+    "Uber Eater": [
+      [
+        "Visceral Reliquary Key",
+        null,
+        "",
+        "https://www.poewiki.net/wiki/Foil_item"
+      ]
+    ]
+  },
+  "historical_pool_updates": {
+    "Shaper": {
+      "Shaper's Touch": [
+        56,
+        "unique16"
+      ],
+      "Dying Sun": [
+        3,
+        "unique16"
+      ],
+      "Fragment of Knowledge": [
+        50,
+        "fragment16"
+      ],
+      "Fragment of Shape": [
+        50,
+        "fragment16"
+      ]
+    },
+    "Elder": {
+      "Cyclopean Coil": [
+        30,
+        "unique16"
+      ],
+      "Blasphemer's Grasp": [
+        26,
+        "unique16"
+      ],
+      "Fragment of Terror": [
+        50,
+        "fragment16"
+      ],
+      "Fragment of Emptiness": [
+        50,
+        "fragment16"
+      ],
+      "Eldritch Blasphemy Support": [
+        10,
+        ""
+      ]
+    },
+    "Uber Elder": {
+      "Mark of the Shaper": [
+        35,
+        "unique16"
+      ],
+      "Mark of the Elder": [
+        35,
+        "unique16"
+      ],
+      "Indigon": [
+        12,
+        "unique16"
+      ],
+      "Unidentified Watcher's Eye (3 mods)": [
+        30,
+        ""
+      ]
+    }
+  },
+  "conditional_viscera": {
+    "Maven": "Maven's Orrery",
+    "Sirus": "Sirus' Head",
+    "Exarch": "Searing Exarch's Descry",
+    "Eater": "Eater of Worlds' Head",
+    "Shaper": "Shaper's Head",
+    "Uber Elder": "Elder's Head",
+    "Cortex": "Venarius' Scripture",
+    "Uber Incarnation of Dread": "Greater Incarnation of Dread's Head",
+    "Uber Incarnation of Fear": "Greater Incarnation of Fear's Head",
+    "Uber Incarnation of Neglect": "Greater Incarnation of Neglect's Cube",
+    "Uber Maven": "Greater Maven's Orrery",
+    "Uber Sirus": "Greater Sirus' Head",
+    "Uber Exarch": "Greater Searing Exarch's Descry",
+    "Uber Eater": "Greater Eater of Worlds' Head",
+    "Uber Shaper": "Greater Shaper's Head",
+    "Uber Cortex": "Greater Venarius' Scripture",
+    "Uber Uber Elder": "Greater Elder's Head"
+  }
+}
