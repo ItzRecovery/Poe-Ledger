@@ -1,0 +1,50 @@
+
+    
+  
+name: Build Windows release
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Publish Windows app
+        run: dotnet publish ProjectPoeLedger/ProjectPoeLedger.csproj -c Release -r win-x64 --self-contained true -o Desktop
+      - name: Build installer
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (!(Test-Path $iscc)) { choco install innosetup -y; if ($LASTEXITCODE) { exit $LASTEXITCODE } }
+          & $iscc ProjectPoeLedger.iss
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Prepare release manifest
+        shell: pwsh
+        run: |
+          [xml]$project = Get-Content ProjectPoeLedger/ProjectPoeLedger.csproj
+          $version = [string]$project.Project.PropertyGroup.Version
+          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag and project version must match.' }
+          $installer = Get-ChildItem Output -Filter '*Setup.exe' | Select-Object -First 1
+          if (!$installer) { throw 'Installer missing' }
+          New-Item -ItemType Directory -Force release | Out-Null
+          Copy-Item $installer.FullName release/PoeLedger-Setup.exe
+          $asset = Get-Item release/PoeLedger-Setup.exe
+          @{version=$version;channel='stable';notes="Poe Ledger $version";downloadUrl="https://github.com/$env:GITHUB_REPOSITORY/releases/download/v$version/PoeLedger-Setup.exe";sha256=(Get-FileHash $asset.FullName -Algorithm SHA256).Hash;size=$asset.Length} | ConvertTo-Json | Set-Content release/release-manifest.json -Encoding utf8NoBOM
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PoeLedger-Windows
+          path: release/
+      - name: Publish tagged release
+        if: github.ref_type == 'tag'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --generate-notes --verify-tag
+
