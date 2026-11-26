@@ -46,5 +46,12 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --generate-notes --verify-tag
+        run: |
+          gh release view "$env:GITHUB_REF_NAME" --repo "$env:GITHUB_REPOSITORY" --json tagName
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --repo "$env:GITHUB_REPOSITORY"
+          } else {
+            gh release create "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --repo "$env:GITHUB_REPOSITORY" --generate-notes --verify-tag
+          }
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
