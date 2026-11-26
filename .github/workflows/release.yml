@@ -1,9 +1,11 @@
-
-    
-  
 name: Build Windows release
 on:
   workflow_dispatch:
+    inputs:
+      publish_release:
+        description: 'Publish installer and manifest as a new release after building'
+        type: boolean
+        default: false
   push:
     tags: ['v*']
 permissions:
@@ -41,17 +43,41 @@ jobs:
         with:
           name: PoeLedger-Windows
           path: release/
-      - name: Publish tagged release
-        if: github.ref_type == 'tag'
+      - name: Publish verified release
+        if: github.ref_type == 'tag' || (github.event_name == 'workflow_dispatch' && inputs.publish_release == true && github.ref == 'refs/heads/main')
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release view "$env:GITHUB_REF_NAME" --repo "$env:GITHUB_REPOSITORY" --json tagName
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $false
+          $manifest = Get-Content release/release-manifest.json -Raw | ConvertFrom-Json
+          $tag = "v$($manifest.version)"
+          $repo = $env:GITHUB_REPOSITORY
+          $existing = gh release view $tag --repo $repo --json isDraft,assets 2>$null
           if ($LASTEXITCODE -eq 0) {
-            gh release upload "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --repo "$env:GITHUB_REPOSITORY"
-          } else {
-            gh release create "$env:GITHUB_REF_NAME" release/PoeLedger-Setup.exe release/release-manifest.json --repo "$env:GITHUB_REPOSITORY" --generate-notes --verify-tag
+            $current = $existing | ConvertFrom-Json
+            if (!$current.isDraft) { throw "Release $tag already published; use a new version rather than replacing live assets." }
+            throw "Draft $tag already exists. Inspect its assets and tag before retrying."
           }
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
+          $argsList = @('release','create',$tag,'release/PoeLedger-Setup.exe','release/release-manifest.json','--repo',$repo,'--draft','--title',"Poe Ledger V$($manifest.version)",'--generate-notes')
+          if ($env:GITHUB_REF_TYPE -eq 'tag') { $argsList += '--verify-tag' }
+          else {
+            $remote = git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}"
+            if ($LASTEXITCODE -ne 0) { throw 'Unable to verify remote tag.' }
+            if ($remote) { throw "Tag $tag already exists. Inspect it before publishing." }
+            $argsList += @('--target',$env:GITHUB_SHA)
+          }
+          & gh @argsList
+          if ($LASTEXITCODE -ne 0) { throw 'Draft creation or upload failed.' }
+          $result = gh release view $tag --repo $repo --json assets,isDraft
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to verify draft release.' }
+          $draft = $result | ConvertFrom-Json
+          if (!$draft.isDraft) { throw 'Expected draft release.' }
+          foreach ($name in @('PoeLedger-Setup.exe','release-manifest.json')) {
+            $local = Get-Item "release/$name"
+            $uploaded = @($draft.assets | Where-Object { $_.name -eq $name -and $_.size -eq $local.Length })
+            if ($uploaded.Count -ne 1) { throw "Missing or incomplete asset: $name" }
+          }
+          gh release edit $tag --repo $repo --draft=false --latest
+          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed.' }
