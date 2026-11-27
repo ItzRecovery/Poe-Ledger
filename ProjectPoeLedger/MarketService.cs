@@ -45,9 +45,10 @@ internal sealed class MarketService : IDisposable
     string? Cached(string key){if(cache.TryGetValue(key,out var x)&&Now-x.Time<900){Interlocked.Increment(ref hits);return x.Json;}return null;}
     sealed class ApiException(string message,int status):Exception(message){public int Status{get;}=status;}
     void Check(){if(Interlocked.Read(ref blockedUntil)>Now)throw new ApiException("API cooldown active",429);if(!Online)throw new ApiException("Desktop offline mode: enable Network > Allow online market requests first.",503);}
-    async Task<string> Request(string url,JsonNode? payload=null,int spacing=1500,bool json=true){
+    async Task<string> Request(string url,JsonNode? payload=null,int spacing=1500,bool json=true,string? bearer=null){
         var ct=requestToken.Value;ct.ThrowIfCancellationRequested();Check();var delay=spacing-(DateTimeOffset.UtcNow-lastRequest).TotalMilliseconds;if(delay>0)await Task.Delay((int)Math.Ceiling(delay),ct);Check();
         using var req=new HttpRequestMessage(payload==null?HttpMethod.Get:HttpMethod.Post,url);
+        if(bearer!=null)req.Headers.Authorization=new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",bearer);
         if(payload!=null)req.Content=new StringContent(payload.ToJsonString(),Encoding.UTF8,"application/json");
         lastRequest=DateTimeOffset.UtcNow;
         Interlocked.Increment(ref requests);using var r=await client.SendAsync(req,HttpCompletionOption.ResponseHeadersRead,ct);
@@ -62,8 +63,15 @@ internal sealed class MarketService : IDisposable
         var url=path=="trade-stats"?"https://www.pathofexile.com/api/trade/data/stats":"https://poe.ninja/poe1/api/economy/"+path+(query.Length>0?"?"+query:"");
         var data=Cached(url);if(data==null){data=await Request(url);Store(url,data);}return Results.Text(data,"application/json");
     }catch(Exception e){return Error(ctx,e);}finally{gate.Release();}}
-    public async Task<IResult> Post(string path,HttpContext ctx){if(path is not ("trade-quote" or "pob-import"))return Results.NotFound();if(ctx.Request.Headers.Origin.ToString()!=Program.Origin)return Results.StatusCode(403);if(ctx.Request.ContentLength is >20000)return Results.BadRequest(new{error="Request too large"});var ct=CurrentToken();Interlocked.Increment(ref queued);try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
+    public async Task<IResult> Post(string path,HttpContext ctx){if(path is not ("trade-quote" or "pob-import" or "account-stash"))return Results.NotFound();if(ctx.Request.Headers.Origin.ToString()!=Program.Origin)return Results.StatusCode(403);if(ctx.Request.ContentLength is >20000)return Results.BadRequest(new{error="Request too large"});var ct=CurrentToken();Interlocked.Increment(ref queued);try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
         using var reader=new StreamReader(ctx.Request.Body);var content=await reader.ReadToEndAsync();if(content.Length>20000)throw new ApiException("Request too large",400);var body=JsonNode.Parse(content)??throw new ApiException("Invalid request",400);
+        if(path=="account-stash"){
+            ctx.Response.Headers["Cache-Control"]="no-store";
+            var bearer=Str(body["token"]);var lg=Str(body["league"]);var id=Str(body["stash"]);
+            if(!Regex.IsMatch(bearer,@"^[A-Za-z0-9._~+/=-]{16,4096}$")||lg.Length<1||lg.Length>100||!Regex.IsMatch(id,@"^[A-Za-z0-9_-]{0,128}$"))throw new ApiException("Invalid access token, league or stash ID",400);
+            var url="https://api.pathofexile.com/stash/"+Uri.EscapeDataString(lg)+(id.Length>0?"/"+Uri.EscapeDataString(id):"");
+            return Results.Text(await Request(url,spacing:3000,bearer:bearer),"application/json");
+        }
         if(path=="pob-import"){
             var id=Str(body["id"]);if(!Regex.IsMatch(id,@"^[A-Za-z0-9_-]{1,128}$"))throw new ApiException("Invalid pobb.in ID",400);
             var text=(await Request("https://pobb.in/"+id+"/raw",json:false)).Trim();if(text.Length>8000000||!(text.StartsWith("<PathOfBuilding")||text.StartsWith("<?xml")||Regex.IsMatch(text,@"^[A-Za-z0-9_+/=\-\s]+$")))throw new ApiException("No valid export returned. Paste a PoB export code instead.",502);return Results.Json(new{code=text});
