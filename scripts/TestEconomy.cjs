@@ -79,6 +79,16 @@ test('Unique ID ignored',()=>affix27('Rarity: Rare\nExample\nOnyx Amulet\nUnique
 test('Equal numeric hybrid template',()=>matchAffix542(new Map([['explicit|# to strength and # to dexterity',new Set(['explicit.fixture_hybrid'])]]),'explicit','+20 to Strength and +20 to Dexterity')?.value.min===20);
 test('Unequal numeric hybrid remains unmatched',()=>matchAffix542(new Map([['explicit|# to strength and # to dexterity',new Set(['explicit.fixture_hybrid'])]]),'explicit','+20 to Strength and +30 to Dexterity')===null);
 test('Unicode stat normalization',()=>norm27('  Minions’ Damage\u00a0')===norm27("Minions' Damage"));
+const manualRaw='Rarity: Rare\nExample\nConvoking Wand\nImplicits: 0\nSpecial Test Modifier';
+const manualCatalog=[{id:'explicit.stat_fixture_manual',text:'Special Test Modifier Alternate'}];
+const manualChoice={id:manualCatalog[0].id,template:manualCatalog[0].text,min:12};
+manualMaps560.set(manualCatalog,{[manualKey560(manualRaw,'Special Test Modifier')]:manualChoice});
+test('Remembered manual stat resolves',()=>affix27(manualRaw,manualCatalog).matched[0]?.id===manualChoice.id);
+test('Manual minimum retained',()=>affix27(manualRaw,manualCatalog).matched[0]?.value.min===12);
+test('Manual correction isolated by base type',()=>affix27(manualRaw.replace('Convoking Wand','Onyx Amulet'),manualCatalog).matched.length===0);
+test('Manual correction rejects changed catalog text',()=>manualMatch560(manualRaw,'Special Test Modifier',[{...manualCatalog[0],text:'Different'}])===null);
+test('Manual search returns stat candidate',()=>manualSuggestions560(manualCatalog,'Special Test Modifier','alternate')[0]?.id===manualChoice.id);
+test('Invalid manual ID rejected',()=>!manualAllowed560('arbitrary.id'));
 console.log(n+' offline checks passed');
 return readSave545;
 `;
