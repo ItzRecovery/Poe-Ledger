@@ -41,68 +41,7 @@ jobs:
           }
           $map = Get-Content Desktop/Web/boss-art/manifest.json -Raw | ConvertFrom-Json -AsHashtable
           foreach ($entry in $map.Values) {
-            if ($entry.file -notmatch '^[a-z0-9-]+\.png
-        shell: pwsh
-        run: |
-          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
-          if (!(Test-Path $iscc)) { choco install innosetup -y; if ($LASTEXITCODE) { exit $LASTEXITCODE } }
-          & $iscc ProjectPoeLedger.iss
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
-      - name: Prepare release manifest
-        shell: pwsh
-        run: |
-          [xml]$project = Get-Content ProjectPoeLedger/ProjectPoeLedger.csproj
-          $version = [string]$project.Project.PropertyGroup.Version
-          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag and project version must match.' }
-          $installer = Get-ChildItem Output -Filter '*Setup.exe' | Select-Object -First 1
-          if (!$installer) { throw 'Installer missing' }
-          New-Item -ItemType Directory -Force release | Out-Null
-          Copy-Item $installer.FullName release/PoeLedger-Setup.exe
-          $asset = Get-Item release/PoeLedger-Setup.exe
-          @{version=$version;channel='stable';notes="Poe Ledger $version";downloadUrl="https://github.com/$env:GITHUB_REPOSITORY/releases/download/v$version/PoeLedger-Setup.exe";sha256=(Get-FileHash $asset.FullName -Algorithm SHA256).Hash;size=$asset.Length} | ConvertTo-Json | Set-Content release/release-manifest.json -Encoding utf8NoBOM
-      - uses: actions/upload-artifact@v4
-        with:
-          name: PoeLedger-Windows
-          path: release/
-      - name: Publish verified release
-        if: github.ref_type == 'tag' || (github.event_name == 'workflow_dispatch' && inputs.publish_release == true && github.ref == 'refs/heads/main')
-        shell: pwsh
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          $ErrorActionPreference = 'Stop'
-          $PSNativeCommandUseErrorActionPreference = $false
-          $manifest = Get-Content release/release-manifest.json -Raw | ConvertFrom-Json
-          $tag = "v$($manifest.version)"
-          $repo = $env:GITHUB_REPOSITORY
-          $existing = gh release view $tag --repo $repo --json isDraft,assets 2>$null
-          if ($LASTEXITCODE -eq 0) {
-            $current = $existing | ConvertFrom-Json
-            if (!$current.isDraft) { throw "Release $tag already published; use a new version rather than replacing live assets." }
-            throw "Draft $tag already exists. Inspect its assets and tag before retrying."
-          }
-          $argsList = @('release','create',$tag,'release/PoeLedger-Setup.exe','release/release-manifest.json','--repo',$repo,'--draft','--title',"Poe Ledger V$($manifest.version)",'--generate-notes')
-          if ($env:GITHUB_REF_TYPE -eq 'tag') { $argsList += '--verify-tag' }
-          else {
-            $remote = git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}"
-            if ($LASTEXITCODE -ne 0) { throw 'Unable to verify remote tag.' }
-            if ($remote) { throw "Tag $tag already exists. Inspect it before publishing." }
-            $argsList += @('--target',$env:GITHUB_SHA)
-          }
-          & gh @argsList
-          if ($LASTEXITCODE -ne 0) { throw 'Draft creation or upload failed.' }
-          $result = gh release view $tag --repo $repo --json assets,isDraft
-          if ($LASTEXITCODE -ne 0) { throw 'Unable to verify draft release.' }
-          $draft = $result | ConvertFrom-Json
-          if (!$draft.isDraft) { throw 'Expected draft release.' }
-          foreach ($name in @('PoeLedger-Setup.exe','release-manifest.json')) {
-            $local = Get-Item "release/$name"
-            $uploaded = @($draft.assets | Where-Object { $_.name -eq $name -and $_.size -eq $local.Length })
-            if ($uploaded.Count -ne 1) { throw "Missing or incomplete asset: $name" }
-          }
-          gh release edit $tag --repo $repo --draft=false --latest
-          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed.' }
-) { throw 'Invalid artwork filename' }
+            if ($entry.file -notmatch '^[a-z0-9-]+\.png$') { throw 'Invalid artwork filename' }
             $image = Join-Path Desktop/Web/boss-art $entry.file
             if (!(Test-Path $image) -or (Get-Item $image).Length -eq 0) { throw "Missing bundled image: $image" }
           }
