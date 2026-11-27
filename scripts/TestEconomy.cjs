@@ -2,6 +2,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
 const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function filterSearch569(','function query27('),extract('function liveDelta522(','async function livePoll522('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function coverageCounts568(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
+parts.push(extract('const ultiModes577=','function ultiState577('),extract('function inscribedNew578(','function inscribedTrade578('),extract('function insTier579(','function insDifficultyPanel579('),extract('function catCalc580(','function catState580('),extract('const trialDrops581=','function trialState581('),extract('const mapCats582=','function mapState582('),extract('function ultiThread583(','const ultiSources583='));
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -194,6 +195,35 @@ test('Cluster minion damage option uses catalog supplied option ID',()=>affix27(
 test('Anointment crafted tag uses enchant option',()=>affix27('Rarity: Unique\nExample\nOnyx Amulet\nImplicits: 1\n{crafted}Allocates Gravepact',expandCatalog574([{id:'enchant.fixture',text:'Allocates #',option:{options:[{id:9,text:'Gravepact'}]}}])).matched[0]?.id==='enchant.fixture|9');
 test('Ignore crafted does not remove true enchantments',()=>filterSearch569([{id:'enchant.fixture|9',original:'{crafted}Allocates Gravepact'},{id:'crafted.fixture',original:'{crafted}test'}],{skipCrafted:true}).length===1);
 test('Unknown cluster option is never fabricated',()=>affix27('Rarity: Rare\nExample\nLarge Cluster Jewel\nImplicits: 1\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage',expandCatalog574([{id:'enchant.fixture',text:'Added Small Passive Skills grant: #',option:{options:[{id:7,text:'Minion Life'}]}}])).matched.length===0);
+
+let u583=ultiNew577('Test','map');Object.assign(u583,{cost:10,threads:2,threadPrice:5,minutes:5,success:80,reward:100});
+test('Ultimatum simple EV',()=>ultiCalc577(u583).net===60);
+test('Ultimatum missing reward is not zero',()=>!ultiCalc577({...u583,reward:''}).ready);
+let ins583={...inscribedNew578(),sacrifice:'Divine Orb',reward:'Divine Orb',qty:4,rewardQty:8,sacrificePrice:200,rewardPrice:200,buy:300,sell:400,extra:0,success:90,minutes:5};
+test('Inscribed buy vs sell',()=>inscribedCalc578(ins583).buyNet===340&&inscribedCalc578(ins583).advantage===240);
+test('Inscribed unpriced sale remains unknown',()=>inscribedCalc578({...ins583,sell:''}).advantage===null);
+test('Inscribed blacklist overrides EV',()=>insDecision579({...ins583,mods:['Ruin III']},{blacklist:'ruin'},1000).decision==='Avoid / sell');
+let stash583={id:'fixture',baseType:'Inscribed Ultimatum',properties:[{name:'Requires Sacrifice',values:[['Divine Orb x4',0]]},{name:'Reward',values:[['Doubles sacrificed Currency',0]]}]};
+test('Inscribed import doubling and dedup',()=>{let a=[];return inscribedMerge578(a,[stash583],'x').added===1&&inscribedMerge578(a,[stash583],'x').added===0&&a[0].rewardQty===8});
+test('Inscribed unknown tier remains unknown',()=>insTier579({mods:[]})===null);
+test('Recipe requires five different owned IDs',()=>insRecipe579(Array(5).fill(ins583),10)===null);
+let cat583=[{name:'A',single:2,bulk:3},{name:'B',single:4,bulk:5}], cs583={n:3,cost:10,thread:2,minutes:5,success:80,other:5,qty:[10,5]};
+test('Catalyst individual and bulk EV',()=>catCalc580(cs583,cat583).net===20&&catCalc580(cs583,cat583).bulkNet===32);
+test('Catalyst missing bulk quote',()=>catCalc580(cs583,[{...cat583[0],bulk:''},cat583[1]]).bulkNet===null);
+test('Catalyst special recipe input excluded',()=>catRecipe580({name:'Tainted Catalyst',single:1},cat583,{A:1,B:1})===null);
+test('Catalyst weighted recipe EV',()=>catRecipe580(cat583[0],cat583,{A:1,B:1}).net===-3);
+let trial583=trialNew581('test',6);Object.assign(trial583,{cost:10,threadPrice:2,before:5,bank:30,bossTime:1,finalReward:5,reach:100,encounter:50,kill:80});trial583.drops.forEach(r=>r.qty=0);trial583.drops[4].qty=.1;trial583.drops[4].identified=1000;
+test('Trialmaster fight and conservative EV',()=>trialCalc581(trial583).gross===69&&trialCalc581(trial583).conservative===29);
+test('Gauntlet prevents boss',()=>trialCalc581({...trial583,gauntlet:true,forced:true}).encounter===0);
+test('Trialmaster missing unidentified quote',()=>{let d=JSON.parse(JSON.stringify(trial583));d.drops[4].sale='unidentified';return trialCalc581(d)===null});
+let map583=mapNew582('test',6);Object.assign(map583,{entry:4,threadPrice:1,overhead:1,atlasDrops:100,stackScale:50,worthy:true,cashout:2});for(let a of map583.rewards)for(let k in a)a[k]=k==='currency'?8:0;for(let a of map583.rounds){a.chance=100;a.minutes=1}
+test('Map thread shift and reward EV',()=>mapCalc582(map583).gross===30&&mapCalc582(map583).hour===400);
+test('Thread breakpoints',()=>[1,3,5,6,8].map(n=>ultiThread583(n).round).join(',')==='0,0,0,1,1');
+test('Double Down eligibility',()=>mapCalc582({...map583,tier:5,cashout:10,ddChance:50,ddMultiplier:1}).doublePending===true);
+test('Gauntlet supports 13 rounds',()=>mapCalc582({...map583,gauntlet:true,cashout:13}).normal.round===13);
+test('Map normal caps cash-out at ten',()=>mapCalc582({...map583,cashout:13})===null);
+test('Map missing reward blocks model',()=>{let d=JSON.parse(JSON.stringify(map583));d.rewards[1].currency='';return mapCalc582(d)===null});
+
 console.log(n+' offline checks passed');
 return readSave545;
 `;
