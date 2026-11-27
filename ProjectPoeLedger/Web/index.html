@@ -570,6 +570,8 @@ const liveAtlasBase525=atlasPage33;atlasPage33=function(){liveAtlasBase525();liv
 const liveBeastBase525=beastPage46;beastPage46=function(){liveBeastBase525();liveBindHeader523('beast46','Bestiary / Current session')};pages33.beast46[2]=beastPage46;
 if(page24==='boss'&&b())liveBindHeader523('boss','Bossing / '+b().name);
 
+function mergeBossNav526(){let nav=$('nav24'),heads=[...nav.querySelectorAll('.navgroup32')],boss=heads.find(h=>h.textContent.trim()==='Bossing'),farm=heads.find(h=>h.textContent.trim()==='Farming activities');if(!boss||!farm)return;let items=[];for(let x=boss.nextElementSibling;x&&!x.classList.contains('navgroup32');x=x.nextElementSibling)items.push(x);let fragment=document.createDocumentFragment();for(let item of items)fragment.append(item);farm.after(fragment);boss.remove();let btn=nav.querySelector('[data-page24="boss"]');if(btn){btn.title='Bossing';let label=btn.querySelector('.navlabel32');if(label)label.textContent='Bossing'}}
+mergeBossNav526();
 initCollapsible509();
 
 </script></html>
