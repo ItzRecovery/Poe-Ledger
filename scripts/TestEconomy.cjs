@@ -89,6 +89,16 @@ test('Manual correction isolated by base type',()=>affix27(manualRaw.replace('Co
 test('Manual correction rejects changed catalog text',()=>manualMatch560(manualRaw,'Special Test Modifier',[{...manualCatalog[0],text:'Different'}])===null);
 test('Manual search returns stat candidate',()=>manualSuggestions560(manualCatalog,'Special Test Modifier','alternate')[0]?.id===manualChoice.id);
 test('Invalid manual ID rejected',()=>!manualAllowed560('arbitrary.id'));
+const correctionKey=manualKey560(manualRaw,'Special Test Modifier'),correctionPayload={schema:'poe-ledger-modifier-corrections-v1',corrections:{[correctionKey]:manualChoice}};
+test('Correction export payload validates',()=>Object.keys(validateCorrections562(correctionPayload,manualCatalog).valid).length===1);
+test('Correction import rejects stale catalog',()=>validateCorrections562(correctionPayload,[]).skipped===1);
+test('Correction import rejects invalid context',()=>validateCorrections562({...correctionPayload,corrections:{'__proto__bad':manualChoice}},manualCatalog).skipped===1);
+test('Correction import rejects nonnumeric minimum',()=>validateCorrections562({...correctionPayload,corrections:{[correctionKey]:{...manualChoice,min:'12'}}},manualCatalog).skipped===1);
+const rangeIndex=new Map([['explicit|adds # to # fire damage',new Set(['explicit.stat_fixture_range'])]]);
+test('Unequal damage range suggestion',()=>rangeCandidate562(rangeIndex,'explicit','Adds 10 to 30 Fire Damage')?.average===20);
+test('Reversed damage range rejected',()=>rangeCandidate562(rangeIndex,'explicit','Adds 30 to 10 Fire Damage')===null);
+test('Range is not silently auto-applied',()=>matchAffix542(rangeIndex,'explicit','Adds 10 to 30 Fire Damage')===null);
+test('Matched modifier retains original context',()=>affix27(fracturedRaw,fractureCatalog).matched[0]?.original.includes('{fractured}'));
 console.log(n+' offline checks passed');
 return readSave545;
 `;
