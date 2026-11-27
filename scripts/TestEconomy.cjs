@@ -1,7 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
-const parts=[extract('function calc(x)','function field('),extract('function calc338(','function simulate338('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function debugRaw564(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
+const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function debugRaw564(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -122,6 +122,19 @@ test('Incomplete economy estimate not ready',()=>!economyMetrics566({...e,runs:1
 test('Journal weighted profitability',()=>economyJournal566([{name:'a',runs:2,minutes:10,cost:10,loot:50},{name:'a',runs:1,minutes:20,cost:10,loot:30}]).hour===120);
 test('Journal ignores unfinished sessions',()=>economyJournal566([{runs:1,minutes:'',cost:'',loot:''}]).sessions===0);
 test('Probability group prototype name safe',()=>!calc338({...e,rows:[{p:20,price:1,qty:1,g:'__proto__'}]}).invalid);
+const wing567={blueprint:20,reveal:5,markers:1000,markerPrice:.01,other:5,prep:2,wingMinutes:3,reward:80,side:20,success:90};
+test('One wing shared entry investment',()=>wingCalc567(wing567,1).cost===40&&wingCalc567(wing567,1).net===50);
+test('Four wings amortize blueprint',()=>wingCalc567(wing567,4).cost===100&&wingCalc567(wing567,4).net===260);
+test('Wing count validation',()=>wingCalc567(wing567,5)===null&&wingCalc567(wing567,1.5)===null);
+test('Missing wing reward stays incomplete',()=>wingCalc567({...wing567,reward:''},2)===null);
+test('Invalid wing chance rejected',()=>wingCalc567({...wing567,success:101},2)===null);
+test('Replica exact variant price',()=>replicaQuote567('Replica Test (Variant A)',[{name:'Replica Test',variant:'Variant A',price:100},{name:'Replica Test',variant:'Variant B',price:200}])?.price===100);
+test('Replica variant cannot use unrelated base',()=>replicaQuote567('Replica Test',[{name:'Replica Test',variant:'Variant A',price:100}])===null);
+const activity567={connected:true,categories:[{activity:'Heist area',count:8},{activity:'Delve area',count:20},{activity:'Shaper arena',count:3},{activity:'Elder arena',count:2}]};
+test('Heist activity count isolated',()=>activityCount567(activity567,'heist')===8);
+test('Boss arena counts aggregated',()=>activityCount567(activity567,'boss')===5);
+test('Beast capture not fabricated',()=>activityCount567(activity567,'beast46')===null);
+test('Disconnected log count unknown',()=>activityCount567({connected:false},'delve')===null);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
