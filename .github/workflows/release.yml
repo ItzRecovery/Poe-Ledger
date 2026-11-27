@@ -28,24 +28,14 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - name: Offline economy regression checks
         run: node scripts/TestEconomy.cjs
-      - name: Fetch static boss artwork
-        shell: pwsh
-        run: ./scripts/FetchBossArt.ps1
       - name: Publish Windows app
         run: dotnet publish ProjectPoeLedger/ProjectPoeLedger.csproj -c Release -r win-x64 --self-contained true -o Desktop
       - name: Verify published application files
         shell: pwsh
         run: |
-          foreach ($file in @('ProjectPoeLedger.exe','Web/index.html','ApplyUpdate.ps1','Web/boss-art/manifest.json')) {
+          foreach ($file in @('ProjectPoeLedger.exe','Web/index.html','ApplyUpdate.ps1')) {
             if (!(Test-Path (Join-Path Desktop $file))) { throw "Missing published file: $file" }
           }
-          $map = Get-Content Desktop/Web/boss-art/manifest.json -Raw | ConvertFrom-Json -AsHashtable
-          foreach ($entry in $map.Values) {
-            if ($entry.file -notmatch '^[a-z0-9-]+\.png$') { throw 'Invalid artwork filename' }
-            $image = Join-Path Desktop/Web/boss-art $entry.file
-            if (!(Test-Path $image) -or (Get-Item $image).Length -eq 0) { throw "Missing bundled image: $image" }
-          }
-          Write-Host "Verified $($map.Count) installed artwork mappings (coverage may be incomplete)."
       - name: Build installer
         shell: pwsh
         run: |
