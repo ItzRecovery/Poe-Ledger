@@ -75,6 +75,7 @@ internal sealed class LedgerWindow : Form
     [System.Runtime.InteropServices.DllImport("user32.dll",SetLastError=true)] static extern bool RegisterHotKey(IntPtr h,int id,uint mod,uint key);
     [System.Runtime.InteropServices.DllImport("user32.dll")] static extern bool UnregisterHotKey(IntPtr h,int id);
     string League(){try{using var d=JsonDocument.Parse(saves.Read().GetValueOrDefault("bossledger-v4","{}"));return d.RootElement.TryGetProperty("league",out var l)?l.GetString()??"Covens":"Covens";}catch{return "Covens";}}
+    void DailyBackup50(){try{if(!saves.Initialized)return;var folder=Path.Combine(Program.DataDir,"backups");Directory.CreateDirectory(folder);var path=Path.Combine(folder,"daily-"+DateTime.UtcNow.ToString("yyyy-MM-dd")+".sqlite3");if(!File.Exists(path)){var temp=path+".tmp-"+Guid.NewGuid().ToString("N");try{saves.Backup(temp);File.Move(temp,path);}finally{if(File.Exists(temp))File.Delete(temp);}}foreach(var f in Directory.GetFiles(folder,"daily-????-??-??.sqlite3").OrderByDescending(x=>x,StringComparer.Ordinal).Skip(14)){try{File.Delete(f);}catch{}}}catch(Exception e){Notify("Automatic database backup failed: "+e.Message);}}
     void Notify(string text){tray.Visible=true;tray.ShowBalloonTip(5000,"Poe Ledger",text,ToolTipIcon.Info);}
     NativeTools Tools(){if(tools==null){tools=new NativeTools(native,market,Notify,League,()=>{online.Checked=false;market.Cancel();SyncNetwork();},SyncArt,OpenClipboardTrade,saves.Read,OpenEconomyPage,PrepareUpdate);System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(tools);}return tools;}
     void SetPriceHotkey(string key){if(key is not ("P" or "L" or "K"))key="P";var old=native.Setting("priceHotkey","P");UnregisterHotKey(Handle,36);if(RegisterHotKey(Handle,36,0x4003,key[0])){native.SettingSet("priceHotkey",key);Notify("Price check: Ctrl+Alt+"+key);}else{if(old is "P" or "L" or "K")RegisterHotKey(Handle,36,0x4003,old[0]);Notify("Requested hotkey unavailable. Previous shortcut retained if available.");}}
@@ -107,7 +108,7 @@ internal sealed class LedgerWindow : Form
             }catch(Exception ex){if(stagedUpdate!=null){stagedUpdate=null;Program.PendingUpdate=null;MessageBox.Show("Update stopped: save or backup failed.\n"+ex.Message);return;}if(MessageBox.Show("Could not save SQLite snapshot. Close anyway?\n"+ex.Message,"Save error",MessageBoxButtons.YesNo)!=DialogResult.Yes)return;}
             closingAfterSave=true;Close();
         };
-        Text="Poe Ledger — Desktop 0.46.1"; Width=1440; Height=900; MinimumSize=new Size(900,600);
+        Text="Poe Ledger — Desktop 0.50.0"; Width=1440; Height=900; MinimumSize=new Size(900,600);
         StartPosition=FormStartPosition.CenterScreen;
         try{Icon=new Icon(Path.Combine(AppContext.BaseDirectory,"PoeLedger.ico"));tray.Icon=Icon;}catch{}
         var menu=new MenuStrip();
@@ -136,7 +137,7 @@ internal sealed class LedgerWindow : Form
         menu.Items.Add(view);
         var help=new ToolStripMenuItem("Help");help.DropDownItems.Add("Check for updates",null,(_,_)=>{try{Tools().ShowUpdates();}catch(Exception ex){MessageBox.Show(ex.Message);}});menu.Items.Add(help);
         Controls.Add(web);Controls.Add(menu);MainMenuStrip=menu;
-        Shown+=async (_,_)=>{await InitializeWeb();SetPriceHotkey(native.Setting("priceHotkey","P"));try{Tools();}catch(Exception e){Notify("Native tools initialization failed: "+e.Message); }};
+        Shown+=async (_,_)=>{DailyBackup50();await InitializeWeb();SetPriceHotkey(native.Setting("priceHotkey","P"));try{Tools();}catch(Exception e){Notify("Native tools initialization failed: "+e.Message); }};
     }
     async Task InitializeWeb()
     {
