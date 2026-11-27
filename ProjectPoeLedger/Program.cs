@@ -108,7 +108,7 @@ internal sealed class LedgerWindow : Form
             }catch(Exception ex){if(stagedUpdate!=null){stagedUpdate=null;Program.PendingUpdate=null;MessageBox.Show("Update stopped: save or backup failed.\n"+ex.Message);return;}if(MessageBox.Show("Could not save SQLite snapshot. Close anyway?\n"+ex.Message,"Save error",MessageBoxButtons.YesNo)!=DialogResult.Yes)return;}
             closingAfterSave=true;Close();
         };
-        Text="Poe Ledger — Desktop 0.52.3"; Width=1440; Height=900; MinimumSize=new Size(900,600);
+        Text="Poe Ledger — Desktop 0.53.0"; Width=1440; Height=900; MinimumSize=new Size(900,600);
         StartPosition=FormStartPosition.CenterScreen;
         try{Icon=new Icon(Path.Combine(AppContext.BaseDirectory,"PoeLedger.ico"));tray.Icon=Icon;}catch{}
         var menu=new MenuStrip();
