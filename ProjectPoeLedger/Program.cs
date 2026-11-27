@@ -44,6 +44,11 @@ internal static class Program
         app.MapGet("/", () => Results.File(Path.Combine(AppContext.BaseDirectory,"Web","index.html"),"text/html; charset=utf-8"));
         app.MapGet("/poe-ledger.png", () => Results.File(Path.Combine(AppContext.BaseDirectory,"Web","poe-ledger.png"),"image/png"));
         app.MapGet("/index.html", () => Results.Redirect("/"));
+        app.MapGet("/boss-art/{filename}", (string filename) => {
+            if(!System.Text.RegularExpressions.Regex.IsMatch(filename,@"^(manifest\.json|[a-z0-9-]+\.png)$"))return Results.NotFound();
+            var path=Path.Combine(AppContext.BaseDirectory,"Web","boss-art",filename);
+            return File.Exists(path)?Results.File(path,filename.EndsWith(".json")?"application/json":"image/png"):Results.NotFound();
+        });
         app.MapGet("/artwork/{filename}", (string filename) => {
             if(!System.Text.RegularExpressions.Regex.IsMatch(filename,@"^[a-f0-9-]{36}\.(png|jpg|jpeg|webp)$",System.Text.RegularExpressions.RegexOptions.IgnoreCase))return Results.NotFound();
             string path=Path.Combine(DataDir,"artwork",filename);if(!File.Exists(path))return Results.NotFound();
