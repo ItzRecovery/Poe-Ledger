@@ -1,7 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
-const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function coverageCounts568(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
+const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function filterSearch569(','function query27('),extract('function liveDelta522(','async function livePoll522('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function coverageCounts568(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -142,6 +142,15 @@ test('Combined trigger counts once',()=>coverageItem568(affix27(triggerRaw,trigg
 test('Duplicate item references counted once',()=>coverageBuild568([{id:'1',raw:fracturedRaw},{id:'1',raw:fracturedRaw}],fractureCatalog).matched===1);
 test('Remembered correction contributes to coverage',()=>coverageBuild568([{id:'a',raw:manualRaw}],manualCatalog).percent===100);
 test('Debug report coverage included',()=>modDebug564([{raw:fracturedRaw}],fractureCatalog).summary.percent===100);
+test('Crafted search exclusion',()=>filterSearch569([{id:'crafted.stat_1'},{id:'explicit.stat_2'},{id:'explicit.stat_3',original:'{crafted}test'}],{skipCrafted:true}).length===1);
+test('Build-wide ignored stat filter',()=>filterSearch569([{id:'explicit.stat_1'}],{ignore:['explicit.stat_1']}).length===0);
+test('Session baseline excludes history',()=>sessionDelta570(100,105)===5);
+test('Session reset returns unknown',()=>sessionDelta570(100,2)===null);
+test('Break-even success',()=>breakEven570(100,40)===40);
+test('Bulk sale discount',()=>adjustedLoot571(100,-10)===90);
+test('Live loot blacklist',()=>liveDelta522({}, {A:2,B:3},{A:5,B:1},{blacklist:['A']}).total===3);
+test('Live minimum price',()=>liveDelta522({}, {A:2,B:3},{A:5,B:1},{minPrice:2}).total===10);
+test('Unpriced loot remains flagged',()=>liveDelta522({}, {Unknown:1},{},{minPrice:2}).missing.length===1);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
