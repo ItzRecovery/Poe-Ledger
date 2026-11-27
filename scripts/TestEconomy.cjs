@@ -167,6 +167,13 @@ test('Reversed minion damage range rejected',()=>affix27(minionRangeRaw.replace(
 test('Ambiguous minion range rejected',()=>affix27(minionRangeRaw,[...minionRangeCatalog,{id:'explicit.fixture_other',text:minionRangeCatalog[0].text}]).matched.length===0);
 test('Reduced bleed duration matches negative increase',()=>affix27('Rarity: Rare\nExample\nCobalt Jewel\nImplicits: 0\n35% reduced Bleed Duration on you',[{id:'explicit.stat_1692879867',text:'#% increased Bleed Duration on you'}]).matched[0]?.value.max===-35);
 test('Hauberk uses local defence scope',()=>defenceScope558('Rarity: Rare\nExample\nSaintly Hauberk','194% increased Armour and Energy Shield')==='local');
+test('PoB roll annotation interpolation',()=>rollText574('{tags:defences}{range:0.85}(300-400)% increased Armour and Energy Shield')==='385% increased Armour and Energy Shield');
+test('PoB invalid roll annotation rejected',()=>rollText574('{range:1.5}(10-20)% increased Damage')===null);
+test('PoB variant remains unresolved',()=>rollText574('{variant:2}+10 to maximum Life')===null);
+test('PoB rolled local defence matches',()=>affix27('Rarity: Unique\nAegis Aurora\nChampion Kite Shield\nArmourBasePercentile: 0.9\nImplicits: 0\n{range:0.85}(300-400)% increased Armour and Energy Shield',[{id:'explicit.stat_3321629045',text:'#% increased Armour and Energy Shield (Local)'}]).matched[0]?.value.min===385);
+test('Reduced attribute requirements',()=>affix27('Rarity: Unique\nExample\nOnyx Amulet\nImplicits: 0\nItems and Gems have 6% reduced Attribute Requirements',[{id:'explicit.stat_752930724',text:'Items and Gems have #% increased Attribute Requirements'}]).matched[0]?.value.max===-6);
+test('Eldritch influence and base percentile metadata excluded',()=>affix27('Rarity: Rare\nExample\nWarlock Gloves\nEnergyShieldBasePercentile: 0.5\nSearing Exarch Item\nEater of Worlds Item\nImplicits: 0\n+30 to maximum Life',[]).unmatched.length===0);
+test('Quickening Covenant multiline negative movement speed',()=>affix27('Rarity: Unique\nQuickening Covenant\nViridian Jewel\nImplicits: 0\nNotable Passive Skills in Radius are Transformed to\ninstead grant: Minions have 25% reduced Movement Speed',[{id:'explicit.stat_3362879252',text:'Notable Passive Skills in Radius are Transformed to\ninstead grant: Minions have #% increased Movement Speed'}]).matched[0]?.value.max===-25);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
