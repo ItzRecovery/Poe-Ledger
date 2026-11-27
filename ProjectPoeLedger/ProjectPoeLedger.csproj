@@ -9,7 +9,7 @@
     <AssemblyName>ProjectPoeLedger</AssemblyName>
     <ApplicationIcon>PoeLedger.ico</ApplicationIcon>
     <Product>Poe Ledger</Product>
-    <Version>0.53.2</Version>
+    <Version>0.53.3</Version>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
