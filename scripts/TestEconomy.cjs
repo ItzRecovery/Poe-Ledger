@@ -48,6 +48,13 @@ test('Purchased stats count toward target',()=>planTargets557(purchases,3,{fire:
 test('Negative target contribution skipped',()=>planTargets557([{price:1,stats:{fire:-5}}],5,{fire:40},[]).chosen.length===0);
 test('CSV formula neutralization',()=>csvCell554('=1+1')===String.fromCharCode(34,39)+'=1+1'+String.fromCharCode(34));
 test('CSV quote escaping',()=>csvCell554('a"b')==='"a""b"');
+const scopeCatalog=[{id:'explicit.fixture_global',text:'+# to maximum Energy Shield'},{id:'explicit.fixture_local',text:'+# to maximum Energy Shield (Local)'}];
+const monarch='Rarity: Unique\nThe Dark Monarch\nLich\'s Circlet\nImplicits: 0\n+75 to maximum Energy Shield';
+test('Dark Monarch uses local ES',()=>affix27(monarch,scopeCatalog).matched[0]?.id==='explicit.fixture_local');
+test('Armour never falls back to global ES',()=>affix27(monarch,[scopeCatalog[0]]).matched.length===0);
+test('Amulet uses global ES',()=>affix27('Rarity: Rare\nExample\nOnyx Amulet\nImplicits: 0\n+75 to maximum Energy Shield',scopeCatalog).matched[0]?.id==='explicit.fixture_global');
+test('Unrecognized base does not guess ES scope',()=>affix27('Rarity: Rare\nExample\nUnknown Base\nImplicits: 0\n+75 to maximum Energy Shield',scopeCatalog).matched.length===0);
+test('Explicit local scope',()=>matchScoped558(catalogIndex535(scopeCatalog),'explicit','+75 to maximum Energy Shield (Local)','').id==='explicit.fixture_local');
 console.log(n+' offline checks passed');
 return readSave545;
 `;
