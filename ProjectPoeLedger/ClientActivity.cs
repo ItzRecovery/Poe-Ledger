@@ -27,6 +27,12 @@ internal sealed class ClientActivity
         if (level < 60 || level > 100) return null;
         if (area.Equals("MapWorldsShapersRealm", StringComparison.OrdinalIgnoreCase)) return "Shaper arena";
         if (area.Equals("MapWorldsElderArenaUber", StringComparison.OrdinalIgnoreCase)) return "Uber Elder arena";
+        if (area.Equals("MapWorldsElderArena", StringComparison.OrdinalIgnoreCase)) return "Elder arena";
+        if (area.Equals("MapWorldsMaven", StringComparison.OrdinalIgnoreCase)) return "Maven arena";
+        if (area.Equals("MapWorldsSirus", StringComparison.OrdinalIgnoreCase)) return "Sirus arena";
+        if (area.Equals("MapWorldsEaterOfWorlds", StringComparison.OrdinalIgnoreCase)) return "Eater of Worlds arena";
+        if (area.Equals("MapWorldsSearingExarch", StringComparison.OrdinalIgnoreCase)) return "Searing Exarch arena";
+        if (area.Equals("MapWorldsCortex", StringComparison.OrdinalIgnoreCase)) return "Cortex arena";
         if (area.StartsWith("MapWorlds", StringComparison.OrdinalIgnoreCase) || area.StartsWith("MapAtlas", StringComparison.OrdinalIgnoreCase)) return "Map / endgame area";
         if (area.StartsWith("Heist", StringComparison.OrdinalIgnoreCase) && !Regex.IsMatch(area, "harbou?r|town|hideout|foyer", RegexOptions.IgnoreCase)) return "Heist area";
         if (area.StartsWith("Sanctum", StringComparison.OrdinalIgnoreCase) && !area.Contains("Foyer", StringComparison.OrdinalIgnoreCase)) return "Sanctum area";
@@ -79,12 +85,20 @@ internal sealed class ClientActivity
         }
         catch (Exception e) { return Snapshot("Cannot read Client.txt: " + e.GetType().Name, false); }
     }
+    int CountDays(int days)
+    {
+        var start = DateTime.Today.AddDays(1-days).ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+        var end = DateTime.Today.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+        return counts.Where(x => string.CompareOrdinal(x.Key.Day,start)>=0 && string.CompareOrdinal(x.Key.Day,end)<=0).Sum(x=>x.Value);
+    }
     object Snapshot(string status, bool scanning)
     {
         return new {
             connected = true, status, scanning, limited,
             total = counts.Values.Sum(),
-            today = counts.Where(x => x.Key.Day == DateTime.Now.ToString("yyyy/MM/dd")).Sum(x => x.Value),
+            today = counts.Where(x => x.Key.Day == DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture)).Sum(x => x.Value),
+            week = CountDays(7),
+            month = CountDays(30),
             categories = counts.GroupBy(x => x.Key.Activity).Select(g => new { activity = g.Key, count = g.Sum(x => x.Value) }).OrderByDescending(x => x.count).ToArray(),
             areas = counts.GroupBy(x => (x.Key.Activity, x.Key.Area, x.Key.Level)).Select(g => new { activity = g.Key.Activity, area = g.Key.Area, level = g.Key.Level, count = g.Sum(x => x.Value) }).OrderByDescending(x => x.count).ThenBy(x => x.area).Take(200).ToArray(),
             days = counts.GroupBy(x => x.Key.Day).Select(g => new { day = g.Key, count = g.Sum(x => x.Value) }).OrderByDescending(x => x.day).Take(30).ToArray()
