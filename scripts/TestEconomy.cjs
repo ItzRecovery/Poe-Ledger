@@ -64,6 +64,11 @@ test('Unknown weapon scope remains unmatched',()=>affix27(weaponRaw.replace('Con
 test('Explicit item class overrides base heuristics',()=>affix27('Item Class: Wands\n'+weaponRaw.replace('Convoking Wand','Unknown Base'),weaponScopeCatalog).matched.length===3);
 test('Explicit global marker overrides weapon context',()=>matchScoped558(catalogIndex535(weaponScopeCatalog),'explicit','25% increased Critical Strike Chance (Global)',weaponRaw)?.id==='explicit.global2');
 test('Spell critical strike chance not treated as local attack crit',()=>defenceScope558(weaponRaw,'25% increased Critical Strike Chance for Spells')==='');
+const fractureCatalog=[{id:'explicit.stat_3372524247',text:'+#% to Fire Resistance'},{id:'fractured.fixture_fire',text:'+#% to Fire Resistance'}];
+const fracturedRaw='Rarity: Rare\nExample\nOnyx Amulet\nImplicits: 0\n{fractured}+47% to Fire Resistance';
+test('Fractured stat searches normal explicit',()=>affix27(fracturedRaw,fractureCatalog).matched[0]?.id==='explicit.stat_3372524247');
+test('Fractured stat preserves minimum',()=>affix27(fracturedRaw,[]).matched[0]?.value.min===47);
+test('Fractured only catalog never forces fracture',()=>affix27('Rarity: Rare\nExample\nConvoking Wand\nImplicits: 0\n{fractured}Minions deal 19% increased Damage',[{id:'fractured.fixture_minion',text:'Minions deal #% increased Damage'}]).matched.length===0);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
