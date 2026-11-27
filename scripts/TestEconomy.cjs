@@ -1,7 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
-const parts=[extract('function calc(x)','function field('),extract('function calc338(','function simulate338('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function norm27(','function visiblePobMods462('),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
+const parts=[extract('function calc(x)','function field('),extract('function calc338(','function simulate338('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function debugRaw564(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -104,6 +104,12 @@ test('Conditional contraction matches same condition',()=>matchConditional563(ca
 test('Different condition remains unmatched',()=>matchConditional563(catalogIndex535(conditionalCatalog),'explicit',"20% increased Damage if you haven't Killed Recently")===null);
 test('Unique conditional modifier preserves identity',()=>affix27('Rarity: Unique\nExample Unique\nOnyx Amulet\nImplicits: 0\n20% increased Damage if you have Killed Recently',conditionalCatalog).matched[0]?.id==='explicit.stat_fixture_conditional');
 test('Unique modifier without catalog is not guessed',()=>affix27('Rarity: Unique\nExample Unique\nOnyx Amulet\nImplicits: 0\nYou have a special unknown effect',[]).matched.length===0);
+test('Craicic Croaker alias matches legacy name',()=>beastMarket518('Craicic Chimeral',[{name:'Craicic Croaker',price:100}])?.price===100);
+test('Unrelated beast does not match',()=>beastMarket518('Craicic Chimeral',[{name:'Farric Chimeral',price:100}])===null);
+test('Conflicting beast prices rejected',()=>beastMarket518('Craicic Chimeral',[{name:'Craicic Croaker',price:100},{name:'Craicic Chimeral',price:200}])===null);
+test('Debug export excludes account metadata',()=>!debugRaw564('Account: test\nUnique ID: xyz\n+40 to maximum Life').includes('test'));
+test('Debug export includes matched stat',()=>modDebug564([{slot:'Ring',raw:'Rarity: Rare\nExample\nOnyx Ring\nImplicits: 0\n+40 to maximum Life'}],[]).summary.matched===1);
+test('Debug export includes unmatched stat',()=>modDebug564([{raw:'Rarity: Rare\nExample\nOnyx Ring\nImplicits: 0\nUnknown special modifier'}],[]).summary.unmatched===1);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
