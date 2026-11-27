@@ -55,6 +55,15 @@ test('Armour never falls back to global ES',()=>affix27(monarch,[scopeCatalog[0]
 test('Amulet uses global ES',()=>affix27('Rarity: Rare\nExample\nOnyx Amulet\nImplicits: 0\n+75 to maximum Energy Shield',scopeCatalog).matched[0]?.id==='explicit.fixture_global');
 test('Unrecognized base does not guess ES scope',()=>affix27('Rarity: Rare\nExample\nUnknown Base\nImplicits: 0\n+75 to maximum Energy Shield',scopeCatalog).matched.length===0);
 test('Explicit local scope',()=>matchScoped558(catalogIndex535(scopeCatalog),'explicit','+75 to maximum Energy Shield (Local)','').id==='explicit.fixture_local');
+const weaponScopeCatalog=['Physical Damage','Attack Speed','Critical Strike Chance'].flatMap((name,i)=>[{id:'explicit.global'+i,text:'#% increased '+name},{id:'explicit.local'+i,text:'#% increased '+name+' (Local)'}]);
+const weaponRaw='Rarity: Rare\nExample\nConvoking Wand\nImplicits: 0\n20% increased Physical Damage\n15% increased Attack Speed\n25% increased Critical Strike Chance';
+test('Weapon local physical damage, speed and crit',()=>affix27(weaponRaw,weaponScopeCatalog).matched.map(m=>m.id).join(',')==='explicit.local0,explicit.local1,explicit.local2');
+test('Jewellery global physical damage, speed and crit',()=>affix27(weaponRaw.replace('Convoking Wand','Onyx Amulet'),weaponScopeCatalog).matched.map(m=>m.id).join(',')==='explicit.global0,explicit.global1,explicit.global2');
+test('Weapon no global fallback',()=>affix27(weaponRaw,weaponScopeCatalog.filter(m=>m.id.includes('global'))).matched.length===0);
+test('Unknown weapon scope remains unmatched',()=>affix27(weaponRaw.replace('Convoking Wand','Unknown Base'),weaponScopeCatalog).matched.length===0);
+test('Explicit item class overrides base heuristics',()=>affix27('Item Class: Wands\n'+weaponRaw.replace('Convoking Wand','Unknown Base'),weaponScopeCatalog).matched.length===3);
+test('Explicit global marker overrides weapon context',()=>matchScoped558(catalogIndex535(weaponScopeCatalog),'explicit','25% increased Critical Strike Chance (Global)',weaponRaw)?.id==='explicit.global2');
+test('Spell critical strike chance not treated as local attack crit',()=>defenceScope558(weaponRaw,'25% increased Critical Strike Chance for Spells')==='');
 console.log(n+' offline checks passed');
 return readSave545;
 `;
