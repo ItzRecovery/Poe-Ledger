@@ -2,13 +2,13 @@
 [Setup]
 AppId=ProjectPoeLedger
 AppName=Poe Ledger
-AppVersion=0.52.3
+AppVersion=0.53.0
 DefaultDirName={localappdata}\Programs\ProjectPoeLedger
 DefaultGroupName=Poe Ledger
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
-OutputBaseFilename=Project-Poe-Ledger-0.52.3-Setup
+OutputBaseFilename=Project-Poe-Ledger-0.53.0-Setup
 SetupIconFile=ProjectPoeLedger\PoeLedger.ico
 UninstallDisplayIcon={app}\ProjectPoeLedger.exe
 Compression=lzma2/ultra64
