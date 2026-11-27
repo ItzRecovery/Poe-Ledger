@@ -3,6 +3,7 @@ const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
 const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function filterSearch569(','function query27('),extract('function liveDelta522(','async function livePoll522('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function coverageCounts568(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 parts.push(extract('const ultiModes577=','function ultiState577('),extract('function inscribedNew578(','function inscribedTrade578('),extract('function insTier579(','function insDifficultyPanel579('),extract('function catCalc580(','function catState580('),extract('const trialDrops581=','function trialState581('),extract('const mapCats582=','function mapState582('),extract('function ultiThread583(','const ultiSources583='));
+parts.push(extract('const currencyUnits585=','function currencyIcon585('));
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -232,6 +233,13 @@ test('Dark Monarch Trade filter uses Spectre option, not numeric minimum',()=>{l
 test('Dark Monarch other variant is not substituted',()=>!affix27(monarchItem584,monarchCatalog584.filter(x=>x.id.endsWith('|8'))).matched.some(x=>x.id.startsWith('explicit.fixture_monarch')));
 test('Dark Monarch full text option label supported',()=>{let a=expandCatalog574([{id:'explicit.fixture_monarch',text:'Maximum number of # is Doubled\nCannot have Minions other than #',option:{options:[{id:3,text:'Maximum number of Raised Spectres is Doubled\nCannot have Minions other than Raised Spectres'}]}}]);return affix27(monarchItem584,a).matched.some(m=>m.id==='explicit.fixture_monarch|3')});
 test('Dark Monarch inconsistent pair is not treated as a valid combined variant',()=>!affix27(monarchItem584.replace('Cannot have Minions other than Raised Spectres','Cannot have Minions other than Raised Zombies'),monarchCatalog584).matched.some(m=>m.id.startsWith('explicit.fixture_monarch')));
+
+
+test('Currency icons distinguish chaos and divine suffixes',()=>currencyParts585('150 c / 2.5 D/h').filter(p=>p.unit).map(p=>p.unit).join(',')==='c,d');
+test('Currency icons replace parenthesized unit labels',()=>currencyParts585('Price (c) / budget (D)').filter(p=>p.unit).map(p=>p.unit).join(',')==='c,d');
+test('Currency icons preserve normal words and letter names',()=>!currencyParts585('Build C, character D, 10 days, 50 damage, 5 charges').some(p=>p.unit));
+test('Currency icons preserve negatives and thousands',()=>currencyParts585('-1,250.5 C').map(p=>p.unit||p.text).join('')==='-1,250.5 c');
+test('Currency icon tokenization leaves values intact',()=>currencyParts585('0 c').map(p=>p.unit||p.text).join('')==='0 c');
 
 console.log(n+' offline checks passed');
 return readSave545;
