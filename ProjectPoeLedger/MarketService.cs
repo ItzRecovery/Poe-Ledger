@@ -25,7 +25,7 @@ internal sealed class MarketService : IDisposable
     volatile bool online;
     readonly object cancelLock=new();
     CancellationTokenSource cancelSource=new();
-    long requests, failures, hits; int queued;
+    long requests, failures, hits; int queued; const int MaxQueue50=32;
     internal void Cancel(){online=false;lock(cancelLock){cancelSource.Cancel();cancelSource=new CancellationTokenSource();}}
     CancellationToken CurrentToken(){lock(cancelLock)return cancelSource.Token;}
     readonly AsyncLocal<CancellationToken> requestToken=new();
@@ -37,7 +37,7 @@ internal sealed class MarketService : IDisposable
         cacheFile=Path.Combine(folder,"desktop-market-cache.json");cooldownFile=Path.Combine(folder,"desktop-cooldown.txt");
         try{var data=JsonSerializer.Deserialize<Dictionary<string,Entry>>(File.ReadAllText(cacheFile));if(data!=null)foreach(var x in data)cache[x.Key]=x.Value;}catch{}
         try{blockedUntil=long.Parse(File.ReadAllText(cooldownFile),CultureInfo.InvariantCulture);}catch{}
-        client.DefaultRequestHeaders.UserAgent.ParseAdd("ProjectPoeLedger/0.38 (personal desktop economy calculator)");
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("ProjectPoeLedger/0.50 (personal desktop economy calculator)");
         client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
     }
     public void Pause(int seconds){long target=Now+seconds,prev;do{prev=Interlocked.Read(ref blockedUntil);if(prev>=target)break;}while(Interlocked.CompareExchange(ref blockedUntil,target,prev)!=prev);try{File.WriteAllText(cooldownFile,Interlocked.Read(ref blockedUntil).ToString(CultureInfo.InvariantCulture));}catch{}}
@@ -52,11 +52,12 @@ internal sealed class MarketService : IDisposable
         lastRequest=DateTimeOffset.UtcNow;
         Interlocked.Increment(ref requests);using var r=await client.SendAsync(req,HttpCompletionOption.ResponseHeadersRead,ct);
         if(r.StatusCode is HttpStatusCode.Forbidden or HttpStatusCode.TooManyRequests){var seconds=r.Headers.RetryAfter?.Delta?.TotalSeconds??(r.Headers.RetryAfter?.Date-DateTimeOffset.UtcNow)?.TotalSeconds??900;Pause((int)Math.Clamp(Math.Ceiling(seconds),900,86400*7));throw new ApiException($"Upstream HTTP {(int)r.StatusCode}: cooldown activated",429);}
+        if(r.StatusCode==HttpStatusCode.BadRequest)throw new ApiException("Upstream HTTP 400: invalid or unsupported query filters; not retried.",400);
         if(!r.IsSuccessStatusCode)throw new ApiException($"Upstream HTTP {(int)r.StatusCode}",502);
         await using var stream=await r.Content.ReadAsStreamAsync(ct);using var ms=new MemoryStream();var buffer=new byte[8192];int n;while((n=await stream.ReadAsync(buffer.AsMemory(),ct))>0){if(ms.Length+n>64*1024*1024)throw new ApiException("Upstream response too large",502);ms.Write(buffer,0,n);}var text=Encoding.UTF8.GetString(ms.ToArray());if(json)using(JsonDocument.Parse(text)){}return text;
     }
     IResult Error(HttpContext ctx,Exception e){Interlocked.Increment(ref failures);int status=e is OperationCanceledException?499:e is ApiException a?a.Status:502;if(status==429)ctx.Response.Headers["Retry-After"]=Math.Max(1,Interlocked.Read(ref blockedUntil)-Now).ToString(CultureInfo.InvariantCulture);return Results.Json(new{error=e.Message},statusCode:status);}
-    public async Task<IResult> Get(string path,HttpContext ctx){if(!Allowed.Contains(path))return Results.NotFound();var ct=CurrentToken();Interlocked.Increment(ref queued);try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
+    public async Task<IResult> Get(string path,HttpContext ctx){if(!Allowed.Contains(path))return Results.NotFound();var ct=CurrentToken();if(Interlocked.Increment(ref queued)>MaxQueue50){Interlocked.Decrement(ref queued);return Results.Json(new{error="Local request queue full; wait for current requests to finish."},statusCode:503);}try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
         var query=string.Join("&",ctx.Request.Query.Where(k=>k.Key!="fresh").SelectMany(k=>k.Value.Select(v=>Uri.EscapeDataString(k.Key)+"="+Uri.EscapeDataString(v??""))));
         var url="https://poe.ninja/poe1/api/economy/"+path+(query.Length>0?"?"+query:"");
         var data=Cached(url);if(data==null){data=await Request(url);Store(url,data);}return Results.Text(data,"application/json");
@@ -73,7 +74,7 @@ internal sealed class MarketService : IDisposable
         var search=JsonNode.Parse(await Request(url,q,4500))!;
         var ids=Arr(search["result"]).Take(10).Select(Str).Where(x=>x.Length>0).ToArray();var sid=Str(search["id"]);
         if(ids.Length==0||sid.Length==0){q["query"]!["status"]=new JsonObject{["option"]="securable"};search=JsonNode.Parse(await Request(url,q,4500))!;ids=Arr(search["result"]).Take(10).Select(Str).Where(x=>x.Length>0).ToArray();sid=Str(search["id"]);}
-        if(ids.Length==0||sid.Length==0)throw new ApiException("No matching listings",502);
+        if(ids.Length==0||sid.Length==0)throw new ApiException("No matching listings for selected filters",404);
         var result=JsonNode.Parse(await Request("https://www.pathofexile.com/api/trade/fetch/"+string.Join(",",ids.Select(Uri.EscapeDataString))+"?query="+Uri.EscapeDataString(sid),spacing:4500))!;
         var quote=Sample(body,Arr(result["result"]));var output=JsonSerializer.Serialize(quote);Store(key,output);return Results.Text(output,"application/json");
     }catch(Exception e){return Error(ctx,e);}finally{gate.Release();}}
@@ -104,7 +105,7 @@ internal sealed class MarketService : IDisposable
             var seller=Str(listing?["account"]?["name"]);if(seller.Length==0)seller=Str(row?["id"]);if(seller.Length==0||value<=0||!double.IsFinite(value))continue;
             prices[seller]=Math.Min(prices.GetValueOrDefault(seller,value),value);
         }
-        var vals=prices.Values.OrderBy(x=>x).Take(5).ToArray();if(vals.Length==0)throw new ApiException("No safely matched Chaos/Divine listings",502);
+        var vals=prices.Values.OrderBy(x=>x).Take(5).ToArray();if(vals.Length==0)throw new ApiException("Listings found but no safely matched Chaos/Divine prices",422);
         return new{price=(vals[(vals.Length-1)/2]+vals[vals.Length/2])/2,sample=vals.Length};
     }
     public async Task<int> ImportLegacy(string file){await gate.WaitAsync();try{
