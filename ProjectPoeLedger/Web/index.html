@@ -739,6 +739,24 @@ setInterval(updateLogSession570,1000);
 // Normalize every sidebar entry, including pages registered after the initial navigation render.
 function ensureNavIcons575(){let nav=$('nav24');for(let btn of nav.querySelectorAll('button[data-page24]')){if(btn.querySelector('.navicon32'))continue;let page=pages33[btn.dataset.page24],label=page?.[0]||btn.textContent.trim(),icon=page?.[1]||'◇';btn.title=label;btn.replaceChildren();let symbol=document.createElement('span'),name=document.createElement('span');symbol.className='navicon32';symbol.setAttribute('aria-hidden','true');symbol.textContent=icon;name.className='navlabel32';name.textContent=label;btn.append(symbol,name)}}
 ensureNavIcons575();
+const economyGroups576=[
+ ['journal576','Farming Journal','✓',[['live522','Live Tracker'],['track','Boss Journal']]],
+ ['market576','Market Intelligence','↗',[['market','Market Overview'],['items','Item Database'],['history','Price History']]],
+ ['pricing576','Pricing Tools','↔',[['shared46','Shared Pricing'],['bulk508','Bulk Pricing']]],
+ ['analytics576','Farming Analytics','▥',[['analytics','Overview'],['analytics46','Economy'],['rank50','Rankings']]],
+ ['import576','PoB & Items','▧',[['import','PoB & Items']]],
+ ['wealth576','Wealth Management','◇',[['wallet50','Net Worth'],['planner510','Investments'],['goals511','Profit Goals']]],
+ ['toolkit576','Economy Toolkit','◎',[['economy','Economy Toolkit']]],
+ ['system576','Settings & Diagnostics','⚙',[['diagnostics569','Diagnostic Center'],['migration573','League Migration']]]
+];
+const economyPageGroup576=new Map(economyGroups576.flatMap(g=>g[3].map(t=>[t[0],g])));
+const economyLastTab576=new Map();
+function mergeEconomyNav576(){let nav=$('nav24'),header=[...nav.querySelectorAll('.navgroup32')].find(e=>e.textContent.trim()==='Economy');if(!header)return;for(let key of economyPageGroup576.keys())nav.querySelector('[data-page24="'+key+'"]')?.remove();let frag=document.createDocumentFragment();for(let g of economyGroups576){if(g[0]==='system576')continue;frag.append(economyNavButton576(g))}header.after(frag);let sys=document.createElement('div');sys.className='navgroup32';sys.textContent='System';nav.append(sys,economyNavButton576(economyGroups576.at(-1)))}
+function economyNavButton576(g){let btn=document.createElement('button');btn.dataset.page24=g[0];btn.title=g[1];let icon=document.createElement('span'),label=document.createElement('span');icon.className='navicon32';icon.textContent=g[2];icon.setAttribute('aria-hidden','true');label.className='navlabel32';label.textContent=g[1];btn.append(icon,label);btn.onclick=()=>showPage24(economyLastTab576.get(g[0])||g[3][0][0]);return btn}
+function economyTabs576(){let g=economyPageGroup576.get(page24),host=$('economyTabs576');if(!host&&g){host=document.createElement('div');host.id='economyTabs576';host.className='controls';host.style.cssText='flex-wrap:wrap;margin:12px 0;gap:8px';host.setAttribute('role','group');host.setAttribute('aria-label','Economy page tabs');$('tools24').before(host)}if(!host)return;host.hidden=!g||g[3].length<2;host.style.display=host.hidden?'none':'';if(!g)return;economyLastTab576.set(g[0],page24);$('pageTitle32').textContent=g[1];$('nav24').querySelector('[data-page24="'+g[0]+'"]')?.classList.add('active');host.replaceChildren();for(let [key,label] of g[3]){let btn=document.createElement('button');btn.textContent=label;btn.disabled=key===page24;if(btn.disabled){btn.className='active';btn.setAttribute('aria-current','page')}btn.onclick=()=>showPage24(key);host.append(btn)}}
+const showEconomyBase576=showPage24;
+showPage24=function(page){let g=economyGroups576.find(g=>g[0]===page);if(g)page=economyLastTab576.get(g[0])||g[3][0][0];let result=showEconomyBase576(page);economyTabs576();return result};
+mergeEconomyNav576();
 initCollapsible509();
 render();showPage24('dashboard');
 
