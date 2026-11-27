@@ -159,6 +159,14 @@ test('Positive stat override preserved',()=>scaledValue574({min:100},70,55).min=
 test('Cluster enchant uses enchant group',()=>affix27('Rarity: Rare\nExample\nLarge Cluster Jewel\nImplicits: 1\n{crafted}Adds 11 Passive Skills',[{id:'enchant.fixture',text:'Adds # Passive Skills'}]).matched[0]?.id==='enchant.fixture');
 test('Flask trigger enchant uses enchant group',()=>affix27('Rarity: Unique\nExample\nRuby Flask\nImplicits: 1\n{crafted}Used when Charges reach full',[{id:'enchant.fixture',text:'Used when Charges reach full'}]).matched[0]?.id==='enchant.fixture');
 test('Verified multiline exact match',()=>affix27('Rarity: Unique\nExample\nCobalt Jewel\nImplicits: 0\nPassive Skills in Radius can be Allocated without being connected to your tree\nPassage',[{id:'explicit.fixture',text:'Passive Skills in Radius can be Allocated without being connected to your tree\nPassage'}]).matched[0]?.aliases[0]==='Passage');
+const minionRangeCatalog=[{id:'explicit.stat_2930653471',text:'Minions deal # to # additional Lightning Damage'},{id:'fractured.stat_2930653471',text:'Minions deal # to # additional Lightning Damage'}];
+const minionRangeRaw='Rarity: Rare\nExample\nGhastly Eye Jewel\nImplicits: 0\nMinions deal 2 to 35 additional Lightning Damage';
+test('Minion damage range uses average roll',()=>affix27(minionRangeRaw,minionRangeCatalog).matched[0]?.value.min===18.5);
+test('Minion damage range stays explicit',()=>affix27(minionRangeRaw,minionRangeCatalog).matched[0]?.id==='explicit.stat_2930653471');
+test('Reversed minion damage range rejected',()=>affix27(minionRangeRaw.replace('2 to 35','35 to 2'),minionRangeCatalog).matched.length===0);
+test('Ambiguous minion range rejected',()=>affix27(minionRangeRaw,[...minionRangeCatalog,{id:'explicit.fixture_other',text:minionRangeCatalog[0].text}]).matched.length===0);
+test('Reduced bleed duration matches negative increase',()=>affix27('Rarity: Rare\nExample\nCobalt Jewel\nImplicits: 0\n35% reduced Bleed Duration on you',[{id:'explicit.stat_1692879867',text:'#% increased Bleed Duration on you'}]).matched[0]?.value.max===-35);
+test('Hauberk uses local defence scope',()=>defenceScope558('Rarity: Rare\nExample\nSaintly Hauberk','194% increased Armour and Energy Shield')==='local');
 console.log(n+' offline checks passed');
 return readSave545;
 `;
