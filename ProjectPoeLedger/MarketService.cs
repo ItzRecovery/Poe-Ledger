@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Http;
 namespace ProjectPoeLedger;
 internal sealed class MarketService : IDisposable
 {
-    static readonly HashSet<string> Allowed = new(){"leagues","exchange/current/overview","stash/current/item/overview","stash/current/currency/overview"};
+    static readonly HashSet<string> Allowed = new(){"trade-stats","leagues","exchange/current/overview","stash/current/item/overview","stash/current/currency/overview"};
     readonly HttpClient client = new(new HttpClientHandler{AllowAutoRedirect=false}){Timeout=TimeSpan.FromSeconds(25)};
     readonly SemaphoreSlim gate=new(1,1);
     readonly string cacheFile,cooldownFile;
@@ -59,7 +59,7 @@ internal sealed class MarketService : IDisposable
     IResult Error(HttpContext ctx,Exception e){Interlocked.Increment(ref failures);int status=e is OperationCanceledException?499:e is ApiException a?a.Status:502;if(status==429)ctx.Response.Headers["Retry-After"]=Math.Max(1,Interlocked.Read(ref blockedUntil)-Now).ToString(CultureInfo.InvariantCulture);return Results.Json(new{error=e.Message},statusCode:status);}
     public async Task<IResult> Get(string path,HttpContext ctx){if(!Allowed.Contains(path))return Results.NotFound();var ct=CurrentToken();if(Interlocked.Increment(ref queued)>MaxQueue50){Interlocked.Decrement(ref queued);return Results.Json(new{error="Local request queue full; wait for current requests to finish."},statusCode:503);}try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
         var query=string.Join("&",ctx.Request.Query.Where(k=>k.Key!="fresh").SelectMany(k=>k.Value.Select(v=>Uri.EscapeDataString(k.Key)+"="+Uri.EscapeDataString(v??""))));
-        var url="https://poe.ninja/poe1/api/economy/"+path+(query.Length>0?"?"+query:"");
+        var url=path=="trade-stats"?"https://www.pathofexile.com/api/trade/data/stats":"https://poe.ninja/poe1/api/economy/"+path+(query.Length>0?"?"+query:"");
         var data=Cached(url);if(data==null){data=await Request(url);Store(url,data);}return Results.Text(data,"application/json");
     }catch(Exception e){return Error(ctx,e);}finally{gate.Release();}}
     public async Task<IResult> Post(string path,HttpContext ctx){if(path is not ("trade-quote" or "pob-import"))return Results.NotFound();if(ctx.Request.Headers.Origin.ToString()!=Program.Origin)return Results.StatusCode(403);if(ctx.Request.ContentLength is >20000)return Results.BadRequest(new{error="Request too large"});var ct=CurrentToken();Interlocked.Increment(ref queued);try{await gate.WaitAsync(ct);}catch(Exception e){return Error(ctx,e);}finally{Interlocked.Decrement(ref queued);}requestToken.Value=ct;try{ct.ThrowIfCancellationRequested();
@@ -85,7 +85,7 @@ internal sealed class MarketService : IDisposable
     static bool Eq(string a,string b)=>string.Equals(a,b,StringComparison.OrdinalIgnoreCase);
     static object Sample(JsonNode body,IEnumerable<JsonNode?> rows){
         string name=Str(body["base"]),variant=Str(body["variant"]);double rate=Num(body["rate"]);bool unid=Bool(body["unidentified"])==true,pob=Str(body["mode"])=="pob28";
-        var prices=new Dictionary<string,double>();
+        var prices=new Dictionary<string,double>(); string icon="";
         foreach(var row in rows){var item=row?["item"];var listing=row?["listing"];var price=listing?["price"];if(item==null||price==null)continue;
             string actual=Str(item["name"]),type=Str(item["typeLine"]);
             if(!pob){
@@ -103,10 +103,10 @@ internal sealed class MarketService : IDisposable
             }
             var amount=Num(price["amount"]);var multiplier=Str(price["currency"]) switch{"chaos"=>1,"divine"=>rate,_=>0};var value=amount*multiplier;
             var seller=Str(listing?["account"]?["name"]);if(seller.Length==0)seller=Str(row?["id"]);if(seller.Length==0||value<=0||!double.IsFinite(value))continue;
-            prices[seller]=Math.Min(prices.GetValueOrDefault(seller,value),value);
+            prices[seller]=Math.Min(prices.GetValueOrDefault(seller,value),value);if(icon.Length==0)icon=Str(item["icon"]);
         }
         var vals=prices.Values.OrderBy(x=>x).Take(5).ToArray();if(vals.Length==0)throw new ApiException("Listings found but no safely matched Chaos/Divine prices",422);
-        return new{price=(vals[(vals.Length-1)/2]+vals[vals.Length/2])/2,sample=vals.Length};
+        return new{price=(vals[(vals.Length-1)/2]+vals[vals.Length/2])/2,sample=vals.Length,matchedSellers=prices.Count,low=vals[0],high=vals[^1],quotedAt=DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),icon};
     }
     public async Task<int> ImportLegacy(string file){await gate.WaitAsync();try{
         using var doc=JsonDocument.Parse(await File.ReadAllTextAsync(file));int count=0;
