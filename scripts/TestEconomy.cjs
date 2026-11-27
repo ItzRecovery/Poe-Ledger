@@ -248,6 +248,14 @@ test('Actual bench trigger removed by ignore crafted option',()=>{let a=affix27(
 test('Four second trigger never mapped to eight second bench craft',()=>!affix27(actualWand586.replace('8 second','4 second'),triggerFixture586.catalog).matched.some(x=>x.id==='crafted.stat_3079007202'));
 test('Crafted fallback classification independent of Trade stat group',()=>filterSearch569([{id:'explicit.stat_1582781759',crafted:true}],{skipCrafted:true}).length===0);
 
+
+const jewel587=JSON.parse(fs.readFileSync('scripts/fixtures/pob-mod-regression.json','utf8')),jewelRaw587=jewel587.items.find(x=>x.raw.includes('Hollow Portent')).raw;
+test('Ghastly Eye hybrid minion speed is linked with independent rolls',()=>{let a=affix27(jewelRaw587,jewel587.catalog).matched.filter(m=>m.affixGroup==='minion-speed-pair');return a.length===2&&a[0].value.min===6&&a[1].value.min===5&&a.every(m=>m.linked.length===2)});
+test('Hybrid minion speed selection disables and enables both filters',()=>{let a=affix27(jewelRaw587,jewel587.catalog).matched.filter(m=>m.linked),z={};toggleModifier587(a[0],z,false);if(a.some(m=>modifierEnabled587(m,z)))return false;toggleModifier587(a[1],z,true);return a.every(m=>modifierEnabled587(m,z))});
+test('Legacy single disabled hybrid stat disables both filters',()=>{let a=affix27(jewelRaw587,jewel587.catalog).matched.filter(m=>m.linked);return a.every(m=>!modifierEnabled587(m,{disabledStats:[a[0].id]}))});
+test('Unrelated item attack and cast speed not assumed hybrid',()=>affix27(jewelRaw587.replace('Ghastly Eye Jewel','Cobalt Jewel'),jewel587.catalog).matched.every(m=>!m.linked));
+test('Single minion attack speed line not grouped',()=>affix27(jewelRaw587.replace('Minions have 5% increased Cast Speed',''),jewel587.catalog).matched.every(m=>!m.linked));
+
 console.log(n+' offline checks passed');
 return readSave545;
 `;
