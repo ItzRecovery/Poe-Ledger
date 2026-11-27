@@ -189,7 +189,11 @@ test('Exact cooldown not scaled',()=>scaledValue574({min:8,max:8},70).min===8&&s
 const regression=JSON.parse(fs.readFileSync('scripts/fixtures/pob-mod-regression.json','utf8'));
 test('All 35 report items replay with no errors',()=>regression.items.length===35&&modDebug564(regression.items,regression.catalog).summary.errors===0);
 test('Original 99 matches retain IDs and values',()=>regression.items.every(i=>{let a=affix27(i.raw,regression.catalog);return i.previous.every(m=>a.matched.some(n=>n.id===m.id&&n.text===m.text&&JSON.stringify(n.value)===JSON.stringify(m.value)))}));
-test('Report coverage does not regress below 88.8%',()=>modDebug564(regression.items,regression.catalog).summary.percent>=88.8);
+test('Report coverage does not regress below 91.3%',()=>modDebug564(regression.items,regression.catalog).summary.percent>=91.3);
+test('Cluster minion damage option uses catalog supplied option ID',()=>affix27('Rarity: Rare\nExample\nLarge Cluster Jewel\nImplicits: 1\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage',expandCatalog574([{id:'enchant.fixture',text:'Added Small Passive Skills grant: #',option:{options:[{id:7,text:'Minion Damage'}]}}])).matched[0]?.id==='enchant.fixture|7');
+test('Anointment crafted tag uses enchant option',()=>affix27('Rarity: Unique\nExample\nOnyx Amulet\nImplicits: 1\n{crafted}Allocates Gravepact',expandCatalog574([{id:'enchant.fixture',text:'Allocates #',option:{options:[{id:9,text:'Gravepact'}]}}])).matched[0]?.id==='enchant.fixture|9');
+test('Ignore crafted does not remove true enchantments',()=>filterSearch569([{id:'enchant.fixture|9',original:'{crafted}Allocates Gravepact'},{id:'crafted.fixture',original:'{crafted}test'}],{skipCrafted:true}).length===1);
+test('Unknown cluster option is never fabricated',()=>affix27('Rarity: Rare\nExample\nLarge Cluster Jewel\nImplicits: 1\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage',expandCatalog574([{id:'enchant.fixture',text:'Added Small Passive Skills grant: #',option:{options:[{id:7,text:'Minion Life'}]}}])).matched.length===0);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
