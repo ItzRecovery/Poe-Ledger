@@ -69,6 +69,16 @@ const fracturedRaw='Rarity: Rare\nExample\nOnyx Amulet\nImplicits: 0\n{fractured
 test('Fractured stat searches normal explicit',()=>affix27(fracturedRaw,fractureCatalog).matched[0]?.id==='explicit.stat_3372524247');
 test('Fractured stat preserves minimum',()=>affix27(fracturedRaw,[]).matched[0]?.value.min===47);
 test('Fractured only catalog never forces fracture',()=>affix27('Rarity: Rare\nExample\nConvoking Wand\nImplicits: 0\n{fractured}Minions deal 19% increased Damage',[{id:'fractured.fixture_minion',text:'Minions deal #% increased Damage'}]).matched.length===0);
+const triggerA='Trigger a Socketed Spell when you Use a Skill, with a 8 second Cooldown',triggerB='Spells Triggered this way have 150% more Cost',triggerRaw='Rarity: Rare\nExample\nConvoking Wand\nImplicits: 0\n{crafted}'+triggerA+'\n{crafted}'+triggerB;
+const triggerCatalog=[{id:'crafted.fixture_trigger',text:triggerA+'\n'+triggerB}];
+test('Combined trigger uses one filter',()=>affix27(triggerRaw,triggerCatalog).matched.length===1&&affix27(triggerRaw,triggerCatalog).matched[0].id==='crafted.fixture_trigger'&&affix27(triggerRaw,triggerCatalog).unmatched.length===0);
+test('Combined trigger retains both lines',()=>affix27(triggerRaw,triggerCatalog).matched[0].aliases[0]===triggerB);
+test('Different trigger cooldown not guessed',()=>affix27(triggerRaw.replace('8 second','4 second'),triggerCatalog).matched.length===0);
+test('Ambiguous combined trigger rejected',()=>affix27(triggerRaw,[...triggerCatalog,{id:'crafted.fixture_other',text:triggerA+' '+triggerB}]).matched.length===0);
+test('Unique ID ignored',()=>affix27('Rarity: Rare\nExample\nOnyx Amulet\nUnique ID: abcdef\nImplicits: 0\n+40 to maximum Life',[]).unmatched.length===0);
+test('Equal numeric hybrid template',()=>matchAffix542(new Map([['explicit|# to strength and # to dexterity',new Set(['explicit.fixture_hybrid'])]]),'explicit','+20 to Strength and +20 to Dexterity')?.value.min===20);
+test('Unequal numeric hybrid remains unmatched',()=>matchAffix542(new Map([['explicit|# to strength and # to dexterity',new Set(['explicit.fixture_hybrid'])]]),'explicit','+20 to Strength and +30 to Dexterity')===null);
+test('Unicode stat normalization',()=>norm27('  Minions’ Damage\u00a0')===norm27("Minions' Damage"));
 console.log(n+' offline checks passed');
 return readSave545;
 `;
