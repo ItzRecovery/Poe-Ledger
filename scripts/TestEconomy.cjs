@@ -241,6 +241,13 @@ test('Currency icons preserve normal words and letter names',()=>!currencyParts5
 test('Currency icons preserve negatives and thousands',()=>currencyParts585('-1,250.5 C').map(p=>p.unit||p.text).join('')==='-1,250.5 c');
 test('Currency icon tokenization leaves values intact',()=>currencyParts585('0 c').map(p=>p.unit||p.text).join('')==='0 c');
 
+
+const triggerFixture586=JSON.parse(fs.readFileSync('scripts/fixtures/pob-mod-regression.json','utf8')),actualWand586=triggerFixture586.items.find(x=>x.raw.includes('Rift Gnarl')&&x.raw.includes('Trigger a Socketed Spell')).raw;
+test('Actual Convoking Wand bench craft prefers crafted Trade ID',()=>{let a=affix27(actualWand586,triggerFixture586.catalog),m=a.matched.find(x=>x.id==='crafted.stat_3079007202');return !!m&&m.crafted&&m.value.min===100&&m.value.max===100&&m.aliases.includes(triggerB)&&!a.matched.some(x=>x.id==='explicit.stat_1582781759')});
+test('Actual bench trigger removed by ignore crafted option',()=>{let a=affix27(actualWand586,triggerFixture586.catalog).matched,b=filterSearch569(a,{skipCrafted:true});return a.length-b.length===1&&!b.some(x=>x.id==='crafted.stat_3079007202')});
+test('Four second trigger never mapped to eight second bench craft',()=>!affix27(actualWand586.replace('8 second','4 second'),triggerFixture586.catalog).matched.some(x=>x.id==='crafted.stat_3079007202'));
+test('Crafted fallback classification independent of Trade stat group',()=>filterSearch569([{id:'explicit.stat_1582781759',crafted:true}],{skipCrafted:true}).length===0);
+
 console.log(n+' offline checks passed');
 return readSave545;
 `;
