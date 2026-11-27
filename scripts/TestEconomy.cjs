@@ -1,7 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
-const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function debugRaw564(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
+const parts=[extract('function calc(x)','function field('),extract('function wingCalc567(','function simulate338('),extract('function replicaQuote567(','function replicaState521('),extract('function activityCount567(','function refreshActivity567('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function coverageCounts568(','function visiblePobMods462('),extract('function beastKey565(','let beastBusy504='),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -135,6 +135,13 @@ test('Heist activity count isolated',()=>activityCount567(activity567,'heist')==
 test('Boss arena counts aggregated',()=>activityCount567(activity567,'boss')===5);
 test('Beast capture not fabricated',()=>activityCount567(activity567,'beast46')===null);
 test('Disconnected log count unknown',()=>activityCount567({connected:false},'delve')===null);
+test('Modifier coverage percentage',()=>coverageCounts568(74,6).percent===92.5);
+test('No modifiers reports unknown not 100%',()=>coverageCounts568(0,0).percent===null);
+test('Unmatched-only coverage is zero',()=>coverageCounts568(0,4).percent===0);
+test('Combined trigger counts once',()=>coverageItem568(affix27(triggerRaw,triggerCatalog)).total===1);
+test('Duplicate item references counted once',()=>coverageBuild568([{id:'1',raw:fracturedRaw},{id:'1',raw:fracturedRaw}],fractureCatalog).matched===1);
+test('Remembered correction contributes to coverage',()=>coverageBuild568([{id:'a',raw:manualRaw}],manualCatalog).percent===100);
+test('Debug report coverage included',()=>modDebug564([{raw:fracturedRaw}],fractureCatalog).summary.percent===100);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
