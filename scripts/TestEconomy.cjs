@@ -224,6 +224,15 @@ test('Gauntlet supports 13 rounds',()=>mapCalc582({...map583,gauntlet:true,casho
 test('Map normal caps cash-out at ten',()=>mapCalc582({...map583,cashout:13})===null);
 test('Map missing reward blocks model',()=>{let d=JSON.parse(JSON.stringify(map583));d.rewards[1].currency='';return mapCalc582(d)===null});
 
+
+const monarchItem584=JSON.parse(fs.readFileSync('scripts/fixtures/pob-mod-regression.json','utf8')).items.find(x=>x.raw.includes('The Dark Monarch')).raw;
+const monarchCatalog584=expandCatalog574([{id:'explicit.fixture_monarch',text:'Maximum number of # is Doubled\nCannot have Minions other than #',option:{options:[{id:7,text:'Raised Spectres'},{id:8,text:'Raised Zombies'}]}}]);
+test('Dark Monarch repeated option matches both Spectre lines once',()=>{let a=affix27(monarchItem584,monarchCatalog584),m=a.matched.filter(x=>x.id.startsWith('explicit.fixture_monarch'));return m.length===1&&m[0].id==='explicit.fixture_monarch|7'&&m[0].aliases.includes('Cannot have Minions other than Raised Spectres')});
+test('Dark Monarch Trade filter uses Spectre option, not numeric minimum',()=>{let a=affix27(monarchItem584,monarchCatalog584).matched.find(x=>x.id==='explicit.fixture_monarch|7');let f=optionValue574(a.id,a.value);return f.id==='explicit.fixture_monarch'&&f.value.option==='7'&&f.value.min===undefined});
+test('Dark Monarch other variant is not substituted',()=>!affix27(monarchItem584,monarchCatalog584.filter(x=>x.id.endsWith('|8'))).matched.some(x=>x.id.startsWith('explicit.fixture_monarch')));
+test('Dark Monarch full text option label supported',()=>{let a=expandCatalog574([{id:'explicit.fixture_monarch',text:'Maximum number of # is Doubled\nCannot have Minions other than #',option:{options:[{id:3,text:'Maximum number of Raised Spectres is Doubled\nCannot have Minions other than Raised Spectres'}]}}]);return affix27(monarchItem584,a).matched.some(m=>m.id==='explicit.fixture_monarch|3')});
+test('Dark Monarch inconsistent pair is not treated as a valid combined variant',()=>!affix27(monarchItem584.replace('Cannot have Minions other than Raised Spectres','Cannot have Minions other than Raised Zombies'),monarchCatalog584).matched.some(m=>m.id.startsWith('explicit.fixture_monarch')));
+
 console.log(n+' offline checks passed');
 return readSave545;
 `;
