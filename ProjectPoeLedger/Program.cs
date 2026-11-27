@@ -95,10 +95,18 @@ internal sealed class LedgerWindow : Form
     readonly string token;
     readonly ToolStripMenuItem online = new("Allow online market requests") { CheckOnClick=true };
     bool ready;
+    ClientActivity? clientActivity;
+    readonly System.Windows.Forms.Timer activityTimer = new() { Interval = 3000 };
+    bool activityBusy;
+    object? activitySnapshot;
+    void SendActivity(){if(ready&&web.CoreWebView2!=null)web.CoreWebView2.PostWebMessageAsJson(JsonSerializer.Serialize(new {ledgerActivity=activitySnapshot??new {connected=false,status="Choose your PoE 1 Client.txt to begin."}}));}
+    async Task PollActivity(){var current=clientActivity;if(current==null||activityBusy||IsDisposed)return;activityBusy=true;try{var result=await Task.Run(current.Poll);if(!IsDisposed&&ReferenceEquals(current,clientActivity)){activitySnapshot=result;SendActivity();}}catch(Exception){ }finally{activityBusy=false;}}
+    void SelectActivity(){using var dlg=new OpenFileDialog{Title="Select Path of Exile 1 logs\\Client.txt",Filter="Path of Exile log (Client.txt)|Client.txt",CheckFileExists=true,FileName="Client.txt"};if(dlg.ShowDialog(this)!=DialogResult.OK)return;if(!string.Equals(Path.GetFileName(dlg.FileName),"Client.txt",StringComparison.OrdinalIgnoreCase))return;native.SettingSet("clientActivityPath",dlg.FileName);clientActivity=new ClientActivity(dlg.FileName);activitySnapshot=null;SendActivity();_ = PollActivity();}
+    void DisconnectActivity(){clientActivity=null;activitySnapshot=null;native.SettingSet("clientActivityPath","");SendActivity();}
     public LedgerWindow(MarketService market,string token)
     {
         this.market=market; this.token=token; saves=new SaveStore(Program.DataDir);native=new NativeStore(Program.DataDir);try{native.Index(saves.Read());}catch{}
-        FormClosed+=(_,_)=>{UnregisterHotKey(Handle,36);overlay?.Close();tools?.Shutdown();tray.Dispose();native.Dispose();saves.Dispose();};
+        FormClosed+=(_,_)=>{activityTimer.Stop();activityTimer.Dispose();UnregisterHotKey(Handle,36);overlay?.Close();tools?.Shutdown();tray.Dispose();native.Dispose();saves.Dispose();};
         FormClosing+=async (_,e)=>{
             if(!ready||closingAfterSave)return;
             e.Cancel=true;
@@ -118,6 +126,8 @@ internal sealed class LedgerWindow : Form
         file.DropDownItems.Add("Import legacy market cache",null,async (_,_)=>await ImportCache());
         file.DropDownItems.Add("Backup SQLite database",null,(_,_)=>{try{using var dlg=new SaveFileDialog{Filter="SQLite database|*.sqlite3",FileName="ledger-backup.sqlite3"};if(dlg.ShowDialog()==DialogResult.OK){saves.Backup(dlg.FileName);MessageBox.Show("Database backed up. Copy artwork and cache separately if required.");}}catch(Exception ex){MessageBox.Show(ex.Message);}});
         file.DropDownItems.Add("Open data folder",null,(_,_)=>OpenExternal(Program.DataDir));
+        file.DropDownItems.Add("Select PoE Client.txt",null,(_,_)=>SelectActivity());
+        file.DropDownItems.Add("Disconnect Client.txt",null,(_,_)=>DisconnectActivity());
         file.DropDownItems.Add("Exit",null,(_,_)=>Close());
         var network=new ToolStripMenuItem("Network");
         online.CheckedChanged+=(_,_)=>{market.Online=online.Checked;SyncNetwork();};
@@ -137,7 +147,8 @@ internal sealed class LedgerWindow : Form
         menu.Items.Add(view);
         var help=new ToolStripMenuItem("Help");help.DropDownItems.Add("Check for updates",null,(_,_)=>{try{Tools().ShowUpdates();}catch(Exception ex){MessageBox.Show(ex.Message);}});menu.Items.Add(help);
         Controls.Add(web);Controls.Add(menu);MainMenuStrip=menu;
-        Shown+=async (_,_)=>{DailyBackup50();await InitializeWeb();SetPriceHotkey(native.Setting("priceHotkey","P"));try{Tools();}catch(Exception e){Notify("Native tools initialization failed: "+e.Message); }};
+        activityTimer.Tick+=async (_,_)=>await PollActivity();
+        Shown+=async (_,_)=>{DailyBackup50();await InitializeWeb();var logPath=native.Setting("clientActivityPath","");if(!string.IsNullOrWhiteSpace(logPath))clientActivity=new ClientActivity(logPath);activityTimer.Start();await PollActivity();SetPriceHotkey(native.Setting("priceHotkey","P"));try{Tools();}catch(Exception e){Notify("Native tools initialization failed: "+e.Message); }};
     }
     async Task InitializeWeb()
     {
@@ -152,6 +163,7 @@ internal sealed class LedgerWindow : Form
                 if(!Local(e.Source))return;
                 try {
                     using var msg=JsonDocument.Parse(e.WebMessageAsJson);
+                    if(msg.RootElement.TryGetProperty("ledgerActivityAction",out var action)&&action.ValueKind==JsonValueKind.String){switch(action.GetString()){case "choose":SelectActivity();break;case "disconnect":DisconnectActivity();break;case "refresh":SendActivity();_ = PollActivity();break;}return;}
                     if(msg.RootElement.TryGetProperty("ledgerOnline",out var flag)&&flag.ValueKind is JsonValueKind.True or JsonValueKind.False){online.Checked=flag.GetBoolean();return;}
                     var data=JsonSerializer.Deserialize<Dictionary<string,string>>(e.WebMessageAsJson);
                     if(data!=null){saves.Replace(data);try{native.Index(data);tools?.MarkDirty();}catch{}}
@@ -171,7 +183,7 @@ internal sealed class LedgerWindow : Form
                 e.Response=core.Environment.CreateWebResourceResponse(null,403,"Blocked by desktop network policy","");
             };
             await core.AddScriptToExecuteOnDocumentCreatedAsync("(()=>{const f=window.fetch.bind(window);window.fetch=(input,init={})=>{const u=new URL(typeof input==='string'?input:input.url??String(input),location.href);if(u.origin===location.origin&&u.pathname.startsWith('/api/')){const h=new Headers(init.headers||(input instanceof Request?input.headers:undefined));h.set('X-Ledger-Token',"+JsonSerializer.Serialize(token)+");return f(input,{...init,headers:h});}return f(input,init);};})();");
-            core.NavigationCompleted+=(_,_)=>{SyncNetwork();SyncArt();};core.Navigate(Program.Origin+"/");ready=true;
+            core.NavigationCompleted+=(_,_)=>{SyncNetwork();SyncArt();SendActivity();};core.Navigate(Program.Origin+"/");ready=true;
         }catch(Exception e){MessageBox.Show("WebView2 initialization failed. Install the Microsoft Edge WebView2 Runtime.\n"+e.Message);}
     }
     static bool Local(string u)=>Uri.TryCreate(u,UriKind.Absolute,out var a)&&a.Scheme=="http"&&a.Host=="127.0.0.1"&&a.Port==8766;
