@@ -99,6 +99,11 @@ test('Unequal damage range suggestion',()=>rangeCandidate562(rangeIndex,'explici
 test('Reversed damage range rejected',()=>rangeCandidate562(rangeIndex,'explicit','Adds 30 to 10 Fire Damage')===null);
 test('Range is not silently auto-applied',()=>matchAffix542(rangeIndex,'explicit','Adds 10 to 30 Fire Damage')===null);
 test('Matched modifier retains original context',()=>affix27(fracturedRaw,fractureCatalog).matched[0]?.original.includes('{fractured}'));
+const conditionalCatalog=[{id:'explicit.stat_fixture_conditional',text:'#% increased Damage if you have Killed Recently'}];
+test('Conditional contraction matches same condition',()=>matchConditional563(catalogIndex535(conditionalCatalog),'explicit',"20% increased Damage if you've Killed Recently")?.value.min===20);
+test('Different condition remains unmatched',()=>matchConditional563(catalogIndex535(conditionalCatalog),'explicit',"20% increased Damage if you haven't Killed Recently")===null);
+test('Unique conditional modifier preserves identity',()=>affix27('Rarity: Unique\nExample Unique\nOnyx Amulet\nImplicits: 0\n20% increased Damage if you have Killed Recently',conditionalCatalog).matched[0]?.id==='explicit.stat_fixture_conditional');
+test('Unique modifier without catalog is not guessed',()=>affix27('Rarity: Unique\nExample Unique\nOnyx Amulet\nImplicits: 0\nYou have a special unknown effect',[]).matched.length===0);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
