@@ -37,7 +37,7 @@ internal sealed class MarketService : IDisposable
         cacheFile=Path.Combine(folder,"desktop-market-cache.json");cooldownFile=Path.Combine(folder,"desktop-cooldown.txt");
         try{var data=JsonSerializer.Deserialize<Dictionary<string,Entry>>(File.ReadAllText(cacheFile));if(data!=null)foreach(var x in data)cache[x.Key]=x.Value;}catch{}
         try{blockedUntil=long.Parse(File.ReadAllText(cooldownFile),CultureInfo.InvariantCulture);}catch{}
-        client.DefaultRequestHeaders.UserAgent.ParseAdd("ProjectPoeLedger/0.53.1 (personal desktop economy calculator)");
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("ProjectPoeLedger/0.53.2 (personal desktop economy calculator)");
         client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
     }
     public void Pause(int seconds){long target=Now+seconds,prev;do{prev=Interlocked.Read(ref blockedUntil);if(prev>=target)break;}while(Interlocked.CompareExchange(ref blockedUntil,target,prev)!=prev);try{File.WriteAllText(cooldownFile,Interlocked.Read(ref blockedUntil).ToString(CultureInfo.InvariantCulture));}catch{}}
