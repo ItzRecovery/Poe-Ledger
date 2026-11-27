@@ -11,13 +11,13 @@ ArchitecturesInstallIn64BitMode=x64compatible
 OutputBaseFilename=Project-Poe-Ledger-0.52.2-Setup
 SetupIconFile=ProjectPoeLedger\PoeLedger.ico
 UninstallDisplayIcon={app}\ProjectPoeLedger.exe
-Compression=lzma2
+Compression=lzma2/ultra64
 SolidCompression=yes
 CloseApplications=yes
 RestartApplications=no
 SetupLogging=yes
 [Files]
-Source: "Desktop\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
+Source: "Desktop\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
 [Icons]
 Name: "{group}\Poe Ledger"; Filename: "{app}\ProjectPoeLedger.exe"
 Name: "{userdesktop}\Poe Ledger"; Filename: "{app}\ProjectPoeLedger.exe"
