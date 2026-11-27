@@ -69,8 +69,8 @@ internal sealed class MarketService : IDisposable
             ctx.Response.Headers["Cache-Control"]="no-store";
             var bearer=Str(body["token"]);var lg=Str(body["league"]);var id=Str(body["stash"]);
             if(!Regex.IsMatch(bearer,@"^[A-Za-z0-9._~+/=-]{16,4096}$")||lg.Length<1||lg.Length>100||!Regex.IsMatch(id,@"^[A-Za-z0-9_-]{0,128}$"))throw new ApiException("Invalid access token, league or stash ID",400);
-            var url="https://api.pathofexile.com/stash/"+Uri.EscapeDataString(lg)+(id.Length>0?"/"+Uri.EscapeDataString(id):"");
-            return Results.Text(await Request(url,spacing:3000,bearer:bearer),"application/json");
+            var stashUrl="https://api.pathofexile.com/stash/"+Uri.EscapeDataString(lg)+(id.Length>0?"/"+Uri.EscapeDataString(id):"");
+            return Results.Text(await Request(stashUrl,spacing:3000,bearer:bearer),"application/json");
         }
         if(path=="pob-import"){
             var id=Str(body["id"]);if(!Regex.IsMatch(id,@"^[A-Za-z0-9_-]{1,128}$"))throw new ApiException("Invalid pobb.in ID",400);
