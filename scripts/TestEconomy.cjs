@@ -110,6 +110,18 @@ test('Conflicting beast prices rejected',()=>beastMarket518('Craicic Chimeral',[
 test('Debug export excludes account metadata',()=>!debugRaw564('Account: test\nUnique ID: xyz\n+40 to maximum Life').includes('test'));
 test('Debug export includes matched stat',()=>modDebug564([{slot:'Ring',raw:'Rarity: Rare\nExample\nOnyx Ring\nImplicits: 0\n+40 to maximum Life'}],[]).summary.matched===1);
 test('Debug export includes unmatched stat',()=>modDebug564([{raw:'Rarity: Rare\nExample\nOnyx Ring\nImplicits: 0\nUnknown special modifier'}],[]).summary.unmatched===1);
+const heistCost566={entry:20,reveals:10,markers:1000,markerPrice:.01,other:5,play:5,prep:2};
+test('Heist detailed investment',()=>economyCost566('heist',heistCost566).cost===45&&economyCost566('heist',heistCost566).minutes===7);
+test('Heist blank cost remains incomplete',()=>economyCost566('heist',{...heistCost566,reveals:''})===null);
+const delveCost566={sulphite:3000,perMap:6000,mapCost:20,mapMinutes:4,other:5,play:6,prep:1};
+test('Delve acquisition amortization',()=>economyCost566('delve',delveCost566).cost===15&&economyCost566('delve',delveCost566).minutes===9);
+test('Delve invalid acquisition yield rejected',()=>economyCost566('delve',{...delveCost566,perMap:0})===null);
+test('Economy bankroll and planned net',()=>economyMetrics566({...e,runs:10},200).capital===100&&economyMetrics566({...e,runs:10},200).planned===700);
+test('Economy no-jackpot excludes costly reward',()=>economyMetrics566({...e,runs:10,jackpot566:1},100).safeNet===-10);
+test('Incomplete economy estimate not ready',()=>!economyMetrics566({...e,runs:10,cost:''},200).ready);
+test('Journal weighted profitability',()=>economyJournal566([{name:'a',runs:2,minutes:10,cost:10,loot:50},{name:'a',runs:1,minutes:20,cost:10,loot:30}]).hour===120);
+test('Journal ignores unfinished sessions',()=>economyJournal566([{runs:1,minutes:'',cost:'',loot:''}]).sessions===0);
+test('Probability group prototype name safe',()=>!calc338({...e,rows:[{p:20,price:1,qty:1,g:'__proto__'}]}).invalid);
 console.log(n+' offline checks passed');
 return readSave545;
 `;
