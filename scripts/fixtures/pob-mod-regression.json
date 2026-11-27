@@ -1,0 +1,2194 @@
+{
+  "catalog": [
+    {
+      "id": "explicit.pseudo_timeless_jewel_caspiro",
+      "text": "Commissioned # coins to commemorate Caspiro"
+    },
+    {
+      "id": "explicit.stat_3787436548",
+      "text": "Historic"
+    },
+    {
+      "id": "explicit.stat_172076472",
+      "text": "# Dexterity per 1 Dexterity on Allocated Passives in Radius"
+    },
+    {
+      "id": "explicit.stat_1070347065",
+      "text": "# Intelligence per 1 Intelligence on Allocated Passives in Radius"
+    },
+    {
+      "id": "explicit.stat_552705983",
+      "text": "# Strength per 1 Strength on Allocated Passives in Radius"
+    },
+    {
+      "id": "explicit.stat_2519848087",
+      "text": "#% additional Physical Damage Reduction per 10 Strength on Allocated Passives in Radius"
+    },
+    {
+      "id": "explicit.stat_2582360791",
+      "text": "#% increased Chaos Damage per 10 Intelligence from Allocated Passives in Radius"
+    },
+    {
+      "id": "enchant.stat_1743954272",
+      "text": "#% increased Discharge Radius"
+    },
+    {
+      "id": "explicit.stat_607548408",
+      "text": "#% increased Effect of non-Keystone Passive Skills in Radius"
+    },
+    {
+      "id": "explicit.stat_4149388787",
+      "text": "#% increased effect of Tattoos in Radius"
+    },
+    {
+      "id": "explicit.stat_2605119037",
+      "text": "Increases and Reductions to Energy Shield in Radius are Transformed to apply to Armour at 200% of their value"
+    },
+    {
+      "id": "fractured.stat_2605119037",
+      "text": "Increases and Reductions to Energy Shield in Radius are Transformed to apply to Armour at 200% of their value"
+    },
+    {
+      "id": "explicit.stat_2479374428",
+      "text": "Increases and Reductions to Life in Radius are Transformed to apply to Mana at 200% of their value"
+    },
+    {
+      "id": "explicit.stat_1138742368",
+      "text": "Increases and Reductions to Light Radius also apply to Area of Effect at #% of their value"
+    },
+    {
+      "id": "explicit.stat_3446950357",
+      "text": "Increases and Reductions to other Damage Types in Radius are Transformed to apply to Fire Damage"
+    },
+    {
+      "id": "explicit.stat_370099215",
+      "text": "With # Small Passives Allocated in Radius, When you Kill a Rare monster, you gain 1 of its Modifiers for 20 seconds"
+    },
+    {
+      "id": "explicit.stat_24977021",
+      "text": "With at least 40 Intelligence in Radius, Fireball Projectiles gain Area as they travel farther, up to #% increased Area of Effect"
+    },
+    {
+      "id": "explicit.stat_3299347043",
+      "text": "+# to maximum Life"
+    },
+    {
+      "id": "explicit.stat_1871765599",
+      "text": "#% chance to Avoid being Shocked"
+    },
+    {
+      "id": "explicit.stat_3375935924",
+      "text": "Minions have #% increased Attack Speed"
+    },
+    {
+      "id": "explicit.stat_4000101551",
+      "text": "Minions have #% increased Cast Speed"
+    },
+    {
+      "id": "explicit.stat_2930653471",
+      "text": "Minions deal # to # additional Lightning Damage"
+    },
+    {
+      "id": "fractured.stat_2930653471",
+      "text": "Minions deal # to # additional Lightning Damage"
+    },
+    {
+      "id": "enchant.stat_545950479",
+      "text": "Area contains # additional packs of Monsters that deal Lightning Damage"
+    },
+    {
+      "id": "explicit.stat_797833282",
+      "text": "Minions deal # to # additional Attack Physical Damage"
+    },
+    {
+      "id": "explicit.stat_2889601781",
+      "text": "Minions deal # to # additional Chaos Damage"
+    },
+    {
+      "id": "fractured.stat_2889601781",
+      "text": "Minions deal # to # additional Chaos Damage"
+    },
+    {
+      "id": "explicit.stat_3152982863",
+      "text": "Minions deal # to # additional Cold Damage"
+    },
+    {
+      "id": "fractured.stat_3152982863",
+      "text": "Minions deal # to # additional Cold Damage"
+    },
+    {
+      "id": "explicit.stat_1671376347",
+      "text": "+#% to Lightning Resistance"
+    },
+    {
+      "id": "explicit.stat_2543019543",
+      "text": "Modifiers to Chance to Avoid being Shocked apply to all Elemental Ailments"
+    },
+    {
+      "id": "explicit.stat_2482852589",
+      "text": "#% increased maximum Energy Shield"
+    },
+    {
+      "id": "explicit.stat_983749596",
+      "text": "#% increased maximum Life"
+    },
+    {
+      "id": "explicit.stat_2748665614",
+      "text": "#% increased maximum Mana"
+    },
+    {
+      "id": "explicit.stat_3624529132",
+      "text": "#% of Physical Damage Converted to Fire Damage while affected by Anger"
+    },
+    {
+      "id": "explicit.stat_3692646597",
+      "text": "+#% Chance to Block Attack Damage while affected by Determination"
+    },
+    {
+      "id": "explicit.stat_380220671",
+      "text": "#% of Damage taken while affected by Clarity Recouped as Mana"
+    },
+    {
+      "id": "explicit.stat_3195300715",
+      "text": "Minions have +#% chance to Suppress Spell Damage"
+    },
+    {
+      "id": "explicit.stat_3430460307",
+      "text": "Notable Passive Skills in Radius are Transformed to\ninstead grant: #% increased Mana Cost of Skills and #% increased Spell Damage"
+    },
+    {
+      "id": "explicit.stat_3362879252",
+      "text": "Notable Passive Skills in Radius are Transformed to\ninstead grant: Minions have #% increased Movement Speed"
+    },
+    {
+      "id": "explicit.stat_3659983276",
+      "text": "Notable Passive Skills in Radius are Transformed to\ninstead grant: Minions take #% increased Damage"
+    },
+    {
+      "id": "explicit.stat_680202695",
+      "text": "Allocated Notable Passive Skills in Radius grant nothing"
+    },
+    {
+      "id": "explicit.stat_3530244373",
+      "text": "Grants all bonuses of Unallocated Notable Passive Skills in Radius"
+    },
+    {
+      "id": "explicit.stat_2627243269",
+      "text": "Notable Passive Skills in Radius grant nothing"
+    },
+    {
+      "id": "explicit.stat_4079888060",
+      "text": "# Added Passive Skills are Jewel Sockets"
+    },
+    {
+      "id": "fractured.stat_4079888060",
+      "text": "# Added Passive Skills are Jewel Sockets"
+    },
+    {
+      "id": "explicit.stat_2310019673",
+      "text": "Added Small Passive Skills also grant: Minions have #% increased Attack and Cast Speed"
+    },
+    {
+      "id": "fractured.stat_2310019673",
+      "text": "Added Small Passive Skills also grant: Minions have #% increased Attack and Cast Speed"
+    },
+    {
+      "id": "explicit.stat_1948127742",
+      "text": "Added Small Passive Skills also grant: Minions have #% increased Attack and Cast Speed while you are affected by a Herald"
+    },
+    {
+      "id": "fractured.stat_1948127742",
+      "text": "Added Small Passive Skills also grant: Minions have #% increased Attack and Cast Speed while you are affected by a Herald"
+    },
+    {
+      "id": "explicit.stat_3134790305",
+      "text": "Enemies you Shock have #% reduced Movement Speed"
+    },
+    {
+      "id": "explicit.stat_174664100",
+      "text": "Minions have #% increased Movement Speed"
+    },
+    {
+      "id": "implicit.stat_174664100",
+      "text": "Minions have #% increased Movement Speed"
+    },
+    {
+      "id": "explicit.stat_3962278098",
+      "text": "#% increased Fire Damage"
+    },
+    {
+      "id": "explicit.stat_4095671657",
+      "text": "+#% to maximum Fire Resistance"
+    },
+    {
+      "id": "explicit.stat_1692879867",
+      "text": "#% increased Bleed Duration on you"
+    },
+    {
+      "id": "implicit.stat_1692879867",
+      "text": "#% increased Bleed Duration on you"
+    },
+    {
+      "id": "fractured.stat_1692879867",
+      "text": "#% increased Bleed Duration on you"
+    },
+    {
+      "id": "explicit.stat_1874553720",
+      "text": "#% reduced Chill Duration on you"
+    },
+    {
+      "id": "implicit.stat_1874553720",
+      "text": "#% reduced Chill Duration on you"
+    },
+    {
+      "id": "explicit.stat_1745952865",
+      "text": "#% reduced Elemental Ailment Duration on you"
+    },
+    {
+      "id": "implicit.stat_1745952865",
+      "text": "#% reduced Elemental Ailment Duration on you"
+    },
+    {
+      "id": "explicit.stat_730530528",
+      "text": "#% reduced Elemental Ailment Duration on you per 10 Devotion"
+    },
+    {
+      "id": "explicit.stat_3642528642|5",
+      "text": "Only affects Passives in Massive Ring"
+    },
+    {
+      "id": "explicit.stat_1211779989",
+      "text": "Keystone Passive Skills in Radius can be Allocated without being connected to your tree\nPassage"
+    },
+    {
+      "id": "explicit.stat_1725885727",
+      "text": "Passive Skills in Radius can be Allocated without being connected to your tree\nPassage"
+    },
+    {
+      "id": "explicit.stat_325204898",
+      "text": "Allocated Small Passive Skills in Radius grant nothing"
+    },
+    {
+      "id": "explicit.stat_737702863",
+      "text": "Grants all bonuses of Unallocated Small Passive Skills in Radius"
+    },
+    {
+      "id": "explicit.stat_769192511",
+      "text": "While your Passive Skill Tree connects to a class' starting location, you gain:\nMarauder: Melee Skills have #% increased Area of Effect\nDuelist: #% of Attack Damage Leeched as Life\nRanger: #% increased Movement Speed\nShadow: +#% to Critical Strike Chance\nWitch: #% of Mana Regenerated per second\nTemplar: Damage Penetrates #% Elemental Resistances\nScion: +# to All Attributes"
+    },
+    {
+      "id": "explicit.stat_2901986750",
+      "text": "+#% to all Elemental Resistances"
+    },
+    {
+      "id": "implicit.stat_2901986750",
+      "text": "+#% to all Elemental Resistances"
+    },
+    {
+      "id": "fractured.stat_2901986750",
+      "text": "+#% to all Elemental Resistances"
+    },
+    {
+      "id": "crafted.stat_2901986750",
+      "text": "+#% to all Elemental Resistances"
+    },
+    {
+      "id": "implicit.stat_3731630482",
+      "text": "+#% to all Elemental Resistances if Corrupted"
+    },
+    {
+      "id": "explicit.stat_1910205563",
+      "text": "+#% to all Elemental Resistances per 10 Devotion"
+    },
+    {
+      "id": "explicit.stat_2569472704",
+      "text": "+#% to all Elemental Resistances per 15 Omniscience"
+    },
+    {
+      "id": "explicit.stat_1852896268",
+      "text": "+#% to all Elemental Resistances per Endurance Charge"
+    },
+    {
+      "id": "explicit.stat_724930776",
+      "text": "Added Small Passive Skills also grant: +# to Intelligence"
+    },
+    {
+      "id": "explicit.stat_2643685329",
+      "text": "Added Small Passive Skills also grant: +# to Maximum Energy Shield"
+    },
+    {
+      "id": "explicit.stat_2618549697",
+      "text": "Added Small Passive Skills have #% increased Effect"
+    },
+    {
+      "id": "explicit.stat_1323344255",
+      "text": "Link Skills can target Damageable Minions"
+    },
+    {
+      "id": "explicit.stat_412745376",
+      "text": "Minions deal #% increased Damage if you've used a Minion Skill Recently"
+    },
+    {
+      "id": "fractured.stat_412745376",
+      "text": "Minions deal #% increased Damage if you've used a Minion Skill Recently"
+    },
+    {
+      "id": "explicit.stat_613055432",
+      "text": "Minions have +#% to Damage over Time Multiplier per\nGhastly Eye Jewel affecting you, up to a maximum of +30%"
+    },
+    {
+      "id": "enchant.stat_4079888060",
+      "text": "# Added Passive Skills are Jewel Sockets"
+    },
+    {
+      "id": "explicit.stat_1975134334",
+      "text": "Cluster Jewels from Delirium Rewards have a #% chance to be Rare and Corrupted"
+    },
+    {
+      "id": "explicit.stat_3312982927",
+      "text": "Delirious Unique Monsters in your Maps have a #% chance to drop an additional Cluster Jewel"
+    },
+    {
+      "id": "explicit.stat_615948723",
+      "text": "Delirium Bosses in your Maps have #% increased chance to drop Unique Cluster Jewels"
+    },
+    {
+      "id": "explicit.stat_3580714718",
+      "text": "Delirium Monsters in your Maps have #% increased chance to drop Cluster Jewels"
+    },
+    {
+      "id": "explicit.stat_204458505",
+      "text": "#% chance for Elemental Resistances to count as being 90% against Enemy Hits"
+    },
+    {
+      "id": "explicit.stat_247746531",
+      "text": "Adds # Jewel Socket Passive Skills"
+    },
+    {
+      "id": "explicit.stat_3086156145",
+      "text": "Adds # Passive Skills"
+    },
+    {
+      "id": "enchant.stat_3086156145",
+      "text": "Adds # Passive Skills"
+    },
+    {
+      "id": "explicit.stat_1085446536",
+      "text": "Adds # Small Passive Skills which grant nothing"
+    },
+    {
+      "id": "explicit.stat_461663422",
+      "text": "#% increased Effect of Jewel Socket Passive Skills containing Corrupted Magic Jewels"
+    },
+    {
+      "id": "explicit.stat_713280739",
+      "text": "Added Small Passive Skills also grant: #% increased Area of Effect"
+    },
+    {
+      "id": "fractured.stat_713280739",
+      "text": "Added Small Passive Skills also grant: #% increased Area of Effect"
+    },
+    {
+      "id": "explicit.stat_2642917409",
+      "text": "Added Small Passive Skills also grant: #% increased Area of Effect of Aura Skills"
+    },
+    {
+      "id": "fractured.stat_2642917409",
+      "text": "Added Small Passive Skills also grant: #% increased Area of Effect of Aura Skills"
+    },
+    {
+      "id": "explicit.stat_2138819920",
+      "text": "Added Small Passive Skills also grant: #% increased Area of Effect of Hex Skills"
+    },
+    {
+      "id": "explicit.stat_1719521705",
+      "text": "Added Small Passive Skills also grant: #% increased Damage"
+    },
+    {
+      "id": "fractured.stat_1719521705",
+      "text": "Added Small Passive Skills also grant: #% increased Damage"
+    },
+    {
+      "id": "explicit.stat_2401834120",
+      "text": "Added Small Passive Skills also grant: #% increased Damage over Time"
+    },
+    {
+      "id": "fractured.stat_2401834120",
+      "text": "Added Small Passive Skills also grant: #% increased Damage over Time"
+    },
+    {
+      "id": "explicit.stat_770672621",
+      "text": "Minions have #% increased maximum Life"
+    },
+    {
+      "id": "explicit.stat_4101445926",
+      "text": "#% increased Mana Cost Efficiency"
+    },
+    {
+      "id": "explicit.stat_3885184473",
+      "text": "#% chance for one Monster in each of your Maps to drop an additional connected Map"
+    },
+    {
+      "id": "implicit.stat_2661498709",
+      "text": "While a Pinnacle Atlas Boss is in your Presence, #% chance to Avoid being Frozen"
+    },
+    {
+      "id": "implicit.stat_911929910",
+      "text": "While a Pinnacle Atlas Boss is in your Presence, #% chance to Avoid being Ignited"
+    },
+    {
+      "id": "implicit.stat_2714750784",
+      "text": "While a Pinnacle Atlas Boss is in your Presence, #% chance to Avoid being Poisoned"
+    },
+    {
+      "id": "implicit.stat_3823702653",
+      "text": "While a Pinnacle Atlas Boss is in your Presence, #% chance to Avoid being Shocked"
+    },
+    {
+      "id": "implicit.stat_990874979",
+      "text": "While a Pinnacle Atlas Boss is in your Presence, #% chance to Avoid being Stunned"
+    },
+    {
+      "id": "explicit.stat_1050105434",
+      "text": "+# to maximum Mana"
+    },
+    {
+      "id": "explicit.stat_4262448838",
+      "text": "#% chance to Avoid being Stunned"
+    },
+    {
+      "id": "explicit.stat_3811191316",
+      "text": "Minions have #% increased Area of Effect"
+    },
+    {
+      "id": "explicit.stat_2390273715",
+      "text": "With at least 40 Intelligence in Radius, Raised Spectres have a #% chance to gain Soul Eater for 20 seconds on Kill"
+    },
+    {
+      "id": "explicit.stat_2709692542",
+      "text": "Added Small Passive Skills also grant: +#% to Cold Resistance"
+    },
+    {
+      "id": "explicit.stat_4100161067",
+      "text": "Added Small Passive Skills also grant: +# to Evasion"
+    },
+    {
+      "id": "explicit.stat_1790411851",
+      "text": "Added Small Passive Skills also grant: +#% to Fire Resistance"
+    },
+    {
+      "id": "crafted.stat_3824033729",
+      "text": "#% of Damage Taken from Hits is Leeched as Life during Effect"
+    },
+    {
+      "id": "enchant.stat_3287581721",
+      "text": "Used when Charges reach full"
+    },
+    {
+      "id": "explicit.stat_1655460656",
+      "text": "Gain Vaal Souls equal to Charges Consumed when used"
+    },
+    {
+      "id": "explicit.stat_4256314560",
+      "text": "Shocks you when you reach Maximum Power Charges"
+    },
+    {
+      "id": "explicit.stat_1174243390",
+      "text": "You gain Divinity for # seconds on reaching maximum Divine Charges\nLose all Divine Charges when you gain Divinity"
+    },
+    {
+      "id": "explicit.stat_3371432622",
+      "text": "#% chance to gain a Flask Charge when you deal a Critical Strike while at maximum Frenzy Charges"
+    },
+    {
+      "id": "explicit.stat_4146386957",
+      "text": "#% chance to receive additional Breach items when opening a Reward Chest in a Heist"
+    },
+    {
+      "id": "explicit.stat_1112135314",
+      "text": "#% chance to Trigger a Socketed Warcry Skill when you lose Endurance Charges, with a 0.25 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_4268321763",
+      "text": "#% increased Attack Speed when on Full Life"
+    },
+    {
+      "id": "explicit.stat_4179663748",
+      "text": "#% chance to gain a Frenzy Charge when you Hit a Rare or Unique Enemy"
+    },
+    {
+      "id": "fractured.stat_4179663748",
+      "text": "#% chance to gain a Frenzy Charge when you Hit a Rare or Unique Enemy"
+    },
+    {
+      "id": "explicit.stat_196260576",
+      "text": "Flasks gain # Charges when you hit a Non-Unique Enemy, no more than once per second"
+    },
+    {
+      "id": "explicit.stat_1582728645",
+      "text": "Gain # Charge when you are Hit by an Enemy"
+    },
+    {
+      "id": "fractured.stat_1582728645",
+      "text": "Gain # Charge when you are Hit by an Enemy"
+    },
+    {
+      "id": "explicit.stat_3135669941",
+      "text": "#% chance to create Consecrated Ground when you Hit a Rare or Unique Enemy, lasting 8 seconds"
+    },
+    {
+      "id": "explicit.stat_4113439745",
+      "text": "#% chance to gain a Frenzy Charge when you Hit a Unique Enemy"
+    },
+    {
+      "id": "explicit.stat_1514657588",
+      "text": "#% chance to gain an Endurance Charge when you are Hit"
+    },
+    {
+      "id": "implicit.stat_1589917703",
+      "text": "Minions deal #% increased Damage"
+    },
+    {
+      "id": "explicit.stat_2974417149",
+      "text": "#% increased Spell Damage"
+    },
+    {
+      "id": "explicit.stat_124131830",
+      "text": "+# to Level of all Spell Skill Gems"
+    },
+    {
+      "id": "explicit.stat_2162097452",
+      "text": "+# to Level of all Minion Skill Gems"
+    },
+    {
+      "id": "explicit.stat_3759663284",
+      "text": "#% increased Projectile Speed"
+    },
+    {
+      "id": "explicit.stat_3091578504",
+      "text": "Minions have #% increased Attack and Cast Speed"
+    },
+    {
+      "id": "explicit.stat_2513998383",
+      "text": "#% chance to Trigger Socketed Spells when you Spend at least # Life on an\nUpfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_723388324",
+      "text": "#% chance to Trigger Socketed Spells when you Spend at least # Mana on an\nUpfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown"
+    },
+    {
+      "id": "implicit.stat_723388324",
+      "text": "#% chance to Trigger Socketed Spells when you Spend at least # Mana on an\nUpfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_1378815167",
+      "text": "#% chance to Trigger a Socketed Bow Skill when you Cast a Spell while wielding a Bow, with a 1 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_3171958921",
+      "text": "#% chance to Trigger a Socketed Bow Skill when you Attack with a Bow, with a 1 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_3302736916",
+      "text": "#% chance to Trigger a Socketed Spell when you Attack with a Bow, with a 0.3 second Cooldown"
+    },
+    {
+      "id": "implicit.stat_3302736916",
+      "text": "#% chance to Trigger a Socketed Spell when you Attack with a Bow, with a 0.3 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_209056835",
+      "text": "#% chance to Trigger a Socketed Spell when you Attack with this Weapon, with a 0.25 second Cooldown"
+    },
+    {
+      "id": "explicit.stat_3079007202",
+      "text": "#% chance to Trigger a Socketed Spell on Using a Skill, with a 8 second Cooldown\nSpells Triggered this way have 150% more Cost"
+    },
+    {
+      "id": "fractured.stat_3079007202",
+      "text": "#% chance to Trigger a Socketed Spell on Using a Skill, with a 8 second Cooldown\nSpells Triggered this way have 150% more Cost"
+    },
+    {
+      "id": "crafted.stat_3079007202",
+      "text": "#% chance to Trigger a Socketed Spell on Using a Skill, with a 8 second Cooldown\nSpells Triggered this way have 150% more Cost"
+    },
+    {
+      "id": "explicit.stat_1582781759",
+      "text": "Trigger a Socketed Spell on Using a Skill, with a # second Cooldown\nSpells Triggered this way have 150% more Cost"
+    },
+    {
+      "id": "fractured.stat_1582781759",
+      "text": "Trigger a Socketed Spell on Using a Skill, with a # second Cooldown\nSpells Triggered this way have 150% more Cost"
+    },
+    {
+      "id": "explicit.stat_654971543",
+      "text": "Trigger a Socketed Lightning Spell on Hit, with a 0.25 second Cooldown\nSocketed Lightning Spells have no Cost if Triggered"
+    },
+    {
+      "id": "explicit.stat_2816098341",
+      "text": "Trigger Socketed Minion Spells on Kill with this Weapon\nMinion Spells Triggered by this Item have a 0.25 second Cooldown with 5 Uses"
+    },
+    {
+      "id": "implicit.stat_4149961555",
+      "text": "Map Crafting options for this Map have no cost"
+    },
+    {
+      "id": "implicit.stat_2005503156",
+      "text": "Taunts Enemies within # metres on use"
+    },
+    {
+      "id": "explicit.stat_4265534424",
+      "text": "#% reduced Effect of Curses on you during Effect"
+    },
+    {
+      "id": "implicit.stat_569299859",
+      "text": "+#% to all maximum Resistances"
+    },
+    {
+      "id": "implicit.stat_2960683632",
+      "text": "#% reduced Chaos Damage taken"
+    },
+    {
+      "id": "explicit.stat_2075742842",
+      "text": "Deal no Non-Lightning Damage"
+    },
+    {
+      "id": "explicit.stat_2134207902",
+      "text": "Armour also applies to Lightning Damage taken from Hits"
+    },
+    {
+      "id": "explicit.stat_3999959974",
+      "text": "Lightning Resistance does not affect Lightning Damage taken"
+    },
+    {
+      "id": "explicit.stat_3549734978",
+      "text": "Enemies within 6 metres have Lightning Resistance equal to yours"
+    },
+    {
+      "id": "explicit.stat_3321629045",
+      "text": "#% increased Armour and Energy Shield (Local)"
+    },
+    {
+      "id": "fractured.stat_3321629045",
+      "text": "#% increased Armour and Energy Shield (Local)"
+    },
+    {
+      "id": "crafted.stat_3321629045",
+      "text": "#% increased Armour and Energy Shield (Local)"
+    },
+    {
+      "id": "explicit.stat_3523867985",
+      "text": "#% increased Armour, Evasion and Energy Shield (Local)"
+    },
+    {
+      "id": "implicit.stat_3523867985",
+      "text": "#% increased Armour, Evasion and Energy Shield (Local)"
+    },
+    {
+      "id": "fractured.stat_3523867985",
+      "text": "#% increased Armour, Evasion and Energy Shield (Local)"
+    },
+    {
+      "id": "crafted.stat_3523867985",
+      "text": "#% increased Armour, Evasion and Energy Shield (Local)"
+    },
+    {
+      "id": "explicit.stat_1195319608",
+      "text": "#% increased Energy Shield from Equipped Body Armour"
+    },
+    {
+      "id": "explicit.stat_4052037485",
+      "text": "+# to maximum Energy Shield (Local)"
+    },
+    {
+      "id": "explicit.stat_2923486259",
+      "text": "+#% to Chaos Resistance"
+    },
+    {
+      "id": "explicit.stat_1381972535",
+      "text": "#% increased Global maximum Energy Shield and reduced Lightning Resistance"
+    },
+    {
+      "id": "explicit.stat_1263695895",
+      "text": "#% increased Light Radius"
+    },
+    {
+      "id": "implicit.stat_1263695895",
+      "text": "#% increased Light Radius"
+    },
+    {
+      "id": "fractured.stat_1263695895",
+      "text": "#% increased Light Radius"
+    },
+    {
+      "id": "enchant.stat_1263695895",
+      "text": "#% increased Light Radius"
+    },
+    {
+      "id": "explicit.stat_2745936267",
+      "text": "#% increased Light Radius during Effect"
+    },
+    {
+      "id": "enchant.stat_1243906675",
+      "text": "#% reduced Ball Lightning Projectile Speed"
+    },
+    {
+      "id": "explicit.stat_1276918229",
+      "text": "#% reduced Lightning Damage taken"
+    },
+    {
+      "id": "explicit.stat_1664904679",
+      "text": "+# to maximum number of Raised Spectres per Socketed Ghastly Eye Jewel"
+    },
+    {
+      "id": "explicit.stat_4041805509",
+      "text": "#% reduced maximum number of Raised Zombies"
+    },
+    {
+      "id": "explicit.stat_966747987",
+      "text": "+# to maximum number of Raised Zombies"
+    },
+    {
+      "id": "implicit.stat_966747987",
+      "text": "+# to maximum number of Raised Zombies"
+    },
+    {
+      "id": "fractured.stat_966747987",
+      "text": "+# to maximum number of Raised Zombies"
+    },
+    {
+      "id": "crafted.stat_966747987",
+      "text": "+# to maximum number of Raised Zombies"
+    },
+    {
+      "id": "explicit.stat_125218179",
+      "text": "+# to maximum number of Spectres"
+    },
+    {
+      "id": "implicit.stat_125218179",
+      "text": "+# to maximum number of Spectres"
+    },
+    {
+      "id": "explicit.stat_3724637507",
+      "text": "Raised Spectres have #% increased Area of Effect"
+    },
+    {
+      "id": "enchant.stat_4137556603",
+      "text": "Raised Spectres have #% increased Attack and Cast Speed"
+    },
+    {
+      "id": "explicit.stat_1862097882",
+      "text": "Raised Spectres have #% increased Critical Strike Chance"
+    },
+    {
+      "id": "implicit.stat_3645693773",
+      "text": "Raised Spectres have #% increased Damage"
+    },
+    {
+      "id": "enchant.stat_3645693773",
+      "text": "Raised Spectres have #% increased Damage"
+    },
+    {
+      "id": "explicit.stat_3035514623",
+      "text": "Raised Spectres have #% increased maximum Life"
+    },
+    {
+      "id": "explicit.stat_2472962676",
+      "text": "Raised Spectres have +#% to all maximum Resistances"
+    },
+    {
+      "id": "explicit.stat_2341487846",
+      "text": "Raised Spectres have +#% to Critical Strike Chance"
+    },
+    {
+      "id": "explicit.stat_746505085",
+      "text": "Reflects opposite Ring"
+    },
+    {
+      "id": "explicit.stat_734823525",
+      "text": "#% increased Evasion Rating while moving"
+    },
+    {
+      "id": "explicit.stat_3351784991",
+      "text": "Minions deal # to # additional Fire Damage"
+    },
+    {
+      "id": "fractured.stat_3351784991",
+      "text": "Minions deal # to # additional Fire Damage"
+    },
+    {
+      "id": "enchant.stat_2366645974",
+      "text": "Area contains # additional packs of Monsters that deal Fire Damage"
+    },
+    {
+      "id": "explicit.stat_1482572705",
+      "text": "#% increased Effect of Socketed Abyss Jewels"
+    },
+    {
+      "id": "explicit.stat_3527617737",
+      "text": "Has # Abyssal Sockets"
+    },
+    {
+      "id": "implicit.stat_3527617737",
+      "text": "Has # Abyssal Sockets"
+    },
+    {
+      "id": "fractured.stat_3527617737",
+      "text": "Has # Abyssal Sockets"
+    },
+    {
+      "id": "explicit.stat_2526952837",
+      "text": "#% increased Effect of Socketed Magic Ghastly Eye Jewels"
+    },
+    {
+      "id": "fractured.stat_2526952837",
+      "text": "#% increased Effect of Socketed Magic Ghastly Eye Jewels"
+    },
+    {
+      "id": "explicit.stat_1974290842",
+      "text": "#% increased Effect of Socketed Rare Ghastly Eye Jewels"
+    },
+    {
+      "id": "fractured.stat_1974290842",
+      "text": "#% increased Effect of Socketed Rare Ghastly Eye Jewels"
+    },
+    {
+      "id": "explicit.stat_1349002319",
+      "text": "#% of Fire and Lightning Damage from Hits taken as Cold Damage during Effect"
+    },
+    {
+      "id": "explicit.stat_2661163721",
+      "text": "Gain #% of Physical Damage as Extra Cold Damage during effect"
+    },
+    {
+      "id": "explicit.stat_1053326368",
+      "text": "#% chance to Avoid being Chilled during Effect"
+    },
+    {
+      "id": "explicit.stat_1619168299",
+      "text": "#% chance to Avoid being Chilled during Effect"
+    },
+    {
+      "id": "fractured.stat_1619168299",
+      "text": "#% chance to Avoid being Chilled during Effect"
+    },
+    {
+      "id": "explicit.stat_2872105818",
+      "text": "#% chance to Avoid being Chilled during Onslaught"
+    },
+    {
+      "id": "explicit.stat_475518267",
+      "text": "#% chance to Avoid being Frozen during Effect"
+    },
+    {
+      "id": "explicit.stat_2872815301",
+      "text": "#% chance to Avoid being Frozen during Effect"
+    },
+    {
+      "id": "fractured.stat_475518267",
+      "text": "#% chance to Avoid being Frozen during Effect"
+    },
+    {
+      "id": "explicit.stat_20251177",
+      "text": "#% chance to Avoid being Ignited during Effect"
+    },
+    {
+      "id": "fractured.stat_20251177",
+      "text": "#% chance to Avoid being Ignited during Effect"
+    },
+    {
+      "id": "implicit.stat_803185500",
+      "text": "#% increased Effect of your Marks"
+    },
+    {
+      "id": "explicit.stat_3372524247",
+      "text": "+#% to Fire Resistance"
+    },
+    {
+      "id": "explicit.stat_4015621042",
+      "text": "#% increased Energy Shield (Local)"
+    },
+    {
+      "id": "explicit.stat_4220027924",
+      "text": "+#% to Cold Resistance"
+    },
+    {
+      "id": "crafted.stat_2915988346",
+      "text": "+#% to Fire and Cold Resistances"
+    },
+    {
+      "id": "explicit.stat_532540562",
+      "text": "Monsters Influenced by The Searing Exarch in your Maps have #% chance to drop an Item with a Searing Exarch Implicit Modifier"
+    },
+    {
+      "id": "explicit.stat_3179686508",
+      "text": "#% chance to spawn a Searing Exarch Altar when the Influence of The Searing Exarch first appears in your Maps"
+    },
+    {
+      "id": "explicit.stat_2073168229",
+      "text": "Area contains Runes of the Searing Exarch"
+    },
+    {
+      "id": "fractured.stat_2073168229",
+      "text": "Area contains Runes of the Searing Exarch"
+    },
+    {
+      "id": "explicit.stat_2348590020",
+      "text": "Eldritch Altars Influenced by The Searing Exarch have #% chance to have an additional Upside"
+    },
+    {
+      "id": "explicit.stat_1804970439",
+      "text": "Eldritch Altars Influenced by The Searing Exarch which have an additional Upside have #% increased Effect of Downsides"
+    },
+    {
+      "id": "explicit.stat_2514681311",
+      "text": "Eldritch Embers found in your Maps influenced by The Searing Exarch have #% chance to be Duplicated"
+    },
+    {
+      "id": "explicit.stat_3768948090",
+      "text": "Kill Enemies that have 15% or lower Life on Hit if The Searing Exarch is dominant"
+    },
+    {
+      "id": "explicit.stat_2121601076",
+      "text": "Monsters Influenced by The Eater of Worlds in your Maps have #% chance to drop an item with an Eater of Worlds Implicit Modifier"
+    },
+    {
+      "id": "explicit.stat_2988344505",
+      "text": "#% increased chance to find Eater of Worlds Altars in your Maps"
+    },
+    {
+      "id": "explicit.stat_1109900829",
+      "text": "Critical Strikes have #% chance to inflict Malignant Madness if The Eater of Worlds is dominant"
+    },
+    {
+      "id": "explicit.stat_3619368685",
+      "text": "Eldritch Altars Influenced by The Eater of Worlds have #% increased Effect of Upsides"
+    },
+    {
+      "id": "explicit.stat_1488839433",
+      "text": "Eldritch Altars Influenced by The Eater of Worlds have an additional Downside"
+    },
+    {
+      "id": "explicit.stat_2157440077",
+      "text": "Eldritch Ichor found in your Maps influenced by The Eater of Worlds have #% chance to be Duplicated"
+    },
+    {
+      "id": "explicit.stat_4185631652",
+      "text": "Monster Packs Influenced by The Eater of Worlds in your Maps have #% increased Pack Size"
+    },
+    {
+      "id": "explicit.stat_1943774953",
+      "text": "Your Maps have #% chance to award double progress towards encountering The Eater of Worlds"
+    },
+    {
+      "id": "explicit.stat_4067062424",
+      "text": "Adds # to # Cold Damage to Attacks"
+    },
+    {
+      "id": "implicit.stat_4067062424",
+      "text": "Adds # to # Cold Damage to Attacks"
+    },
+    {
+      "id": "fractured.stat_4067062424",
+      "text": "Adds # to # Cold Damage to Attacks"
+    },
+    {
+      "id": "crafted.stat_4067062424",
+      "text": "Adds # to # Cold Damage to Attacks"
+    },
+    {
+      "id": "explicit.stat_617462123",
+      "text": "Adds # to # Cold Damage to Attacks against you"
+    },
+    {
+      "id": "fractured.stat_617462123",
+      "text": "Adds # to # Cold Damage to Attacks against you"
+    },
+    {
+      "id": "crafted.stat_617462123",
+      "text": "Adds # to # Cold Damage to Attacks against you"
+    },
+    {
+      "id": "explicit.stat_769783486",
+      "text": "Adds # to # Cold Damage to Attacks per 10 Dexterity"
+    },
+    {
+      "id": "explicit.stat_3182498570",
+      "text": "#% increased Movement Speed during Effect"
+    },
+    {
+      "id": "implicit.stat_1379411836",
+      "text": "+# to all Attributes"
+    },
+    {
+      "id": "explicit.stat_3235814433",
+      "text": "+# to Level of all Raise Spectre Gems"
+    },
+    {
+      "id": "implicit.stat_3235814433",
+      "text": "+# to Level of all Raise Spectre Gems"
+    },
+    {
+      "id": "fractured.stat_3235814433",
+      "text": "+# to Level of all Raise Spectre Gems"
+    },
+    {
+      "id": "explicit.stat_2739830820",
+      "text": "+# to Level of all Raise Zombie Gems"
+    },
+    {
+      "id": "implicit.stat_2739830820",
+      "text": "+# to Level of all Raise Zombie Gems"
+    },
+    {
+      "id": "explicit.stat_67169579",
+      "text": "+# to Level of all Chaos Skill Gems"
+    },
+    {
+      "id": "fractured.stat_67169579",
+      "text": "+# to Level of all Chaos Skill Gems"
+    },
+    {
+      "id": "explicit.stat_436225640",
+      "text": "+# to Level of all Chaos Skill Gems if 6 Hunter Items are Equipped"
+    },
+    {
+      "id": "explicit.stat_635485889",
+      "text": "#% increased Life Reservation Efficiency of Skills"
+    },
+    {
+      "id": "fractured.stat_635485889",
+      "text": "#% increased Life Reservation Efficiency of Skills"
+    },
+    {
+      "id": "explicit.stat_443165947",
+      "text": "#% increased Mana Reservation Efficiency of Curse Aura Skills"
+    },
+    {
+      "id": "explicit.stat_714566414",
+      "text": "#% increased Mana Reservation Efficiency of Curse Aura Skills"
+    },
+    {
+      "id": "explicit.stat_3078295401",
+      "text": "#% increased Mana Reservation Efficiency of Herald Skills"
+    },
+    {
+      "id": "explicit.stat_4237190083",
+      "text": "#% increased Mana Reservation Efficiency of Skills"
+    },
+    {
+      "id": "explicit.stat_1269219558",
+      "text": "#% increased Mana Reservation Efficiency of Skills"
+    },
+    {
+      "id": "implicit.stat_4237190083",
+      "text": "#% increased Mana Reservation Efficiency of Skills"
+    },
+    {
+      "id": "explicit.stat_752930724",
+      "text": "Items and Gems have #% increased Attribute Requirements"
+    },
+    {
+      "id": "implicit.stat_752930724",
+      "text": "Items and Gems have #% increased Attribute Requirements"
+    },
+    {
+      "id": "fractured.stat_752930724",
+      "text": "Items and Gems have #% increased Attribute Requirements"
+    },
+    {
+      "id": "explicit.stat_4012065952",
+      "text": "#% increased chance for Equipment Items dropped in Area to have Memory Strands"
+    },
+    {
+      "id": "explicit.stat_4012065952",
+      "text": "#% increased chance for Equipment Items dropped in your Maps to have Memory Strands"
+    },
+    {
+      "id": "explicit.stat_2244724505",
+      "text": "Area contains 3 additional Magic Packs which\nhave #% increased Attack, Cast and Movement Speed, and drop #% more items"
+    },
+    {
+      "id": "explicit.stat_3169825297",
+      "text": "Enemies within 6 metres have #% reduced Stun and Block Recovery"
+    },
+    {
+      "id": "explicit.stat_2418755296",
+      "text": "Forged Items have the numeric values of Modifiers Randomised"
+    },
+    {
+      "id": "explicit.stat_1693613464",
+      "text": "#% increased Armour during Effect"
+    },
+    {
+      "id": "implicit.stat_1423639565",
+      "text": "Minions have +#% to all Elemental Resistances"
+    },
+    {
+      "id": "explicit.stat_3492924480",
+      "text": "1 Added Passive Skill is Prismatic Carapace"
+    },
+    {
+      "id": "fractured.stat_3492924480",
+      "text": "1 Added Passive Skill is Prismatic Carapace"
+    },
+    {
+      "id": "explicit.stat_1149662934",
+      "text": "1 Added Passive Skill is Prismatic Dance"
+    },
+    {
+      "id": "fractured.stat_1149662934",
+      "text": "1 Added Passive Skill is Prismatic Dance"
+    },
+    {
+      "id": "explicit.stat_2342448236",
+      "text": "1 Added Passive Skill is Prismatic Heart"
+    },
+    {
+      "id": "fractured.stat_2342448236",
+      "text": "1 Added Passive Skill is Prismatic Heart"
+    },
+    {
+      "id": "enchant.stat_3011365432",
+      "text": "Catalysts dropped by Metamorphs are duplicated"
+    },
+    {
+      "id": "enchant.stat_3011365432",
+      "text": "Catalysts dropped by Metamorphs in your Maps are Duplicated"
+    },
+    {
+      "id": "explicit.stat_753801406",
+      "text": "# to # added Fire Damage per 100 of Maximum Life or Maximum Mana, whichever is lower"
+    },
+    {
+      "id": "explicit.stat_1572854306",
+      "text": "#% increased Effect of Non-Damaging Ailments you inflict with Critical Strikes per 100 Player Maximum Life"
+    },
+    {
+      "id": "implicit.stat_983749596",
+      "text": "#% increased maximum Life"
+    },
+    {
+      "id": "fractured.stat_983749596",
+      "text": "#% increased maximum Life"
+    },
+    {
+      "id": "enchant.stat_983749596",
+      "text": "#% increased maximum Life"
+    },
+    {
+      "id": "crafted.stat_983749596",
+      "text": "#% increased maximum Life"
+    },
+    {
+      "id": "explicit.stat_3018691556",
+      "text": "#% increased maximum Life and reduced Fire Resistance"
+    },
+    {
+      "id": "explicit.stat_1138456002",
+      "text": "#% increased Elemental Damage per 1% Fire, Cold, or Lightning Resistance above 75%"
+    },
+    {
+      "id": "explicit.stat_64913248",
+      "text": "#% increased Elemental Damage per 1% Missing\nFire, Cold, or Lightning Resistance, up to a maximum of 450%"
+    },
+    {
+      "id": "explicit.stat_2642525868",
+      "text": "#% increased Lightning Damage per 1% Lightning Resistance above 75%"
+    },
+    {
+      "id": "explicit.stat_2249211872",
+      "text": "#% increased Lightning Resistance"
+    },
+    {
+      "id": "explicit.stat_162742068",
+      "text": "+#% Monster Lightning Resistance"
+    },
+    {
+      "id": "explicit.stat_3839688967",
+      "text": "+#% Player Lightning Resistance per 25% Alert Level"
+    },
+    {
+      "id": "fractured.stat_3839688967",
+      "text": "+#% Player Lightning Resistance per 25% Alert Level"
+    },
+    {
+      "id": "explicit.stat_2511217560",
+      "text": "#% increased Stun and Block Recovery"
+    },
+    {
+      "id": "crafted.stat_2250533757",
+      "text": "#% increased Movement Speed"
+    },
+    {
+      "id": "implicit.stat_755922799",
+      "text": "Minions have #% chance to deal Double Damage"
+    },
+    {
+      "id": "implicit.stat_3262016885",
+      "text": "Minions are Aggressive if you've used a Minion Skill Recently"
+    },
+    {
+      "id": "implicit.stat_2337295272",
+      "text": "Minions deal #% increased Damage if you've Hit Recently"
+    },
+    {
+      "id": "explicit.stat_3676141501",
+      "text": "+#% to maximum Cold Resistance"
+    },
+    {
+      "id": "explicit.stat_3681057026",
+      "text": "Recover Energy Shield equal to #% of Armour when you Block"
+    },
+    {
+      "id": "explicit.stat_762154651",
+      "text": "#% chance for Energy Shield Recharge to start when you Block"
+    },
+    {
+      "id": "explicit.stat_2530372417",
+      "text": "#% Chance to Block Attack Damage"
+    },
+    {
+      "id": "implicit.stat_2530372417",
+      "text": "#% Chance to Block Attack Damage"
+    },
+    {
+      "id": "fractured.stat_2530372417",
+      "text": "#% Chance to Block Attack Damage"
+    },
+    {
+      "id": "crafted.stat_2530372417",
+      "text": "#% Chance to Block Attack Damage"
+    },
+    {
+      "id": "explicit.stat_561307714",
+      "text": "#% Chance to Block Spell Damage"
+    },
+    {
+      "id": "implicit.stat_561307714",
+      "text": "#% Chance to Block Spell Damage"
+    },
+    {
+      "id": "fractured.stat_561307714",
+      "text": "#% Chance to Block Spell Damage"
+    },
+    {
+      "id": "explicit.stat_387439868",
+      "text": "#% increased Elemental Damage with Attack Skills"
+    },
+    {
+      "id": "implicit.stat_387439868",
+      "text": "#% increased Elemental Damage with Attack Skills"
+    },
+    {
+      "id": "fractured.stat_387439868",
+      "text": "#% increased Elemental Damage with Attack Skills"
+    },
+    {
+      "id": "crafted.stat_387439868",
+      "text": "#% increased Elemental Damage with Attack Skills"
+    },
+    {
+      "id": "explicit.stat_782323220",
+      "text": "#% increased Elemental Damage with Attack Skills during any Flask Effect"
+    },
+    {
+      "id": "explicit.stat_4116409626",
+      "text": "#% increased Elemental Damage with Attack Skills per Power Charge"
+    },
+    {
+      "id": "implicit.stat_1959092146",
+      "text": "#% increased Chaos Damage with Attack Skills"
+    },
+    {
+      "id": "explicit.stat_860668586",
+      "text": "#% increased Cold Damage with Attack Skills"
+    }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "raw": "\n\t\t\tRarity: UNIQUE\nElegant Hubris\nTimeless Jewel\nItem Level: 84\nRadius: Large\nImplicits: 0\nCommissioned 74740 coins to commemorate Caspiro\nPassives in radius are Conquered by the Eternal Empire\nHistoric\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.pseudo_timeless_jewel_caspiro",
+          "text": "Commissioned 74740 coins to commemorate Caspiro",
+          "value": {
+            "min": 74740
+          }
+        },
+        {
+          "id": "explicit.stat_3787436548",
+          "text": "Historic",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "raw": "\n\t\t\tRarity: RARE\nHollow Iridescence\nGhastly Eye Jewel\nItem Level: 59\nLevelReq: 40\nImplicits: 0\n+28 to maximum Life\n33% chance to Avoid being Shocked\nMinions have 5% increased Attack Speed\nMinions have 6% increased Cast Speed\nMinions deal 2 to 35 additional Lightning Damage\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3299347043",
+          "text": "+28 to maximum Life",
+          "value": {
+            "min": 28
+          }
+        },
+        {
+          "id": "explicit.stat_1871765599",
+          "text": "33% chance to Avoid being Shocked",
+          "value": {
+            "min": 33
+          }
+        },
+        {
+          "id": "explicit.stat_3375935924",
+          "text": "Minions have 5% increased Attack Speed",
+          "value": {
+            "min": 5
+          }
+        },
+        {
+          "id": "explicit.stat_4000101551",
+          "text": "Minions have 6% increased Cast Speed",
+          "value": {
+            "min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "raw": "\n\t\t\tRarity: UNIQUE\nStormshroud\nViridian Jewel\nItem Level: 80\nImplicits: 0\n+10% to Lightning Resistance\nModifiers to Chance to Avoid being Shocked apply to all Elemental Ailments\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_1671376347",
+          "text": "+10% to Lightning Resistance",
+          "value": {
+            "min": 10
+          }
+        },
+        {
+          "id": "explicit.stat_2543019543",
+          "text": "Modifiers to Chance to Avoid being Shocked apply to all Elemental Ailments",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "raw": "\n\t\t\tRarity: UNIQUE\nWatcher's Eye\nPrismatic Jewel\nItem Level: 87\nLimited to: 1\nImplicits: 0\n4% increased maximum Energy Shield\n6% increased maximum Life\n6% increased maximum Mana\n35% of Physical Damage Converted to Fire Damage while affected by Anger\n+8% Chance to Block Attack Damage while affected by Determination\n15% of Damage taken while affected by Clarity Recouped as Mana\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_2482852589",
+          "text": "4% increased maximum Energy Shield",
+          "value": {
+            "min": 4
+          }
+        },
+        {
+          "id": "explicit.stat_983749596",
+          "text": "6% increased maximum Life",
+          "value": {
+            "min": 6
+          }
+        },
+        {
+          "id": "explicit.stat_2748665614",
+          "text": "6% increased maximum Mana",
+          "value": {
+            "min": 6
+          }
+        },
+        {
+          "id": "explicit.stat_3624529132",
+          "text": "35% of Physical Damage Converted to Fire Damage while affected by Anger",
+          "value": {
+            "min": 35
+          }
+        },
+        {
+          "id": "explicit.stat_3692646597",
+          "text": "+8% Chance to Block Attack Damage while affected by Determination",
+          "value": {
+            "min": 8
+          }
+        },
+        {
+          "id": "explicit.stat_380220671",
+          "text": "15% of Damage taken while affected by Clarity Recouped as Mana",
+          "value": {
+            "min": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "raw": "\n\t\t\tRarity: UNIQUE\nQuickening Covenant\nViridian Jewel\nItem Level: 87\nRadius: Medium\nLimited to: 1\nImplicits: 0\nMinions have 14% increased Attack Speed\nMinions have 15% increased Cast Speed\nMinions have +21% chance to Suppress Spell Damage\nNotable Passive Skills in Radius are Transformed to\ninstead grant: Minions have 25% reduced Movement Speed\nCorrupted\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3375935924",
+          "text": "Minions have 14% increased Attack Speed",
+          "value": {
+            "min": 14
+          }
+        },
+        {
+          "id": "explicit.stat_4000101551",
+          "text": "Minions have 15% increased Cast Speed",
+          "value": {
+            "min": 15
+          }
+        },
+        {
+          "id": "explicit.stat_3195300715",
+          "text": "Minions have +21% chance to Suppress Spell Damage",
+          "value": {
+            "min": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "raw": "\n\t\t\tRarity: RARE\nApocalypse Wound\nCobalt Jewel\nItem Level: 84\nImplicits: 0\n15% increased Fire Damage\n8% increased maximum Energy Shield\n+2% to maximum Fire Resistance\n35% reduced Bleed Duration on you\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3962278098",
+          "text": "15% increased Fire Damage",
+          "value": {
+            "min": 15
+          }
+        },
+        {
+          "id": "explicit.stat_2482852589",
+          "text": "8% increased maximum Energy Shield",
+          "value": {
+            "min": 8
+          }
+        },
+        {
+          "id": "explicit.stat_4095671657",
+          "text": "+2% to maximum Fire Resistance",
+          "value": {
+            "min": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "raw": "\n\t\t\tRarity: UNIQUE\nThread of Hope\nCrimson Jewel\nItem Level: 87\nRadius: Variable\nImplicits: 0\nOnly affects Passives in Massive Ring\nPassive Skills in Radius can be Allocated without being connected to your tree\n-20% to all Elemental Resistances\nPassage\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3642528642|5",
+          "text": "Only affects Passives in Massive Ring",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "raw": "\n\t\t\tRarity: RARE\nDusk Ornament\nLarge Cluster Jewel\nCluster Jewel Skill: affliction_minion_damage\nCluster Jewel Node Count: 11\nItem Level: 84\nLevelReq: 67\nImplicits: 3\n{crafted}Adds 11 Passive Skills\n{crafted}2 Added Passive Skills are Jewel Sockets\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage\nAdded Small Passive Skills also grant: +8 to Intelligence\nAdded Small Passive Skills also grant: +6 to Maximum Energy Shield\nAdded Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed\nAdded Small Passive Skills have 35% increased Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_724930776",
+          "text": "Added Small Passive Skills also grant: +8 to Intelligence",
+          "value": {
+            "min": 8
+          }
+        },
+        {
+          "id": "explicit.stat_2643685329",
+          "text": "Added Small Passive Skills also grant: +6 to Maximum Energy Shield",
+          "value": {
+            "min": 6
+          }
+        },
+        {
+          "id": "explicit.stat_2310019673",
+          "text": "Added Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed",
+          "value": {
+            "min": 3
+          }
+        },
+        {
+          "id": "explicit.stat_2618549697",
+          "text": "Added Small Passive Skills have 35% increased Effect",
+          "value": {
+            "min": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "raw": "\n\t\t\tRarity: RARE\nViper Bliss\nCobalt Jewel\nItem Level: 85\nImplicits: 0\n8% increased maximum Energy Shield\n+2% to maximum Fire Resistance\nMinions have 9% increased maximum Life\n13% increased Mana Cost Efficiency\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_2482852589",
+          "text": "8% increased maximum Energy Shield",
+          "value": {
+            "min": 8
+          }
+        },
+        {
+          "id": "explicit.stat_4095671657",
+          "text": "+2% to maximum Fire Resistance",
+          "value": {
+            "min": 2
+          }
+        },
+        {
+          "id": "explicit.stat_770672621",
+          "text": "Minions have 9% increased maximum Life",
+          "value": {
+            "min": 9
+          }
+        },
+        {
+          "id": "explicit.stat_4101445926",
+          "text": "13% increased Mana Cost Efficiency",
+          "value": {
+            "min": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "raw": "\n\t\t\tRarity: UNIQUE\nImpossible Escape\nViridian Jewel\nItem Level: 87\nRadius: Small\nLimited to: 1\nImplicits: 0\nPassive Skills in Radius of Minion Instability can be Allocated\nwithout being connected to your tree\nPassage\nCorrupted\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": []
+    },
+    {
+      "id": "11",
+      "raw": "\n\t\t\tRarity: RARE\nHollow Portent\nGhastly Eye Jewel\nItem Level: 85\nLevelReq: 66\nImplicits: 0\n+32 to maximum Mana\n27% chance to Avoid being Stunned\nMinions have 6% increased Attack Speed\nMinions have 5% increased Cast Speed\nMinions deal 4 to 67 additional Lightning Damage\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_1050105434",
+          "text": "+32 to maximum Mana",
+          "value": {
+            "min": 32
+          }
+        },
+        {
+          "id": "explicit.stat_4262448838",
+          "text": "27% chance to Avoid being Stunned",
+          "value": {
+            "min": 27
+          }
+        },
+        {
+          "id": "explicit.stat_3375935924",
+          "text": "Minions have 6% increased Attack Speed",
+          "value": {
+            "min": 6
+          }
+        },
+        {
+          "id": "explicit.stat_4000101551",
+          "text": "Minions have 5% increased Cast Speed",
+          "value": {
+            "min": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "raw": "\n\t\t\tRarity: UNIQUE\nUnending Hunger\nCobalt Jewel\nItem Level: 85\nRadius: Medium\nLimited to: 2\nImplicits: 0\nMinions have 6% increased Area of Effect\nWith at least 40 Intelligence in Radius, Raised Spectres have a 50% chance to gain Soul Eater for 20 seconds on Kill\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3811191316",
+          "text": "Minions have 6% increased Area of Effect",
+          "value": {
+            "min": 6
+          }
+        },
+        {
+          "id": "explicit.stat_2390273715",
+          "text": "With at least 40 Intelligence in Radius, Raised Spectres have a 50% chance to gain Soul Eater for 20 seconds on Kill",
+          "value": {
+            "min": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "raw": "\n\t\t\tRarity: RARE\nCataclysm Shine\nLarge Cluster Jewel\nCluster Jewel Skill: affliction_minion_damage\nCluster Jewel Node Count: 11\nItem Level: 84\nLevelReq: 67\nImplicits: 3\n{crafted}Adds 11 Passive Skills\n{crafted}2 Added Passive Skills are Jewel Sockets\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage\nAdded Small Passive Skills also grant: +7% to Cold Resistance\nAdded Small Passive Skills also grant: +4 to Maximum Energy Shield\nAdded Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed\nAdded Small Passive Skills have 35% increased Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_2709692542",
+          "text": "Added Small Passive Skills also grant: +7% to Cold Resistance",
+          "value": {
+            "min": 7
+          }
+        },
+        {
+          "id": "explicit.stat_2643685329",
+          "text": "Added Small Passive Skills also grant: +4 to Maximum Energy Shield",
+          "value": {
+            "min": 4
+          }
+        },
+        {
+          "id": "explicit.stat_2310019673",
+          "text": "Added Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed",
+          "value": {
+            "min": 3
+          }
+        },
+        {
+          "id": "explicit.stat_2618549697",
+          "text": "Added Small Passive Skills have 35% increased Effect",
+          "value": {
+            "min": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "raw": "\n\t\t\tRarity: RARE\nPlague Ornament\nLarge Cluster Jewel\nCluster Jewel Skill: affliction_minion_damage\nCluster Jewel Node Count: 11\nItem Level: 84\nLevelReq: 67\nImplicits: 3\n{crafted}Adds 11 Passive Skills\n{crafted}2 Added Passive Skills are Jewel Sockets\n{crafted}Added Small Passive Skills grant: Minions deal 10% increased Damage\nAdded Small Passive Skills also grant: +20 to Evasion\nAdded Small Passive Skills also grant: +7% to Fire Resistance\nAdded Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed\nAdded Small Passive Skills have 35% increased Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_4100161067",
+          "text": "Added Small Passive Skills also grant: +20 to Evasion",
+          "value": {
+            "min": 20
+          }
+        },
+        {
+          "id": "explicit.stat_1790411851",
+          "text": "Added Small Passive Skills also grant: +7% to Fire Resistance",
+          "value": {
+            "min": 7
+          }
+        },
+        {
+          "id": "explicit.stat_2310019673",
+          "text": "Added Small Passive Skills also grant: Minions have 3% increased Attack and Cast Speed",
+          "value": {
+            "min": 3
+          }
+        },
+        {
+          "id": "explicit.stat_2618549697",
+          "text": "Added Small Passive Skills have 35% increased Effect",
+          "value": {
+            "min": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "raw": "\n\t\t\tRarity: MAGIC\nFlagellant's Ruby Flask of Craft\nItem Level: 85\nQuality: 20\nLevelReq: 64\nImplicits: 1\n{crafted}Used when Charges reach full\nGain 3 Charges when you are Hit by an Enemy\n{crafted}15% of Damage Taken from Hits is Leeched as Life during Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "crafted.stat_3824033729",
+          "text": "15% of Damage Taken from Hits is Leeched as Life during Effect",
+          "value": {
+            "min": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "raw": "\n\t\t\tRarity: RARE\nRift Gnarl\nConvoking Wand\nItem Level: 73\nQuality: 0\nSockets: R-G-B\nLevelReq: 72\nImplicits: 1\nMinions deal 30% increased Damage\n13% increased Spell Damage\n+1 to Level of all Spell Skill Gems\n+1 to Level of all Minion Skill Gems\n10% increased Projectile Speed\nMinions have 7% increased Attack and Cast Speed\n{crafted}Trigger a Socketed Spell when you Use a Skill, with a 8 second Cooldown\n{crafted}Spells Triggered this way have 150% more Cost\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_1589917703",
+          "text": "Minions deal 30% increased Damage",
+          "value": {
+            "min": 30
+          }
+        },
+        {
+          "id": "explicit.stat_2974417149",
+          "text": "13% increased Spell Damage",
+          "value": {
+            "min": 13
+          }
+        },
+        {
+          "id": "explicit.stat_124131830",
+          "text": "+1 to Level of all Spell Skill Gems",
+          "value": {
+            "min": 1
+          }
+        },
+        {
+          "id": "explicit.stat_2162097452",
+          "text": "+1 to Level of all Minion Skill Gems",
+          "value": {
+            "min": 1
+          }
+        },
+        {
+          "id": "explicit.stat_3759663284",
+          "text": "10% increased Projectile Speed",
+          "value": {
+            "min": 10
+          }
+        },
+        {
+          "id": "explicit.stat_3091578504",
+          "text": "Minions have 7% increased Attack and Cast Speed",
+          "value": {
+            "min": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "raw": "\n\t\t\tRarity: MAGIC\nMasochist's Basalt Flask of the Kakapo\nItem Level: 84\nQuality: 20\nLevelReq: 52\nImplicits: 2\n{crafted}Used when Charges reach full\nTaunts Enemies within 3 metres on use\nGain 2 Charges when you are Hit by an Enemy\n59% reduced Effect of Curses on you during Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_2005503156",
+          "text": "Taunts Enemies within 3 metres on use",
+          "value": {
+            "min": 3
+          }
+        },
+        {
+          "id": "explicit.stat_4265534424",
+          "text": "59% reduced Effect of Curses on you during Effect",
+          "value": {
+            "min": 59
+          }
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "raw": "\n\t\t\tRarity: UNIQUE\nDoryani's Prototype\nSaint's Hauberk\nArmour: 1588\nArmourBasePercentile: 0.1342\nEnergy Shield: 272\nEnergyShieldBasePercentile: 0.1219\nItem Level: 85\nQuality: 20\nSockets: B-W-R-W-R-B\nLevelReq: 67\nImplicits: 2\n+1% to all maximum Resistances\n5% reduced Chaos Damage taken\n194% increased Armour and Energy Shield\n+60 to maximum Life\nDeal no Non-Lightning Damage\nArmour also applies to Lightning Damage taken from Hits\nLightning Resistance does not affect Lightning Damage taken\nEnemies within 6 metres have Lightning Resistance equal to yours\nCorrupted\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_569299859",
+          "text": "+1% to all maximum Resistances",
+          "value": {
+            "min": 1
+          }
+        },
+        {
+          "id": "implicit.stat_2960683632",
+          "text": "5% reduced Chaos Damage taken",
+          "value": {
+            "min": 5
+          }
+        },
+        {
+          "id": "explicit.stat_3299347043",
+          "text": "+60 to maximum Life",
+          "value": {
+            "min": 60
+          }
+        },
+        {
+          "id": "explicit.stat_2075742842",
+          "text": "Deal no Non-Lightning Damage",
+          "value": {}
+        },
+        {
+          "id": "explicit.stat_2134207902",
+          "text": "Armour also applies to Lightning Damage taken from Hits",
+          "value": {}
+        },
+        {
+          "id": "explicit.stat_3999959974",
+          "text": "Lightning Resistance does not affect Lightning Damage taken",
+          "value": {}
+        },
+        {
+          "id": "explicit.stat_3549734978",
+          "text": "Enemies within 6 metres have Lightning Resistance equal to yours",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "raw": "\n\t\t\tRarity: UNIQUE\nThe Dark Monarch\nLich's Circlet\nEnergy Shield: 246\nEnergyShieldBasePercentile: 0.4706\nItem Level: 86\nQuality: 20\nSockets: W-B-W-W\nLevelReq: 84\nImplicits: 0\n+80 to maximum Energy Shield\n+1 to Level of all Minion Skill Gems\n+29% to Chaos Resistance\n50% reduced Light Radius\nMaximum number of Raised Spectres is Doubled\nCannot have Minions other than Raised Spectres\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_4052037485",
+          "text": "+80 to maximum Energy Shield",
+          "value": {
+            "min": 80
+          }
+        },
+        {
+          "id": "explicit.stat_2162097452",
+          "text": "+1 to Level of all Minion Skill Gems",
+          "value": {
+            "min": 1
+          }
+        },
+        {
+          "id": "explicit.stat_2923486259",
+          "text": "+29% to Chaos Resistance",
+          "value": {
+            "min": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "raw": "\n\t\t\tRarity: UNIQUE\nKalandra's Touch\nRing\nItem Level: 85\nImplicits: 0\nReflects opposite Ring\nMirrored\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_746505085",
+          "text": "Reflects opposite Ring",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "raw": "\n\t\t\tRarity: RARE\nEnthralling Globe\nGhastly Eye Jewel\nItem Level: 83\nLevelReq: 56\nImplicits: 0\n+27 to maximum Life\n36% chance to Avoid being Shocked\nMinions have 4% increased Attack Speed\nMinions have 4% increased Cast Speed\nMinions deal 4 to 52 additional Lightning Damage\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3299347043",
+          "text": "+27 to maximum Life",
+          "value": {
+            "min": 27
+          }
+        },
+        {
+          "id": "explicit.stat_1871765599",
+          "text": "36% chance to Avoid being Shocked",
+          "value": {
+            "min": 36
+          }
+        },
+        {
+          "id": "explicit.stat_3375935924",
+          "text": "Minions have 4% increased Attack Speed",
+          "value": {
+            "min": 4
+          }
+        },
+        {
+          "id": "explicit.stat_4000101551",
+          "text": "Minions have 4% increased Cast Speed",
+          "value": {
+            "min": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "raw": "\n\t\t\tRarity: RARE\nHollow Globe\nGhastly Eye Jewel\nItem Level: 85\nLevelReq: 65\nImplicits: 0\nMinions have 5% increased Attack Speed\nMinions have 5% increased Cast Speed\nMinions deal 15 to 22 additional Fire Damage\nMinions deal 1 to 68 additional Lightning Damage\n35% increased Evasion Rating while moving\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3375935924",
+          "text": "Minions have 5% increased Attack Speed",
+          "value": {
+            "min": 5
+          }
+        },
+        {
+          "id": "explicit.stat_4000101551",
+          "text": "Minions have 5% increased Cast Speed",
+          "value": {
+            "min": 5
+          }
+        },
+        {
+          "id": "explicit.stat_734823525",
+          "text": "35% increased Evasion Rating while moving",
+          "value": {
+            "min": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "raw": "\n\t\t\tRarity: UNIQUE\nDarkness Enthroned\nStygian Vise\nItem Level: 85\nSockets: A A\nImplicits: 1\nHas 1 Abyssal Socket\nHas 1 Abyssal Socket\n99% increased Effect of Socketed Abyss Jewels\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_1482572705",
+          "text": "99% increased Effect of Socketed Abyss Jewels",
+          "value": {
+            "min": 99
+          }
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "raw": "\n\t\t\tRarity: UNIQUE\nTaste of Hate\nSapphire Flask\nItem Level: 72\nQuality: 20\nLevelReq: 18\nImplicits: 1\n{crafted}Used when Charges reach full\n30% of Fire and Lightning Damage from Hits taken as Cold Damage during Effect\nGain 13% of Physical Damage as Extra Cold Damage during effect\n30% chance to Avoid being Chilled during Effect\n30% chance to Avoid being Frozen during Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_1349002319",
+          "text": "30% of Fire and Lightning Damage from Hits taken as Cold Damage during Effect",
+          "value": {
+            "min": 30
+          }
+        },
+        {
+          "id": "explicit.stat_2661163721",
+          "text": "Gain 13% of Physical Damage as Extra Cold Damage during effect",
+          "value": {
+            "min": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "raw": "\n\t\t\tRarity: RARE\nGale Palm\nWarlock Gloves\nEnergy Shield: 270\nEnergyShieldBasePercentile: 0.5425\nSearing Exarch Item\nEater of Worlds Item\nItem Level: 85\nQuality: 20\nSockets: W-W-W-W\nLevelReq: 84\nImplicits: 2\n9% increased Effect of your Marks\nMinions deal 19% increased Damage\n{fractured}+47% to Fire Resistance\nAdds 10 to 20 Cold Damage to Attacks\n+43 to maximum Energy Shield\n86% increased Energy Shield\n+43% to Cold Resistance\n{crafted}+20% to Fire and Cold Resistances\nFractured Item\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_803185500",
+          "text": "9% increased Effect of your Marks",
+          "value": {
+            "min": 9
+          }
+        },
+        {
+          "id": "implicit.stat_1589917703",
+          "text": "Minions deal 19% increased Damage",
+          "value": {
+            "min": 19
+          }
+        },
+        {
+          "id": "explicit.stat_3372524247",
+          "text": "+47% to Fire Resistance",
+          "value": {
+            "min": 47
+          }
+        },
+        {
+          "id": "explicit.stat_4052037485",
+          "text": "+43 to maximum Energy Shield",
+          "value": {
+            "min": 43
+          }
+        },
+        {
+          "id": "explicit.stat_4015621042",
+          "text": "86% increased Energy Shield",
+          "value": {
+            "min": 86
+          }
+        },
+        {
+          "id": "explicit.stat_4220027924",
+          "text": "+43% to Cold Resistance",
+          "value": {
+            "min": 43
+          }
+        },
+        {
+          "id": "crafted.stat_2915988346",
+          "text": "+20% to Fire and Cold Resistances",
+          "value": {
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "raw": "\n\t\t\tRarity: MAGIC\nMasochist's Quicksilver Flask of the Cheetah\nItem Level: 100\nQuality: 20\nLevelReq: 68\nImplicits: 1\n{crafted}Used when Charges reach full\nGain 2 Charges when you are Hit by an Enemy\n13% increased Movement Speed during Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_3182498570",
+          "text": "13% increased Movement Speed during Effect",
+          "value": {
+            "min": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "raw": "\n\t\t\tRarity: UNIQUE\nReplica Dragonfang's Flight\nOnyx Amulet\nItem Level: 85\nLevelReq: 56\nImplicits: 2\n{crafted}Allocates Gravepact\n+14 to all Attributes\n+3 to Level of all Raise Spectre Gems\n+6% to all Elemental Resistances\n8% increased Reservation Efficiency of Skills\nItems and Gems have 6% reduced Attribute Requirements\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_1379411836",
+          "text": "+14 to all Attributes",
+          "value": {
+            "min": 14
+          }
+        },
+        {
+          "id": "explicit.stat_2901986750",
+          "text": "+6% to all Elemental Resistances",
+          "value": {
+            "min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "raw": "\n\t\t\tRarity: MAGIC\nMasochist's Granite Flask of the Pangolin\nItem Level: 73\nQuality: 20\nLevelReq: 50\nImplicits: 1\n{crafted}Used when Charges reach full\nGain 2 Charges when you are Hit by an Enemy\n54% increased Armour during Effect\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_1693613464",
+          "text": "54% increased Armour during Effect",
+          "value": {
+            "min": 54
+          }
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "raw": "\n\t\t\tRarity: RARE\nDire Spiral\nBone Ring\nCatalyst: Prismatic\nCatalystQuality: 20\nItem Level: 83\nLevelReq: 57\nImplicits: 1\nMinions have +18% to all Elemental Resistances\n-124 to maximum Life\n-73% to Lightning Resistance\nMinions have 44% increased maximum Life\nMinions have 20% increased Attack and Cast Speed\nMirrored\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_1423639565",
+          "text": "Minions have +18% to all Elemental Resistances",
+          "value": {
+            "min": 18
+          }
+        },
+        {
+          "id": "explicit.stat_770672621",
+          "text": "Minions have 44% increased maximum Life",
+          "value": {
+            "min": 44
+          }
+        },
+        {
+          "id": "explicit.stat_3091578504",
+          "text": "Minions have 20% increased Attack and Cast Speed",
+          "value": {
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "raw": "\n\t\t\tRarity: RARE\nWrath Span\nWarlock Boots\nEnergy Shield: 215\nEnergyShieldBasePercentile: 0.8919\nElder Item\nItem Level: 87\nQuality: 20\nSockets: W-W-W-W\nLevelReq: 84\nImplicits: 0\n119% increased Energy Shield\n+1 to Level of all Raise Spectre Gems\n+33% to Fire Resistance\n+29% to Cold Resistance\n15% increased Stun and Block Recovery\n{crafted}24% increased Movement Speed\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_4015621042",
+          "text": "119% increased Energy Shield",
+          "value": {
+            "min": 119
+          }
+        },
+        {
+          "id": "explicit.stat_3372524247",
+          "text": "+33% to Fire Resistance",
+          "value": {
+            "min": 33
+          }
+        },
+        {
+          "id": "explicit.stat_4220027924",
+          "text": "+29% to Cold Resistance",
+          "value": {
+            "min": 29
+          }
+        },
+        {
+          "id": "explicit.stat_2511217560",
+          "text": "15% increased Stun and Block Recovery",
+          "value": {
+            "min": 15
+          }
+        },
+        {
+          "id": "crafted.stat_2250533757",
+          "text": "24% increased Movement Speed",
+          "value": {
+            "min": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "raw": "\n\t\t\tRarity: NORMAL\nNightmarish Wings of Catarina\nItem Level: 83\nImplicits: 1\n+1 to maximum number of Spectres\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_125218179",
+          "text": "+1 to maximum number of Spectres",
+          "value": {
+            "min": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "raw": "\n\t\t\tRarity: NORMAL\nGreater Sea Witch's Tentacle\nItem Level: 83\nImplicits: 1\nMinions have 12% chance to deal Double Damage\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_755922799",
+          "text": "Minions have 12% chance to deal Double Damage",
+          "value": {
+            "min": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "raw": "\n\t\t\tRarity: NORMAL\nGreater Overseer's Whip\nItem Level: 78\nImplicits: 1\nMinions are Aggressive if you've used a Minion Skill Recently\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_3262016885",
+          "text": "Minions are Aggressive if you've used a Minion Skill Recently",
+          "value": {}
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "raw": "\n\t\t\tRarity: NORMAL\nChimera's Head\nItem Level: 83\nImplicits: 1\nMinions deal 40% increased Damage if you've Hit Recently\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "implicit.stat_2337295272",
+          "text": "Minions deal 40% increased Damage if you've Hit Recently",
+          "value": {
+            "min": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "raw": "\n\t\t\tRarity: UNIQUE\nAegis Aurora\nChampion Kite Shield\nArmour: 1420\nArmourBasePercentile: 0.9058\nEnergy Shield: 285\nEnergyShieldBasePercentile: 0.8282\nItem Level: 85\nQuality: 20\nSockets: B-B-W\nLevelReq: 62\nImplicits: 0\n{tags:defences,armour,energyshield}{range:0.85}(300-400)% increased Armour and Energy Shield\n{tags:elemental,resistance}+10% to all Elemental Resistances\n{tags:elemental,cold,resistance}+5% to maximum Cold Resistance\n+6% Chance to Block\n{tags:defences,energyshield}Recover Energy Shield equal to 2% of Armour when you Block\n{tags:damage,elemental,attack}{range:0.6}(10-20)% increased Elemental Damage with Attack Skills\nCorrupted\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t",
+      "previous": [
+        {
+          "id": "explicit.stat_2901986750",
+          "text": "+10% to all Elemental Resistances",
+          "value": {
+            "min": 10
+          }
+        },
+        {
+          "id": "explicit.stat_3676141501",
+          "text": "+5% to maximum Cold Resistance",
+          "value": {
+            "min": 5
+          }
+        },
+        {
+          "id": "explicit.stat_3681057026",
+          "text": "Recover Energy Shield equal to 2% of Armour when you Block",
+          "value": {
+            "min": 2
+          }
+        }
+      ]
+    }
+  ]
+}
