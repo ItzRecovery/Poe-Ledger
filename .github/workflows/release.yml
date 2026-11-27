@@ -26,6 +26,8 @@ jobs:
         run: |
           node -e "const fs=require('fs'); const vm=require('vm'); const html=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8'); const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]; if(!scripts.length)throw Error('Missing application script'); for(const [i,s] of scripts.entries())new vm.Script(s[1],{filename:'ledger-script-'+i+'.js'}); console.log('All application scripts parsed successfully');"
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Offline economy regression checks
+        run: node scripts/TestEconomy.cjs
       - name: Fetch static boss artwork
         shell: pwsh
         run: ./scripts/FetchBossArt.ps1
