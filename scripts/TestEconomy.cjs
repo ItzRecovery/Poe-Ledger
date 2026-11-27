@@ -1,7 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const c=fs.readFileSync('ProjectPoeLedger/Web/index.html','utf8');
 function extract(start,end){const i=c.indexOf(start),j=c.indexOf(end,i);assert(i>=0&&j>i,'Missing source anchor '+start);return c.slice(i,j)}
-const parts=[extract('function calc(x)','function field('),extract('function calc338(','function simulate338('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function norm27(','function visiblePobMods462('),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('function gemColor542','function gemRows28'),extract('async function readSave545',"$('exportCompact545').onclick")];
+const parts=[extract('function calc(x)','function field('),extract('function calc338(','function simulate338('),extract('function atlasCalc33(','function atlasPage33('),extract('function beastCalc46(','function beastPage46('),extract('function norm27(','function visiblePobMods462('),extract('const known27=','function shop27('),extract('const nn338=','function ecoCatalog338('),extract('const mult=','let state='),extract('const keys29=','function applyAdvanced29'),extract('const gemColors556','function gemRows28'),extract('const n25=','function lookup25'),extract('function planTargets557','function gearFallback548'),extract('async function readSave545',"$('exportCompact545').onclick")];
 const defs=c.match(/num=x=>Number\(x\)\|\|0,known=.*?,fmt=/)[0].slice(0,-5);
 const testSource=String.raw`
 let n=0;function test(name,fn){assert(fn(),name);console.log('PASS '+name);n++}
@@ -34,6 +34,20 @@ test('Single requirement gem colour',()=>gemColor542(gem({reqStr:'0',reqDex:'0',
 test('Ambiguous gem stays neutral',()=>gemColor542(gem({reqStr:'10',reqDex:'10',reqInt:'0'}))==='');
 test('Unique numeric template',()=>matchAffix542(new Map([['explicit|socketed gems are supported by level # hypothermia',new Set(['explicit.fixture'])]]),'explicit','Socketed Gems are Supported by Level 20 Hypothermia')?.value.min===20);
 test('Ambiguous trade stat rejected',()=>matchAffix542(new Map([['explicit|# to maximum life',new Set(['explicit.a','explicit.b'])]]),'explicit','+20 to maximum Life')===null);
+test('Gem database size',()=>gemColors556.size===814);
+test('Transfigured gem colour',()=>gemColor542(gem({nameSpec:'Fireball of Radiation'}))==='blue');
+test('Gem metadata overrides catalog',()=>gemColor542(gem({nameSpec:'Fireball',color:'red'}))==='red');
+test('Missing gem element neutral',()=>gemColor542(null)==='');
+test('Invalid shopping prices',()=>[null,undefined,'',' ',false,true,-1,Infinity,NaN].every(x=>!n25(x))&&n25(0)&&n25('2.5'));
+const purchases=[{category:'Gear',price:8,stats:{fire:40}},{category:'Gem',price:2},{category:'Gear',price:3,stats:{fire:5}}];
+test('Budget cheapest first',()=>planBudget554(purchases,5,'cheap').spent===5);
+test('Budget expensive first',()=>planBudget554(purchases,8,'expensive').spent===8);
+test('Budget gear first',()=>planBudget554(purchases,4,'gear').chosen[0].category==='Gear');
+test('Target purchase ranking',()=>planTargets557(purchases,8,{fire:40},[]).deficits.fire===0);
+test('Purchased stats count toward target',()=>planTargets557(purchases,3,{fire:40},[{stats:{fire:35}}]).deficits.fire===0);
+test('Negative target contribution skipped',()=>planTargets557([{price:1,stats:{fire:-5}}],5,{fire:40},[]).chosen.length===0);
+test('CSV formula neutralization',()=>csvCell554('=1+1')===String.fromCharCode(34,39)+'=1+1'+String.fromCharCode(34));
+test('CSV quote escaping',()=>csvCell554('a"b')==='"a""b"');
 console.log(n+' offline checks passed');
 return readSave545;
 `;
