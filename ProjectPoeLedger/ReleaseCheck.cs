@@ -31,7 +31,7 @@ internal static class ReleaseCheck {
    try{response.EnsureSuccessStatusCode();return response;}catch{response.Dispose();throw;}
   }throw new InvalidDataException("Too many redirects.");
  }
- static HttpClient Client(){var http=new HttpClient(new HttpClientHandler{AllowAutoRedirect=false}){Timeout=Timeout.InfiniteTimeSpan};http.DefaultRequestHeaders.UserAgent.ParseAdd("PoeLedger/0.50.1");return http;}
+ static HttpClient Client(){var http=new HttpClient(new HttpClientHandler{AllowAutoRedirect=false}){Timeout=Timeout.InfiniteTimeSpan};http.DefaultRequestHeaders.UserAgent.ParseAdd("PoeLedger/0.50.2");return http;}
  public static async Task<Release> Fetch(string url){using var http=Client();using var cts=new CancellationTokenSource(TimeSpan.FromSeconds(30));using var response=await Get(http,Https(url),cts.Token);using var input=await response.Content.ReadAsStreamAsync(cts.Token);using var output=new MemoryStream();var buffer=new byte[8192];int n;while((n=await input.ReadAsync(buffer.AsMemory(),cts.Token))>0){if(output.Length+n>131072)throw new InvalidDataException("Manifest too large.");output.Write(buffer,0,n);}return Parse(System.Text.Encoding.UTF8.GetString(output.ToArray()));}
  public static async Task<string> DownloadInstaller(Release r,IProgress<int> progress,CancellationToken ct){
   if(r.Version<=Current||r.Download==null||r.Sha256==null||r.Size is null or <=0 or >1073741824)throw new InvalidDataException("A newer release with HTTPS installer, SHA-256 and size is required.");
