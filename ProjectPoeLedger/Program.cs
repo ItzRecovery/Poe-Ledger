@@ -167,7 +167,7 @@ internal sealed class LedgerWindow : Form
             core.WebResourceRequested+=(_,e)=>{
                 if(Local(e.Request.Uri) || e.Request.Uri.StartsWith("data:") || e.Request.Uri.StartsWith("blob:")) return;
                 // Do not let embedded pages bypass the central API manager. Artwork is opt-in.
-                if(market.Online && Uri.TryCreate(e.Request.Uri,UriKind.Absolute,out var u) && u.Scheme=="https" && e.ResourceContext==CoreWebView2WebResourceContext.Image && (u.Host=="web.poecdn.com" || u.Host.EndsWith(".poewiki.net") || u.Host=="poewiki.net" || u.Host=="poe.ninja")) return;
+                if(market.Online && Uri.TryCreate(e.Request.Uri,UriKind.Absolute,out var u) && u.Scheme=="https" && e.ResourceContext==CoreWebView2WebResourceContext.Image && (u.Host=="web.poecdn.com" || (u.Host=="cdn.poedb.tw" && u.AbsolutePath.StartsWith("/image/Art/2DItems/",StringComparison.Ordinal)) || u.Host.EndsWith(".poewiki.net") || u.Host=="poewiki.net" || u.Host=="poe.ninja")) return;
                 e.Response=core.Environment.CreateWebResourceResponse(null,403,"Blocked by desktop network policy","");
             };
             await core.AddScriptToExecuteOnDocumentCreatedAsync("(()=>{const f=window.fetch.bind(window);window.fetch=(input,init={})=>{const u=new URL(typeof input==='string'?input:input.url??String(input),location.href);if(u.origin===location.origin&&u.pathname.startsWith('/api/')){const h=new Headers(init.headers||(input instanceof Request?input.headers:undefined));h.set('X-Ledger-Token',"+JsonSerializer.Serialize(token)+");return f(input,{...init,headers:h});}return f(input,init);};})();");
